@@ -1,0 +1,37 @@
+    .p-nav {
+      position:fixed;
+      top:0;
+      left:0;
+      width:100%;
+      z-index:100;
+    }
+    .p-container {
+      width:100%;
+      min-height:100%;
+      position:relative;
+      padding-bottom:80px;
+      
+    }
+    .im-decribe {
+      width:480px;
+      margin-top:200px;
+      margin-left:30px;
+      color:#fff;
+    }
+    .im-data {
+      float:right;
+    }
+    .im-data img {
+      margin-top:120px;
+    }
+    .login-form {
+      max-width: 300px;
+    }
+
+    .login-form-forgot {
+      float: right;
+    }
+
+    .login-form-button {
+      width: 100%;
+    }
