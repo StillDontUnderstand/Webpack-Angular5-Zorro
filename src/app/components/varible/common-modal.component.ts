@@ -5,10 +5,10 @@ import { Component, Input } from '@angular/core';
 @Component({
   selector: '[varibleModal]',
   template:`
-    <a (click)="showModal(obj)" *ngIf="obj.code=='READ'||obj.code == 'UPDATE'">
+    <a (click)="showModal(obj)" *ngIf="obj.code=='READ'||obj.code == 'UPDATE'||obj.code == 'CREATE'">
       <span>{{obj.bn}}</span>
     </a>
-    <button nz-button [nzType]="'primary'" (click)="showModal(obj)" *ngIf="obj.code=='CREATE'">
+    <button nz-button [nzType]="'primary'" (click)="showModal(obj)" *ngIf="false">
       <span>{{obj.bn}}</span>
     </button>
 

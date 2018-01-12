@@ -43,7 +43,10 @@ import { Observable } from 'rxjs/Observable';
               </div>
             </nz-dropdown>
           </th>
-          <th nz-th><span>操作</span></th>
+          <th nz-th>
+            <span>操作</span>
+            <span varibleModal [obj]="{bn:'添加规则',code:'CREATE',data:''}"></span>
+           </th>
         </tr>
       </thead>
       <tbody nz-tbody>
@@ -98,6 +101,9 @@ import { Observable } from 'rxjs/Observable';
       .highlight {
         color: #f50;
       }
+      .ant-table-thead > tr > th, .ant-table-tbody > tr > td {
+        text-align: -webkit-center;
+      }
     `
   ]
 })
@@ -119,7 +125,7 @@ export class CommonTableComponent {
   };
   sortName: any = null;
   sortValue: any = null;
-  data:any = [];
+  data: any = [];
 
   copyData: any;
   _loading = true;
@@ -159,26 +165,20 @@ export class CommonTableComponent {
     });
     this.search();
   }
-  
-  ngOnInit() {
-    // this.http.get('api/data').subscribe(data => {
-    //   this.data = data.json();
-    //   this._loading =false;
-    //   // console.info(data.json())
-    // })
 
+  ngOnInit() {
     this.route.paramMap
-    .switchMap((params: ParamMap) => {
+      .switchMap((params: ParamMap) => {
         this.data = []
         this._loading = true;
-        return this.http.get('api/data'+params.get('id'))
+        return this.http.get('api/data' + params.get('id'))
         // 
-    }).subscribe((data) => {
+      }).subscribe((data) => {
         console.info('!!!!!!');
         this.data = data.json();
         this._loading = false;
         console.info(data);
-    })
+      })
   }
 
 }

@@ -8,12 +8,15 @@ import { LayoutRoutingModule } from './layout.routing';
 import { LayoutComponent } from './layout.component';
 
 import { NotFoundComponent } from './notFound.component';
+import { DevlogComponent} from '../../components/devlog/devlog.component'
+
 
 console.info("layoutModule in running...")
 @NgModule({
   declarations: [
     LayoutComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    DevlogComponent
   ],
   exports: [LayoutComponent],
   imports: [

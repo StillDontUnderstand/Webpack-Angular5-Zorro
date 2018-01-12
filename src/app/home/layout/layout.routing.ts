@@ -12,7 +12,7 @@ const layoutRoute: Routes = [
     component: LayoutComponent, 
     children: [
       {
-        path: 'devlog',
+        path: '',
         component:DevlogComponent
       },
       {
@@ -21,7 +21,7 @@ const layoutRoute: Routes = [
       },
       {
         path: '**',
-        component: NotFoundComponent
+        component: DevlogComponent
       }
     ]
   }
