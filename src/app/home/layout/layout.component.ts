@@ -4,14 +4,14 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { NavigationExtras } from '@angular/router';
 import { Router, ActivatedRoute } from '@angular/router';
-import { fadeAnimation } from './fade.animation';
+import { fadeAnimation,tipAnimation } from './fade.animation';
 
 @Component({
   selector: 'root-layout',
   encapsulation: ViewEncapsulation.None,
   templateUrl: './layout.component.html',
   styleUrls: ['./style/style.css'],
-  animations: [fadeAnimation]
+  animations: [fadeAnimation,tipAnimation]
 })
 export class LayoutComponent implements OnInit {
   constructor(private router: Router, private route: ActivatedRoute) {
@@ -28,7 +28,7 @@ export class LayoutComponent implements OnInit {
 
   }
   public getRouterOutletState(outlet) {
-    // console.info(outlet.activatedRoute);
+    console.info(outlet.isActivated);
     return outlet.isActivated ? outlet.activatedRoute : '';
   }
 }

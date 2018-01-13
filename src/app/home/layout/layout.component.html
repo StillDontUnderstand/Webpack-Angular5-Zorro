@@ -39,7 +39,7 @@
       <nz-content [@fadeAnimation]="getRouterOutletState(o)" style="margin:16px 16px 0px 16px;background: #fff;z-index:50;border-radius:5px;position:relative;" >
             <router-outlet #o="outlet"></router-outlet>
       </nz-content>
-      <nz-footer style="text-align: center;padding:8px;color: #6633994f;">HF Design ©2018 Implement By Unissoft</nz-footer>
+      <nz-footer [@tipAnimation]="getRouterOutletState(o)" style="text-align: center;padding:8px;color: #6633994f;">HF Design ©2018 Implement By Unissoft</nz-footer>
     </nz-layout>
 
   </nz-layout>

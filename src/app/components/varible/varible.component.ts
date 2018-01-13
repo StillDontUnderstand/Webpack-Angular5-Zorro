@@ -14,7 +14,13 @@ import { Http } from '@angular/http';
             <commonTable></commonTable>
     </div>
     `,
-    // styleUrls:['']
+    styles:[`
+        :host{
+            position:absolute;
+            width:100%;
+            height:100%;
+        }
+    `]
 })
 export class VaribleComponent implements OnInit {
   

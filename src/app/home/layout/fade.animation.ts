@@ -4,28 +4,40 @@ export const fadeAnimation =
 
     trigger('fadeAnimation', [
 
-        transition( '* => *', [
-            query(':enter', 
+        transition('* => *', [
+            query(':enter',
                 [
-                    style({ opacity: 0 ,boxShadow:'0px 0px 0px 0px white'})
-                ], 
+                    style({ opacity: 0 })
+                ],
                 { optional: true }
             ),
-            query(':leave', 
+            query(':leave',
                 [
                     style({ opacity: 1 }),
-                    animate('0.5s', style({ opacity: 0 ,boxShadow:'0px 0px 0px 0px white'}))
-                ], 
+                    animate('0.55s ease-out', style({ opacity: 0 }))
+                ],
                 { optional: true }
-            ), 
-            query(':enter', 
+            ),
+            query(':enter',
                 [
                     style({ opacity: 0 }),
-                    animate('0.5s', style({ opacity: 1 }))
-                ], 
+                    animate('0.55s ease-in', style({ opacity: 1 }))
+                ],
                 { optional: true }
             )
-
         ])
 
     ]);
+
+    export const tipAnimation = trigger('tipAnimation', [
+        transition('* => *',[
+            query('.ant-layout-footer:hover', [
+                style({color:'blue'}),
+                animate('5s', style({ color: 'red' }))
+            ],
+                { optional: true }
+            )
+        ])
+    ])
+        
+    
