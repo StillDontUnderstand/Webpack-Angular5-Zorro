@@ -9,10 +9,6 @@ export class DataService {
     getHeroes(id:number): Observable<any> {
          console.info(id)
         return this.http.get('api/data')
-        // .subscribe(data => {
-        //     // console.info(data.json());
-        //     this.data = data.json()
-        //   })
-        // return of(this.data);
+      
       }
 }    

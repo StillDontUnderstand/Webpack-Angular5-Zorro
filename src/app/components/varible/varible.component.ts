@@ -27,10 +27,5 @@ import { Http } from '@angular/http';
 export class VaribleComponent implements OnInit {
   
     ngOnInit() {
-        // this.service.getHeroes(0).subscribe((data) => this.data = data)
-        // this.httpTest();
-        // console.info(this.route.routeConfig);    
-        // this.httpTest(this.route.paramMap);
-        
     }
 }

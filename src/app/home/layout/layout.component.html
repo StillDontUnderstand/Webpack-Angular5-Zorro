@@ -16,34 +16,30 @@
         <li nz-submenu>
           <span title><i class="anticon anticon-user"></i><span class="nav-text">系统</span></span>
           <ul>
-            <li nz-menu-item><a routerLink="devlog">更新日志</a></li>
+            <li nz-menu-item><a routerLink="devlog" routerLinkActive="active">更新日志</a></li>
           </ul>
         </li>
         <li nz-submenu>
           <span title><i class="anticon anticon-api"></i><span class="nav-text" >配置管理</span></span>
           <ul>
-            <li nz-menu-item><a routerLink="varible/1">常量</a></li>
-            <li nz-menu-item><a routerLink="varible/2">计算变量</a></li>
+            <li nz-menu-item><a routerLink="varible/1" routerLinkActive="active">常量</a></li>
+            <li nz-menu-item><a routerLink="varible/2" routerLinkActive="active">计算变量</a></li>
           </ul>
         </li>
 
         <li nz-submenu>
           <span title><i class="anticon anticon-team"></i><span class="nav-text" >用户管理</span></span>
           <ul>
-            <li nz-menu-item><a routerLink="user">用户</a></li>
+            <li nz-menu-item><a routerLink="user" routerLinkActive="active">用户</a></li>
           </ul>
         </li>
       </ul>
     </nz-sider>
     <nz-layout>
-      <nz-content style="margin:16px 16px 0px 16px;background: #fff;box-shadow: 0px 1px 20px 1px #00000059;z-index:50;border-radius:5px;">
-        <!-- <div style="border-bottom: 2px solid #40404040;border-top-left-radius: 5px;border-top-right-radius: 5px;">
-         <h1 style="padding: 0px 30px;">title</h1> 
-        </div> -->
-        <router-outlet></router-outlet>
+      <nz-content [@fadeAnimation]="getRouterOutletState(o)" style="margin:16px 16px 0px 16px;background: #fff;box-shadow: 0px 1px 20px 1px #00000059;z-index:50;border-radius:5px;">
+          <router-outlet #o="outlet"></router-outlet>
       </nz-content>
       <nz-footer style="text-align: center;padding:8px;color: #6633994f;">HF Design ©2018 Implement By Unissoft</nz-footer>
-
     </nz-layout>
 
   </nz-layout>

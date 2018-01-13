@@ -125,7 +125,7 @@ export class CommonTableComponent {
   data: any = [];
 
   copyData: any;
-  _loading = true;
+  _loading = false;
   sort(sortName: any, value: any) {
     this.sortName = sortName;
     this.sortValue = value;
@@ -164,15 +164,19 @@ export class CommonTableComponent {
   }
 
   ngOnInit() {
+    // 从mock服务获取数据
     this.route.paramMap
       .switchMap((params: ParamMap) => {
         this.data = []
-        this._loading = true;
+        //数据加载完毕前load动画
+        // this._loading = true;
+        //切换路由触发数据请求
         return this.http.get('api/data' + params.get('id'))
         // 
       }).subscribe((data) => {
         console.info('!!!!!!');
         this.data = data.json();
+        //数据接受完毕取消加载动画
         this._loading = false;
         console.info(data);
       })

@@ -5,10 +5,9 @@ import { Http } from '@angular/http';
 @Component({
     selector: 'devlog',
     template:
-    `<div style="border-bottom: 1px solid #40404040;border-top-left-radius: 5px;border-top-right-radius: 5px;background-color:#f7f7f7;">
-        <h1 style="padding: 0px 30px;">DevLog</h1>
-    </div>
+    `
     <div style="padding:30px">
+        <h1>DevLog</h1>
         <br>
         <p>12/13 搭建左侧菜单路由</p>
         <p>12/14 构建基本列表-模态页面</p>

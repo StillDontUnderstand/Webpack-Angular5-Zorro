@@ -8,8 +8,8 @@ import { LayoutRoutingModule } from './layout.routing';
 import { LayoutComponent } from './layout.component';
 
 import { NotFoundComponent } from './notFound.component';
-import { DevlogComponent} from '../../components/devlog/devlog.component'
-
+import { DevlogComponent } from '../../components/devlog/devlog.component'
+// import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 console.info("layoutModule in running...")
 @NgModule({
@@ -24,6 +24,8 @@ console.info("layoutModule in running...")
     ReactiveFormsModule,
     CommonModule,
     NgZorroAntdModule,
+    //不允许重复注入
+    // BrowserAnimationsModule,
     //路由单独注入的情况，注意先后顺序
     // DevlogModule,
     LayoutRoutingModule,
