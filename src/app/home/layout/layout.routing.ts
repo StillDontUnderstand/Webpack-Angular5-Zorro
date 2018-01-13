@@ -3,21 +3,25 @@ import { RouterModule } from '@angular/router';
 import { Routes } from '@angular/router';
 import { LayoutComponent } from './layout.component';
 import { NotFoundComponent } from './notFound.component';
-import { DevlogComponent} from '../../components/devlog/devlog.component'
+import { DevlogComponent } from '../../components/devlog/devlog.component'
 
 
 const layoutRoute: Routes = [
   {
-    path: '', 
-    component: LayoutComponent, 
+    path: '',
+    component: LayoutComponent,
     children: [
       {
         path: '',
-        component:DevlogComponent
+        component: DevlogComponent
       },
       {
         path: 'varible',
         loadChildren: '../../components/varible/varible.module#VaribleModule'
+      },
+      {
+        path: 'user',
+        loadChildren: '../../components/user/user.module#UserModule'
       },
       {
         path: '**',

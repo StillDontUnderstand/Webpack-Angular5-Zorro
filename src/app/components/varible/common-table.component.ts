@@ -45,7 +45,7 @@ import { Observable } from 'rxjs/Observable';
           </th>
           <th nz-th>
             <span>操作</span>
-            <span varibleModal [obj]="{bn:'添加规则',code:'CREATE',data:''}"></span>
+            <span varibleModal [obj]="{bn:'添加规则',code:'CREATE',data:''}" style="float:right;"></span>
            </th>
         </tr>
       </thead>
@@ -100,9 +100,6 @@ import { Observable } from 'rxjs/Observable';
 
       .highlight {
         color: #f50;
-      }
-      .ant-table-thead > tr > th, .ant-table-tbody > tr > td {
-        text-align: -webkit-center;
       }
     `
   ]
