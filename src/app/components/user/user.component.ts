@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 @Component({
     // selector: 'nz-demo-table-custom-filter',
     template: `
-      <nz-table #nzTable [nzDataSource]="data" [nzPageSize]="10">
+      <nz-table #nzTable [nzDataSource]="data" [nzPageSize]="10" >
         <thead nz-thead>
           <tr>
             <th nz-th>
@@ -64,6 +64,12 @@ import { Component, OnInit } from '@angular/core';
   
         .highlight {
           color: #f50;
+        }
+        :host {
+          position:absolute;
+          width:100%;
+          height:100%;   
+          box-shadow: 0px 1px 20px 1px #00000059;
         }
       `
     ]

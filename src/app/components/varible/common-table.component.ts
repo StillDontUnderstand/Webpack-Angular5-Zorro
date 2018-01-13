@@ -9,7 +9,7 @@ import { Observable } from 'rxjs/Observable';
   selector: 'commonTable',
   // template:`{{data}}`,
   template: `
-    <nz-table #nzTable [nzDataSource]="data" [nzPageSize]="10" [nzLoading]="_loading" [nzSize]="'defalut'">
+    <nz-table #nzTable [nzDataSource]="data" [nzPageSize]="10" [nzLoading]="_loading" [nzSize]="'defalut'" >
       <thead nz-thead>
         <tr>
           <th nz-th>

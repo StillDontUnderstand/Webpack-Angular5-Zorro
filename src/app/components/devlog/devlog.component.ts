@@ -3,7 +3,7 @@ import { NavigationExtras } from '@angular/router';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Http } from '@angular/http';
 @Component({
-    selector: 'devlog',
+    // selector: 'devlog',
     template:
     `
     <div style="padding:30px">
@@ -22,8 +22,16 @@ import { Http } from '@angular/http';
         <p>反向注入（子模块组件注入父级模块组件的情况）/不要用</p>
         <p>模糊滤镜在chrome浏览器下出现位移的bug</p>
     </div>
-    `
-    // styleUrls:['']
+    `,
+     styles:[`
+        :host {
+            position:absolute;
+            // display:block;
+            width:100%;
+            height:100%;
+            box-shadow: 0px 1px 20px 1px #00000059;
+        }
+     `]
 })
 export class DevlogComponent implements OnInit {
     // 登录/注册 模态框

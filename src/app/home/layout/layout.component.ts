@@ -28,6 +28,7 @@ export class LayoutComponent implements OnInit {
 
   }
   public getRouterOutletState(outlet) {
+    // console.info(outlet.activatedRoute);
     return outlet.isActivated ? outlet.activatedRoute : '';
   }
 }
