@@ -29,15 +29,6 @@ export const fadeAnimation =
 
     ]);
 
-    export const tipAnimation = trigger('tipAnimation', [
-        transition('* => *',[
-            query('.ant-layout-footer:hover', [
-                style({color:'blue'}),
-                animate('5s', style({ color: 'red' }))
-            ],
-                { optional: true }
-            )
-        ])
-    ])
+   
         
     

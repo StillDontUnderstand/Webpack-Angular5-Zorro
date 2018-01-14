@@ -1,10 +1,10 @@
-import { Component, ViewEncapsulation ,HostListener} from '@angular/core';
-import { fadeAnimation,tipAnimation } from './fade.animation';
+import { Component, ViewEncapsulation, HostListener,OnInit } from '@angular/core';
+import { fadeAnimation } from './fade.animation';
 
 @Component({
     selector: 'root-content',
     encapsulation: ViewEncapsulation.None,
-    animations: [fadeAnimation,tipAnimation],    
+    animations: [fadeAnimation],
     template: `
       <nz-layout style="height:100%" >
         <nz-sider nzCollapsible [(nzCollapsed)]="isCollapsed" sider>
@@ -37,35 +37,54 @@ import { fadeAnimation,tipAnimation } from './fade.animation';
                 <!--   -->
                     <router-outlet #o="outlet" ></router-outlet>                
             </nz-content>
-            <nz-footer class="footer" >HF Design ©2018 Implement By Unissoft</nz-footer>
+            <nz-footer class="footer" [style.color]="c">HF Design ©2018 Implement By Unissoft</nz-footer>
         </nz-layout>
 
     </nz-layout>
     `,
-    styles:[`
+    styles: [`
         .footer{
             position: fixed;
             padding: 0px;
-            color:#663399d9;            
-            /* color: #66339912; */
             bottom: 0px;
             left: calc(50% - 34px);
-            transition:color 1.5s;
-        }
-        .footer:hover{
-            color: #7e4e9482;            
+            transition:color 2.5s;
         }
     `]
 })
 
-export class ContentComponent {
+export class ContentComponent implements OnInit{
+    c: string = "#66339912";    
+    ngOnInit():void {
+        // let layout:any = document.querySelectorAll('nz-layout')[2]
+        // let component:any =document.querySelectorAll('ng-component')[0]
+        // console.info(layout.offsetHeight)
+        // console.info(component.offsetHeight)
+        // if (layout.offsetHeight > component.offsetHeight){
+        //     console.info("!!");
+        //     this.c = "#6926a057";
+        // }
+    }
+    
+    // footer = document.querySelectorAll('nz-footer')[0]                
     public getRouterOutletState(outlet) {
         // console.info(outlet.isActivated);
         return outlet.isActivated ? outlet.activatedRoute : '';
     }
-    @HostListener('document.querySelectorAll("nz-content")[0]','scroll' ['$event'])
+    // @HostListener('document.querySelectorAll("nz-content")[0]', 'scroll'['$event'])
     test($event) {
-        console.log($event);        
-        console.log('通过(scroll)指令监听');
+        let target = $event.target;
+        // console.info("scrollTop",target.scrollTop)
+        // console.info("offsetHeight",target.offsetHeight)
+        // console.info("offsetHeight",target.scrollHeight-target.offsetHeight)
+        let diff = target.scrollHeight - target.offsetHeight
+        if (target.scrollTop == diff) {
+            // console.log("footer");   
+            this.c = "#6926a057";
+        }
+        if (target.scrollTop == diff-5){
+            this.c = "#66339912";
+        }
+        // console.log('通过(scroll)指令监听');
     }
 }

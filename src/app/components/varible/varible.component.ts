@@ -21,7 +21,7 @@ import { Http } from '@angular/http';
         height: auto;
         box-shadow: 0px 1px 20px 1px #00000059;
         background: #fff;
-        margin: 16px 16px 32px 16px;
+        margin: 16px 16px 30px 16px;
         z-index: 50;
         border-radius: 5px;
       }
