@@ -9,14 +9,18 @@ import { LayoutComponent } from './layout.component';
 
 import { NotFoundComponent } from './notFound.component';
 import { DevlogComponent } from '../../components/devlog/devlog.component'
-// import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HeaderComponent } from './header.component';
+import { ContentComponent } from './content.component';
 
 console.info("layoutModule in running...")
 @NgModule({
   declarations: [
     LayoutComponent,
     NotFoundComponent,
-    DevlogComponent
+    DevlogComponent,
+    HeaderComponent,
+    ContentComponent,
+
   ],
   exports: [LayoutComponent],
   imports: [

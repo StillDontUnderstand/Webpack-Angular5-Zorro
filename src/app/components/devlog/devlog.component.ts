@@ -13,23 +13,31 @@ import { Http } from '@angular/http';
         <p>12/14 构建基本列表-模态页面</p>
         <p>12/15 添加mock API、</p>
         <p>12/16 模块复用模式、模块路由优化 </p>
+        <p>1/12 路由切换过渡</p>
         <h1>TODO</h1>
         <br>
         <p>编写开发文档</p>
+        <p>滚动监听</p>
+        <p>封装数据异步加载模块</p>
+        <p>可视化插件</p>
+        <p>工程化打包测试</p>
         <button (click) = "getData();">测试</button>
         <br>
         <h1>Question</h1>
         <p>反向注入（子模块组件注入父级模块组件的情况）/不要用</p>
-        <p>模糊滤镜在chrome浏览器下出现位移的bug</p>
+        <del>模糊滤镜在chrome浏览器下出现位移的bug</del>
     </div>
     `,
      styles:[`
         :host {
-            position:absolute;
-            // display:block;
-            width:100%;
-            height:100%;
-            box-shadow: 0px 1px 20px 1px #00000059;
+          position: absolute;
+          width: calc(100% - 32px);
+          height: auto;
+          box-shadow: 0px 1px 20px 1px #00000059;
+          background: #fff;
+          margin: 16px 16px 16px 16px;
+          z-index: 50;
+          border-radius: 5px;
         }
      `]
 })

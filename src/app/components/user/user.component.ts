@@ -66,10 +66,14 @@ import { Component, OnInit } from '@angular/core';
           color: #f50;
         }
         :host {
-          position:absolute;
-          width:100%;
-          height:100%;   
+          position: absolute;
+          width: calc(100% - 32px);
+          height: auto;
           box-shadow: 0px 1px 20px 1px #00000059;
+          background: #fff;
+          margin: 16px 16px 32px 16px;
+          z-index: 50;
+          border-radius: 5px;
         }
       `
     ]
