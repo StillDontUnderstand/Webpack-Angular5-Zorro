@@ -1,4 +1,4 @@
-import { Component, ViewEncapsulation } from '@angular/core';
+import { Component, ViewEncapsulation ,HostListener} from '@angular/core';
 import { fadeAnimation,tipAnimation } from './fade.animation';
 
 @Component({
@@ -6,7 +6,7 @@ import { fadeAnimation,tipAnimation } from './fade.animation';
     encapsulation: ViewEncapsulation.None,
     animations: [fadeAnimation,tipAnimation],    
     template: `
-      <nz-layout style="height:100%">
+      <nz-layout style="height:100%" >
         <nz-sider nzCollapsible [(nzCollapsed)]="isCollapsed" sider>
             <div class="logo">
             </div>
@@ -32,10 +32,10 @@ import { fadeAnimation,tipAnimation } from './fade.animation';
             </li>
             </ul>
         </nz-sider>
-        <nz-layout>
+        <nz-layout (scroll)="test($event)">
             <nz-content [@fadeAnimation]="getRouterOutletState(o)" style="position:relative;" >
                 <!--   -->
-                    <router-outlet #o="outlet"></router-outlet>                
+                    <router-outlet #o="outlet" ></router-outlet>                
             </nz-content>
             <nz-footer class="footer" >HF Design ©2018 Implement By Unissoft</nz-footer>
         </nz-layout>
@@ -44,12 +44,13 @@ import { fadeAnimation,tipAnimation } from './fade.animation';
     `,
     styles:[`
         .footer{
-            position: absolute;
-            padding: 8px;
-            color: #66339912;
+            position: fixed;
+            padding: 0px;
+            color:#663399d9;            
+            /* color: #66339912; */
             bottom: 0px;
             left: calc(50% - 34px);
-            transition:all 1.5s;
+            transition:color 1.5s;
         }
         .footer:hover{
             color: #7e4e9482;            
@@ -59,7 +60,12 @@ import { fadeAnimation,tipAnimation } from './fade.animation';
 
 export class ContentComponent {
     public getRouterOutletState(outlet) {
-        console.info(outlet.isActivated);
+        // console.info(outlet.isActivated);
         return outlet.isActivated ? outlet.activatedRoute : '';
+    }
+    @HostListener('document.querySelectorAll("nz-content")[0]','scroll' ['$event'])
+    test($event) {
+        console.log($event);        
+        console.log('通过(scroll)指令监听');
     }
 }
