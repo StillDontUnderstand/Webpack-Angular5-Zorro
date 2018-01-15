@@ -52,9 +52,9 @@ export class GraphComponent implements AfterViewInit {
                 }
             ]
         };
-       
+        
         console.info(this.width-32,this.height)
-        //配置G6画布
+        //配置G6画布 事件监听 动态改变
         var net = new G6.Net({
             id: "graph",      // 容器ID
             width: this.width - 232,    // 画布宽
