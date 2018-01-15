@@ -19,7 +19,8 @@ import { Http } from '@angular/http';
         <p>1/12 基础样式 </p>
         <p>1/13 路由切换过渡</p>
         <p>1/14 滚动监听</p>
-        
+        <p>1/15 路由切换事件</p>
+        <p>1/15 路由切换scroll记忆消除</p>
         <h1>TODO</h1>
         <br>
         <p>路由切换事件</p>
@@ -28,7 +29,6 @@ import { Http } from '@angular/http';
         <p>封装数据异步加载模块</p>
         <p>可视化插件</p>
         <p>工程化打包测试</p>
-        <button (click) = "getData();">测试</button>
         <br>
         <h1>Question</h1>
         <p>反向注入（子模块组件注入父级模块组件的情况）/不要用</p>
@@ -40,7 +40,7 @@ import { Http } from '@angular/http';
           position: absolute;
           width: calc(100% - 32px);
           height: auto;
-          box-shadow: 0px 1px 20px 1px #00000059;
+          box-shadow:0px 1px 11px 2px #00000059;
           background: #fff;
           margin: 16px 16px 30px 16px;
           z-index: 50;

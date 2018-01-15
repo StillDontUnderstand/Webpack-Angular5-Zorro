@@ -1,4 +1,5 @@
-import { Component, ViewEncapsulation, HostListener,OnInit } from '@angular/core';
+import { Component, ViewEncapsulation, HostListener, OnInit } from '@angular/core';
+import { Router, NavigationEnd, NavigationStart } from '@angular/router';
 import { fadeAnimation } from './fade.animation';
 
 @Component({
@@ -32,14 +33,12 @@ import { fadeAnimation } from './fade.animation';
             </li>
             </ul>
         </nz-sider>
-        <nz-layout (scroll)="test($event)">
-            <nz-content [@fadeAnimation]="getRouterOutletState(o)" style="position:relative;" >
-                <!--   -->
-                    <router-outlet #o="outlet" ></router-outlet>                
+        <nz-layout>
+            <nz-content [@fadeAnimation]="routerStateCode"  (scroll)="scrollHandler($event)">
+                <router-outlet></router-outlet>                           
             </nz-content>
             <nz-footer class="footer" [style.color]="c">HF Design ©2018 Implement By Unissoft</nz-footer>
         </nz-layout>
-
     </nz-layout>
     `,
     styles: [`
@@ -48,43 +47,69 @@ import { fadeAnimation } from './fade.animation';
             padding: 0px;
             bottom: 0px;
             left: calc(50% - 34px);
-            transition:color 2.5s;
+            transition:color 1.2s;
         }
+        nz-content{
+            position:relative;
+            overflow:overlay; 
+        }
+        nz-content::-webkit-scrollbar{
+            width: 5px;
+            background-color: #e8e8e8;
+        }
+        /*定义滑块，内阴影及圆角*/
+        nz-content::-webkit-scrollbar-thumb{
+            height: 20px;
+            border-radius: 10px;
+            background-color: #555;
+            -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+            visibility:hidden;
+        }   
+        nz-content::-webkit-scrollbar-thumb:hover{
+            visibility: visible;            
+        }   
+        
     `]
 })
 
-export class ContentComponent implements OnInit{
-    c: string = "#66339912";    
-    ngOnInit():void {
-        // let layout:any = document.querySelectorAll('nz-layout')[2]
-        // let component:any =document.querySelectorAll('ng-component')[0]
-        // console.info(layout.offsetHeight)
-        // console.info(component.offsetHeight)
-        // if (layout.offsetHeight > component.offsetHeight){
-        //     console.info("!!");
-        //     this.c = "#6926a057";
-        // }
+export class ContentComponent implements OnInit {
+    routerState: boolean = true;
+    routerStateCode: string = 'active';
+    constructor(router: Router) {
+        router.events.subscribe(event => {
+            let layout = document.querySelectorAll('nz-layout')[2];
+            //路由结束触发事件
+            if (event instanceof NavigationEnd) {
+                console.info('路由跳转改变状态');
+                if (event instanceof NavigationEnd) {
+                    this.routerState = !this.routerState;
+                    this.routerStateCode = this.routerState ? 'active' : 'inactive';
+                }
+            }
+            //路由开始触发事件
+            if (event instanceof NavigationStart) {
+                this.c = '#66339912'
+                let t = setTimeout(function () {
+                    layout.scrollTo(0, 0);
+                }, 100);
+                console.info(layout.scrollTop);
+            }
+        })
     }
-    
-    // footer = document.querySelectorAll('nz-footer')[0]                
-    public getRouterOutletState(outlet) {
-        // console.info(outlet.isActivated);
-        return outlet.isActivated ? outlet.activatedRoute : '';
+    ngOnInit(): void {
+
     }
-    // @HostListener('document.querySelectorAll("nz-content")[0]', 'scroll'['$event'])
-    test($event) {
+    c: string = "#66339912";
+    // 通过(scroll)指令监听
+    scrollHandler($event) {
         let target = $event.target;
-        // console.info("scrollTop",target.scrollTop)
+        console.info("scrollTop",target.scrollTop)
         // console.info("offsetHeight",target.offsetHeight)
         // console.info("offsetHeight",target.scrollHeight-target.offsetHeight)
         let diff = target.scrollHeight - target.offsetHeight
         if (target.scrollTop == diff) {
-            // console.log("footer");   
+            console.log("footer");   
             this.c = "#6926a057";
         }
-        if (target.scrollTop == diff-5){
-            this.c = "#66339912";
-        }
-        // console.log('通过(scroll)指令监听');
     }
 }

@@ -19,7 +19,7 @@ import { Http } from '@angular/http';
         position: absolute;
         width: calc(100% - 32px);
         height: auto;
-        box-shadow: 0px 1px 20px 1px #00000059;
+        box-shadow: 0px 1px 11px 2px #00000059;
         background: #fff;
         margin: 16px 16px 30px 16px;
         z-index: 50;
