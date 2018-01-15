@@ -31,6 +31,12 @@ import { fadeAnimation } from './fade.animation';
                 <li nz-menu-item><a routerLink="user" routerLinkActive="active">用户</a></li>
                 </ul>
             </li>
+            <li nz-submenu>
+                <span title><i class="anticon anticon-team"></i><span class="nav-text" >Graph</span></span>
+                <ul>
+                <li nz-menu-item><a routerLink="graph" routerLinkActive="active">Graph</a></li>
+                </ul>
+            </li>
             </ul>
         </nz-sider>
         <nz-layout>
@@ -88,7 +94,6 @@ export class ContentComponent implements OnInit {
             }
             //路由开始触发事件
             if (event instanceof NavigationStart) {
-                this.c = '#66339912'
                 let t = setTimeout(function () {
                     layout.scrollTo(0, 0);
                 }, 100);
@@ -103,13 +108,16 @@ export class ContentComponent implements OnInit {
     // 通过(scroll)指令监听
     scrollHandler($event) {
         let target = $event.target;
-        console.info("scrollTop",target.scrollTop)
+        // console.info("scrollTop",target.scrollTop)
         // console.info("offsetHeight",target.offsetHeight)
         // console.info("offsetHeight",target.scrollHeight-target.offsetHeight)
         let diff = target.scrollHeight - target.offsetHeight
         if (target.scrollTop == diff) {
             console.log("footer");   
             this.c = "#6926a057";
+        }
+        if (target.scrollTop == diff - 20||target.scrollTop == 0){
+            this.c = "#66339912";            
         }
     }
 }

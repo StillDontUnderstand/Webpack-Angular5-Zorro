@@ -16,13 +16,15 @@ const layoutRoute: Routes = [
       },
       {
         path: 'varible',
-        loadChildren: '../../components/varible/varible.module#VaribleModule',
-        data: { state: 'varible' }
+        loadChildren: '../../components/varible/varible.module#VaribleModule'
       },
       {
         path: 'user',
-        loadChildren: '../../components/user/user.module#UserModule',
-        data: { state: 'user' }
+        loadChildren: '../../components/user/user.module#UserModule'
+      },
+      {
+        path:'graph',
+        loadChildren:'../../components/graph/graph.module#GraphModule'
       },
       {
         path: '**',

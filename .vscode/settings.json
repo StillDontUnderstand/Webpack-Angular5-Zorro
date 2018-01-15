@@ -8,6 +8,7 @@
         "**/.gitattributes":true,
         "**/.gitignore":true,
         "**/node_modules":true,
-        "**/dist":true
+        "**/dist":true,
+        "config/":true
     }
 }

@@ -3,24 +3,23 @@ import { CommonModule } from '@angular/common';
 import { NgZorroAntdModule } from 'ng-zorro-antd'
 import { FormsModule } from '@angular/forms';
 
-import { UserRoutingModule } from './user.routing'
-import { UserComponent } from './user.component'
+import { GraphRoutingModule } from './graph.routing'
+import { GraphComponent } from './graph.component';
+
 
 
 @NgModule({
     imports: [
         CommonModule,
-        UserRoutingModule,
+        GraphRoutingModule,        
         NgZorroAntdModule,
-        FormsModule
+        FormsModule,
     ],
     declarations: [
-        UserComponent
+        GraphComponent
     ],
     exports: [
-        UserComponent
+        GraphComponent
     ]
-
 })
-
-export class UserModule { }
+export class GraphModule { }

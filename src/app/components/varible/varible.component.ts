@@ -18,7 +18,7 @@ import { Http } from '@angular/http';
     :host {
         position: absolute;
         width: calc(100% - 32px);
-        height: auto;
+        min-height: calc(100% - 48px);          
         box-shadow: 0px 1px 11px 2px #00000059;
         background: #fff;
         margin: 16px 16px 30px 16px;
