@@ -54,7 +54,7 @@ import { fadeAnimation } from './fade.animation';
             bottom: 0px;
             left: calc(50% - 34px);
             transition:color 1.2s;
-            font-size: 14px;
+            font-size: 12px;
             
         }
         nz-content{
