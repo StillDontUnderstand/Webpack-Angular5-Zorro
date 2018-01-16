@@ -5,7 +5,6 @@ import { FormsModule } from '@angular/forms';
 
 import { GraphRoutingModule } from './graph.routing'
 import { GraphComponent } from './graph.component';
-import { NetComponent } from './net.component';
 
 
 @NgModule({
@@ -17,7 +16,6 @@ import { NetComponent } from './net.component';
     ],
     declarations: [
         GraphComponent,
-        NetComponent
     ],
     exports: [
         GraphComponent
