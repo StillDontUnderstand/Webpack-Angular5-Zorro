@@ -1,6 +1,8 @@
 import { Component, AfterViewInit, OnInit } from '@angular/core';
 import * as G6 from '@antv/g6';
 
+import { NzNotificationService } from 'ng-zorro-antd';
+
 @Component({
     template: `
     <div id="graph"></div>
@@ -60,17 +62,31 @@ export class GraphComponent implements AfterViewInit {
     }, 'rect');
     customNode2 = new G6.registerNode('customNode2', {
         draw(cfg, group) {
-            const shape = group.addShape('rect', {
+            group.addShape('rect', {
                 attrs: {
                     x: cfg.x - 40,
                     y: cfg.y - 40,
                     width: 80,
                     height: 80,
-                    fill: '#fff',
-                    stroke: 'red'
+                    shadowBlur: 20,
+                    shadowColor: '#00000094',
+                    fill: 'white',
+                    stroke: 'white'
                 }
             });
-            return shape;
+
+            return group.addShape('rect', {
+                attrs: {
+                    x: cfg.x - 40,
+                    y: cfg.y - 40,
+                    width: 80,
+                    height: 80,
+                    // shadowBlur: 20,
+                    // shadowColor: '#00000094',
+                    fill: 'white',
+                    stroke: 'white'
+                }
+            });
         }
     }, 'customNode1');
 
@@ -115,6 +131,7 @@ export class GraphComponent implements AfterViewInit {
         toolBar.innerHTML += '<button id="drag">拖拽模式</button>';
         toolBar.innerHTML += '<button id="edit">编辑模式</button>';
         toolBar.innerHTML += '<button id="default">默认模式</button>';
+        toolBar.innerHTML += '<button id="test">测试</button>';
         toolBar.innerHTML += '<button id="save">保存</button>';
 
 
@@ -126,6 +143,7 @@ export class GraphComponent implements AfterViewInit {
         const addLine: any = document.querySelector('#addLine');
         const addSmooth: any = document.querySelector('#addSmooth');
         const default_: any = document.querySelector('#default');
+        const test: any = document.querySelector('#test');
         const save: any = document.querySelector('#save');
         // const net = new G6.Net({
         //   id: 'mountNode',      // 容器ID
@@ -138,18 +156,31 @@ export class GraphComponent implements AfterViewInit {
             id: 'graph',      // 容器ID
             // fitView: 'autoZoom', // 自适应
             modes: {
-                default: ['dragNode', 'clickActive','dragEdge', 'dragBlank','clickBlankClearActive'],
+                default: ['dragNode', 'clickActive', 'dragEdge', 'dragBlank', 'clickBlankClearActive'],
                 drag: ['shortcut', 'dragCanvas', 'wheelZoom'],
                 add: ['clickAddNode', 'dragAddEdge', 'hoverAnchorSetActived', 'hoverNodeShowAnchor'],
                 edit: [
                     'dragNode', 'dragEdge', 'clickBlankClearActive', 'resizeEdge', 'clickActive', 'dragNodeEndSetActive',
                     'multiSelect', 'resizeNode', 'shortcut', 'wheelZoom', 'hoverNodeShowAnchor', 'hoverAnchorSetActived', 'dragEdgeEndHideAnchor', 'dragNodeEndHideAnchor'
-                  ]
-            }, 
+                ]
+            },
+            animate: true,
             mode: 'edit',  // 编辑模式
             width: 1200,    // 画布宽
             height: 780    // 画布高
         });
+
+        // 载入数据
+        // net.source(this.data.nodes, this.data.edges);
+        // 渲染关系图
+        net.render();
+        //铺满content 不能通过id获取，id是动态生成的
+        const canvas = document.querySelectorAll('canvas');
+        // console.info(canvas);
+
+        canvas[0].style.width = '100%';
+        canvas[1].style.width = '100%';
+
         addCustom1.onclick = () => {
             console.info("添加自定义图形1")
             net.beginAdd('node', {
@@ -166,31 +197,55 @@ export class GraphComponent implements AfterViewInit {
 
         addLine.onclick = () => {
             console.info("添加直线")
-            net.beginAdd('edge', {
-                shape: 'line'
-            });
+            canvas[1].onclick = () => {
+                net.beginAdd('edge', {
+                    shape: 'arrow'
+                });
+            }
         };
 
         addSmooth.onclick = () => {
             console.info("添加曲线")
-            net.beginAdd('edge', {
-                shape: 'smooth'
-            });
+            canvas[1].onclick = () => {
+                net.beginAdd('edge', {
+                    shape: 'smoothArrow'
+                });
+            }
         };
 
         drag.onclick = () => {
             console.info("切换到拖拽模式")
+            canvas[1].onclick = () => {
+                return
+            }
             net.changeMode('drag');
         };
 
         edit.onclick = () => {
             console.info("切换到编辑模式")
+            canvas[1].onclick = () => {
+                return
+            }
             net.changeMode('edit');
         };
 
-        default_.onclick = () =>{
+        default_.onclick = () => {
             console.info("切换到默认模式")
+            canvas[1].onclick = () => {
+                return
+            }
             net.changeMode('default');
+        }
+        test.onclick = () => {
+            console.info(net.invertPoint(net.converPoint(canvas[1])))
+            console.info(net.invertPoint(canvas[1]))
+
+            var ctx = net.getContext("2d");
+            ctx.shadowBlur = 20;
+            ctx.shadowColor = "black";
+            ctx.fillStyle = "blue";
+            ctx.fillRect(20, 20, 100, 80);
+            net.refresh
         }
         save.onclick = () => {
             console.info("保存")
@@ -198,17 +253,6 @@ export class GraphComponent implements AfterViewInit {
             const json = JSON.stringify(saveData, null, 2);
             console.log(saveData, json); // eslint-disable-line no-console
         };
-
-        // 载入数据
-        // net.source(this.data.nodes, this.data.edges);
-        // 渲染关系图
-        net.render();
-        //铺满content 不能通过id获取，id是动态生成的
-        const canvas = document.querySelectorAll('canvas');
-        // console.info(canvas);
-
-        canvas[0].style.width = '100%';
-        canvas[1].style.width = '100%';
     }
 
 
