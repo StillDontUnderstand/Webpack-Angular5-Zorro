@@ -106,7 +106,7 @@ export class GraphComponent implements AfterViewInit {
 
         // console.info(document.querySelector('#graph'));
         const anchor: any = document.querySelector('#anchor')
-        anchor.innerHTML = '<div id="toolBar" style="position: absolute;z-index: 10;top:0;"></div>';
+        anchor.innerHTML = '<div id="toolBar" style="position: fixed;z-index: 10;top:80px;"></div>';
         const toolBar: any = document.querySelector('#toolBar');
         toolBar.innerHTML += '<button id="addCustom1">自定义形1</button>';
         toolBar.innerHTML += '<button id="addCustom2">自定义形2</button>';
