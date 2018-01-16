@@ -59,10 +59,11 @@ import { fadeAnimation } from './fade.animation';
         }
         nz-content{
             position:relative;
-            overflow:overlay; 
+            overflow-y:overlay; 
+            overflow-x:hidden;            
         }
         nz-content::-webkit-scrollbar{
-            width: 5px;
+            width: 7px;
             background-color: #e8e8e8;
         }
         /*定义滑块，内阴影及圆角*/
@@ -86,9 +87,10 @@ export class ContentComponent implements OnInit {
     constructor(router: Router) {
         router.events.subscribe(event => {
             let layout = document.querySelectorAll('nz-layout')[2];
+            let nzContent = document.querySelectorAll('nz-content')[0];
             //路由结束触发事件
             if (event instanceof NavigationEnd) {
-                console.info('路由跳转改变状态');
+                console.info('路由结束');
                 if (event instanceof NavigationEnd) {
                     this.routerState = !this.routerState;
                     this.routerStateCode = this.routerState ? 'active' : 'inactive';
@@ -96,10 +98,12 @@ export class ContentComponent implements OnInit {
             }
             //路由开始触发事件
             if (event instanceof NavigationStart) {
-                let t = setTimeout(function () {
-                    layout.scrollTo(0, 0);
-                }, 100);
-                console.info(layout.scrollTop);
+                console.info('路由开始')
+                let t = setTimeout(function() {
+                    nzContent.scrollTo(0, 0);
+                }, 500);
+                
+                console.info(nzContent.scrollTop);
             }
         })
     }

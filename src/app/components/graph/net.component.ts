@@ -113,7 +113,7 @@ export class NetComponent implements AfterViewInit {
         //配置G6画布 事件监听 动态改变
         const net = new G6.Net({
             id: 'graph',      // 容器ID
-            fitView: 'cc', // 自适应视口为左上
+            // fitView: 'cc', // 自适应视口为左上
             mode: 'edit',  // 编辑模式
             width: 1200,    // 画布宽
             height: 710    // 画布高
@@ -162,13 +162,12 @@ export class NetComponent implements AfterViewInit {
         // net.source(this.data.nodes, this.data.edges);
         // // 渲染关系图
         net.render();
-        //铺满content
-        const canvas1 = document.getElementById('canvas_1');
-        const canvas2 = document.getElementById('canvas_2');
-        //  canvas1.style.height = '100%';
-        canvas1.style.width = '100%';
-        //  canvas2.style.height = '100%';
-        canvas2.style.width = '100%';
+        //铺满content 不能通过id获取，id是动态生成的
+        const canvas = document.querySelectorAll('canvas');
+        console.info(canvas);
+
+        canvas[0].style.width = '100%';
+        canvas[1].style.width = '100%';
     }
 
 
