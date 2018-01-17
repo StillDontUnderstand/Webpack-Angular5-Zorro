@@ -1,4 +1,5 @@
-import { Component, AfterViewInit, OnDestroy } from '@angular/core';
+import { Component, AfterViewInit, OnDestroy, OnInit } from '@angular/core';
+import { Router,NavigationStart } from '@angular/router';
 import * as ECharts from 'echarts';
 
 @Component({
@@ -13,16 +14,22 @@ import * as ECharts from 'echarts';
     `]
 })
 export class MapComponent implements AfterViewInit {
+    router: Router;
+    constructor(router: Router) {
+        this.router = router;
+    }
     chinaJson = require('./china.json');
     ngAfterViewInit() {
-        ECharts.registerMap('china', this.chinaJson);        
+        ECharts.registerMap('china', this.chinaJson);
         var myChart = ECharts.init(document.getElementById('main'));
+        
+
         const option = {
             backgroundColor: '#fff',
             title: {
                 text: '朴姓人口迁徙图',
                 left: 'center',
-                top:20,
+                top: 20,
                 textStyle: {
                     color: '#ccc'
                 }
@@ -55,58 +62,62 @@ export class MapComponent implements AfterViewInit {
                     }
                 }
             },
-            series: [{
-                name: '地点',
-                type: 'effectScatter',
-                coordinateSystem: 'geo',
-                zlevel: 2,
-                rippleEffect: {
-                    brushType: 'stroke'
+            series: [
+                {
+                    name: '地点',
+                    type: 'effectScatter',
+                    coordinateSystem: 'geo',
+                    zlevel: 2,
+                    rippleEffect: {
+                        brushType: 'stroke'
+                    },
+                    label: {
+                        emphasis: {
+                            show: true,
+                            position: 'right',
+                            formatter: '{b}'
+                        }
+                    },
+                    symbolSize: 2,
+                    showEffectOn: 'render',
+                    itemStyle: {
+                        normal: {
+                            color: '#46bee9'
+                        }
+                    },
+                    data: allData.citys
                 },
-                label: {
-                    emphasis: {
+                {
+                    name: '线路',
+                    type: 'lines',
+                    coordinateSystem: 'geo',
+                    zlevel: 2,
+                    large: true,
+                    effect: {
                         show: true,
-                        position: 'right',
-                        formatter: '{b}'
-                    }
-                },
-                symbolSize: 2,
-                showEffectOn: 'render',
-                itemStyle: {
-                    normal: {
-                        color: '#46bee9'
-                    }
-                },
-                data: allData.citys
-            }, {
-                name: '线路',
-                type: 'lines',
-                coordinateSystem: 'geo',
-                zlevel: 2,
-                large: true,
-                effect: {
-                    show: true,
-                    constantSpeed: 30,
-                    symbol: 'pin',
-                    symbolSize: 3,
-                    trailLength: 0,
-                },
-                lineStyle: {
-                    normal: {
-                        color: new ECharts.graphic.LinearGradient(0, 0, 0, 1, [{
+                        constantSpeed: 30,
+                        symbol: 'pin',
+                        symbolSize: 3,
+                        trailLength: 0,
+                    },
+                    lineStyle: {
+                        normal: {
+                            color: new ECharts.graphic.LinearGradient(0, 0, 0, 1, [{
                                 offset: 0, color: '#58B3CC'
-                            }, {
+                            },
+                            {
                                 offset: 1, color: '#F58158'
                             }], false),
-                        width: 1,
-                        opacity: 0.2,
-                        curveness: 0.1
-                    }
-                },
-                data: allData.moveLines
-            }]
+                            width: 1,
+                            opacity: 0.2,
+                            curveness: 0.1
+                        }
+                    },
+                    data: allData.moveLines
+                }
+            ]
         };
-        
+
         myChart.setOption(option);
     }
 }

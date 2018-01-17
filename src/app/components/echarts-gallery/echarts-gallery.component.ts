@@ -1,4 +1,7 @@
-import { Component, AfterViewInit } from '@angular/core'
+import { Component, AfterViewInit } from '@angular/core';
+import { Router, NavigationStart } from '@angular/router';
+import * as ECharts from 'echarts';
+
 @Component({
     template: `
         <div class="gallery" nz-row >
@@ -54,8 +57,10 @@ import { Component, AfterViewInit } from '@angular/core'
 })
 
 export class EChartsGalleryComponent implements AfterViewInit {
-
-    ngAfterViewInit() {
-
+    router: Router
+    constructor(router: Router) {
+        this.router = router;
     }
+    ngAfterViewInit() { }
+
 }

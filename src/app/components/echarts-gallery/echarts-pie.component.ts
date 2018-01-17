@@ -2,7 +2,6 @@ import { Component, AfterViewInit } from '@angular/core'
 import * as ECharts from 'echarts';
 
 @Component({
-    selector:'pie',
     template: `
        <div id="main"></div>
     `,

@@ -1,9 +1,11 @@
-import { Component, AfterViewInit,OnDestroy } from '@angular/core';
+import { Component, AfterViewInit, OnDestroy, OnInit } from '@angular/core';
 import * as ECharts from 'echarts';
 
 @Component({
     template: `
        <div id="main"></div>
+       <button (click)="test()">test</button>
+       <button (click)="dispose()">dispose</button>
     `,
     styles: [`
         #main {
@@ -14,29 +16,37 @@ import * as ECharts from 'echarts';
 })
 
 export class BarComponent implements AfterViewInit {
+    myChart:any;
     ngAfterViewInit() {
-        var myChart = ECharts.init(document.getElementById('main'));
-        myChart.setOption(option);
+    console.info("dispose");
+    this.myChart = ECharts.init(document.getElementById('main'));
+    this.myChart.setOption(option);
+    // var app = { count: 11 };
+    // var t = setInterval(function () {
+    //     var axisData = (new Date()).toLocaleTimeString().replace(/^\D*/, '');
 
-        var app = { count: 11 };
-        // var t = setInterval(function () {
-        //     var axisData = (new Date()).toLocaleTimeString().replace(/^\D*/, '');
+    //     var data0 = option.series[0].data;
+    //     var data1 = option.series[1].data;
+    //     data0.shift();
+    //     data0.push(Math.round(Math.random() * 1000));
+    //     data1.shift();
+    //     data1.push(+( Math.random() * 10 + 5).toFixed(1) - 0);
 
-        //     var data0 = option.series[0].data;
-        //     var data1 = option.series[1].data;
-        //     data0.shift();
-        //     data0.push(Math.round(Math.random() * 1000));
-        //     data1.shift();
-        //     data1.push(+( Math.random() * 10 + 5).toFixed(1) - 0);
+    //     option.xAxis[0].data.shift();
+    //     option.xAxis[0].data.push(axisData);
+    //     option.xAxis[1].data.shift();
+    //     option.xAxis[1].data.push(app.count++);
 
-        //     option.xAxis[0].data.shift();
-        //     option.xAxis[0].data.push(axisData);
-        //     option.xAxis[1].data.shift();
-        //     option.xAxis[1].data.push(app.count++);
-
-        //     myChart.setOption(option);
-        // }, 2100);
-    }
+    //     myChart.setOption(option);
+    // }, 2100);
+}
+test = () => {
+    console.info(ECharts.getInstanceByDom(document.getElementById('main')));
+}
+dispose = () => {
+    ECharts.getInstanceByDom(document.getElementById('main')).dispose();    
+    console.info(ECharts.getInstanceByDom(document.getElementById('main')));
+}
 }
 
 const option = {

@@ -1,6 +1,7 @@
 import { Component, ViewEncapsulation, HostListener, OnInit } from '@angular/core';
 import { Router, NavigationEnd, NavigationStart } from '@angular/router';
 import { fadeAnimation } from './fade.animation';
+import * as ECharts from 'echarts';
 
 @Component({
     selector: 'root-content',
@@ -105,8 +106,16 @@ export class ContentComponent implements OnInit {
                 let t = setTimeout(function() {
                     nzContent.scrollTo(0, 0);
                 }, 500);
-                
-                console.info(nzContent.scrollTop);
+                // console.info("dispose");
+                //销毁ECharts监听事件
+                router.events.subscribe(event => {
+                    if (event instanceof NavigationStart && ECharts.getInstanceByDom(document.getElementById('main'))) {
+                        console.info('beforeDispose:',ECharts.getInstanceByDom(document.getElementById('main')));
+                        ECharts.getInstanceByDom(document.getElementById('main')).dispose();
+                        console.info('afterDispose:',ECharts.getInstanceByDom(document.getElementById('main')));
+                    }
+                })
+                // console.info(nzContent.scrollTop);
             }
         })
     }

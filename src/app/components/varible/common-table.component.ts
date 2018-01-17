@@ -1,8 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Http } from '@angular/http';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
-import { of } from 'rxjs/observable/of';
-import { Observable } from 'rxjs/Observable';
 
 
 @Component({
@@ -167,6 +165,7 @@ export class CommonTableComponent {
     // 从mock服务获取数据
     this.route.paramMap
       .switchMap((params: ParamMap) => {
+        console.info("切换路由事件");
         this.data = []
         //数据加载完毕前load动画
         // this._loading = true;
