@@ -8,8 +8,9 @@ import * as ECharts from 'echarts';
     `,
     styles: [`
         #main {
+            postion:absolute;
             width: 1200px;
-            height: 600px;
+            height: 500px;
         }
     `]
 })
@@ -85,7 +86,6 @@ const option = {
                     shadowColor: 'rgba(0, 0, 0, 0.5)'
                 }
             },
-
             animationType: 'scale',
             animationEasing: 'elasticOut',
             animationDelay: function (idx) {

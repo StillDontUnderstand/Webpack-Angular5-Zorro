@@ -5,7 +5,10 @@ import { FormsModule } from '@angular/forms';
 
 import { EChartsGalleryRoutingModule } from './echarts-gallery.routing';
 import { EChartsGalleryComponent } from './echarts-gallery.component';
-import { PieComponent} from './echarts-pie.component';
+import { PieComponent } from './echarts-pie.component';
+import { BarComponent } from './echarts-bar.component';
+import { ScatterComponent } from './echarts-scatter.component';
+import { MapComponent } from './echarts-map.component';
 
 @NgModule({
     imports: [
@@ -16,7 +19,10 @@ import { PieComponent} from './echarts-pie.component';
     ],
     declarations: [
         EChartsGalleryComponent,
-        PieComponent
+        PieComponent,
+        BarComponent,
+        ScatterComponent,
+        MapComponent
     ],
     exports: [
         EChartsGalleryComponent

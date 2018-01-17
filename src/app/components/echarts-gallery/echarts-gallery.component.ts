@@ -3,21 +3,21 @@ import { Component, AfterViewInit } from '@angular/core'
     template: `
         <div class="gallery" nz-row >
             <div nz-col [nzSpan]="6">
-                <div>GALLERY</div>
+                <a routerLink="pie" routerLinkActive="active">Pie-Chart</a>
             </div>
             <div nz-col [nzSpan]="6">
-                <div>GALLERY</div>
+                <a routerLink="bar" routerLinkActive="active">Bar</a>
             </div>
             <div nz-col [nzSpan]="6">
-                <div>GALLERY</div>
+                <a routerLink="scatter" routerLinkActive="active">Scatter</a>
             </div>
             <div nz-col [nzSpan]="6">
-                <div>GALLERY</div>
+                <a routerLink="map" routerLinkActive="active">Map</a>
             </div>
         </div>
         <div nz-row>
             <div nz-col [nzSpan] = "24">
-                <pie></pie>        
+                <router-outlet></router-outlet>                           
             </div>
         </div>
     `,
@@ -32,8 +32,9 @@ import { Component, AfterViewInit } from '@angular/core'
             z-index: 50;
             border-radius: 5px;
         }
-        .gallery>div>div{
-            height: 160px;
+        .gallery>div>a{
+            display:block;
+            height: 150px;
             margin: 25px;
             box-shadow: 0px 0px 6px 0px #000000b8;
             background-color: white;
