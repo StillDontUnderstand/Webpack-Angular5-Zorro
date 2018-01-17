@@ -35,6 +35,10 @@ const layoutRoute: Routes = [
         loadChildren:'../../components/echarts-tree/echarts-tree.module#EChartsTreeModule'
       },
       {
+        path:'echarts-gallery',
+        loadChildren:'../../components/echarts-gallery/echarts-gallery.module#EChartsGalleryModule'
+      },
+      {
         path: '**',
         component: DevlogComponent
       }

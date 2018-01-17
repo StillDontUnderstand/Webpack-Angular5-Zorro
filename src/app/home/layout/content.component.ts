@@ -37,6 +37,7 @@ import { fadeAnimation } from './fade.animation';
                     <li nz-menu-item><a routerLink="editor" routerLinkActive="active">Editor</a></li>
                     <li nz-menu-item><a routerLink="tree" routerLinkActive="active">Tree</a></li>
                     <li nz-menu-item><a routerLink="echarts-tree" routerLinkActive="active">ECharts-Tree</a></li>
+                    <li nz-menu-item><a routerLink="echarts-gallery" routerLinkActive="active">ECharts-Gallery</a></li>
                 </ul>
             </li>
             </ul>

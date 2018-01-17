@@ -9,7 +9,7 @@ import { NzNotificationService } from 'ng-zorro-antd';
     <div id = "anchor"></div>
     `,
     styles: [`
-        .graph {
+        #graph {
             position: absolute;
             width: 100%;
             height: 100%;
@@ -18,7 +18,7 @@ import { NzNotificationService } from 'ng-zorro-antd';
         :host {
             position: absolute;
             width: calc(100% - 32px);
-            min-height: calc(100%);          
+            min-height: calc(100% - 48px);          
             box-shadow:0px 1px 11px 2px #00000059;
             background: #fff;
             margin: 16px 16px 30px 16px;
@@ -200,7 +200,7 @@ export class GraphEditorComponent implements AfterViewInit {
             animate: true,
             mode: 'edit',  // 编辑模式
             width: 1200,    // 画布宽
-            height: 780    // 画布高
+            height: 710    // 画布高
         });
 
         // 载入数据
