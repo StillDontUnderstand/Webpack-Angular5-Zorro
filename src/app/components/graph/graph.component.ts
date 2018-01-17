@@ -62,12 +62,14 @@ export class GraphComponent implements AfterViewInit {
     }, 'rect');
     customNode2 = new G6.registerNode('customNode2', {
         draw(cfg, group) {
-            group.addShape('rect', {
+           
+            const shape = group.addShape('rect', {
                 attrs: {
                     x: cfg.x - 40,
                     y: cfg.y - 40,
                     width: 80,
                     height: 80,
+                    radius: 5,
                     shadowBlur: 20,
                     shadowColor: '#00000094',
                     fill: 'white',
@@ -75,18 +77,45 @@ export class GraphComponent implements AfterViewInit {
                 }
             });
 
-            return group.addShape('rect', {
+            const shape2 = group.addShape('rect', {
                 attrs: {
                     x: cfg.x - 40,
                     y: cfg.y - 40,
                     width: 80,
                     height: 80,
-                    // shadowBlur: 20,
-                    // shadowColor: '#00000094',
+                    radius: 5,
                     fill: 'white',
                     stroke: 'white'
                 }
             });
+            shape2.animate(
+                {
+                    fill: '#78adf7',
+                    stroke: '#78adf7'
+                },
+                500,
+                'ease-in'
+            );
+            shape.animate(
+                {
+                    shadowBlur: 30,
+                },
+                500,
+                'ease-in'
+            );
+            group.addShape('text', {
+                attrs: {
+                    x: cfg.x - 40,
+                    y: cfg.y - 25,
+                    fill: '#333',
+                    text: '自定义节点'
+                }
+            });
+            return shape
+
+
+
+
         }
     }, 'customNode1');
 
