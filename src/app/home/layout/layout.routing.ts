@@ -23,8 +23,16 @@ const layoutRoute: Routes = [
         loadChildren: '../../components/user/user.module#UserModule'
       },
       {
-        path:'graph',
-        loadChildren:'../../components/graph/graph.module#GraphModule'
+        path:'editor',
+        loadChildren:'../../components/graph-editor/graph-editor.module#GraphEditorModule'
+      },
+      {
+        path:'tree',
+        loadChildren:'../../components/graph-tree/graph-tree.module#GraphTreeModule'
+      },
+      {
+        path:'echarts-tree',
+        loadChildren:'../../components/echarts-tree/echarts-tree.module#EChartsTreeModule'
       },
       {
         path: '**',

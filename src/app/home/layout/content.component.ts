@@ -28,13 +28,15 @@ import { fadeAnimation } from './fade.animation';
             <li nz-submenu>
                 <span title><i class="anticon anticon-team"></i><span class="nav-text" >用户管理</span></span>
                 <ul>
-                <li nz-menu-item><a routerLink="user" routerLinkActive="active">用户</a></li>
+                    <li nz-menu-item><a routerLink="user" routerLinkActive="active">用户</a></li>
                 </ul>
             </li>
             <li nz-submenu>
                 <span title><i class="anticon anticon-team"></i><span class="nav-text" >Graph</span></span>
                 <ul>
-                <li nz-menu-item><a routerLink="graph" routerLinkActive="active">Graph</a></li>
+                    <li nz-menu-item><a routerLink="editor" routerLinkActive="active">Editor</a></li>
+                    <li nz-menu-item><a routerLink="tree" routerLinkActive="active">Tree</a></li>
+                    <li nz-menu-item><a routerLink="echarts-tree" routerLinkActive="active">ECharts-Tree</a></li>
                 </ul>
             </li>
             </ul>
@@ -43,7 +45,7 @@ import { fadeAnimation } from './fade.animation';
             <nz-content [@fadeAnimation]="routerStateCode"  (scroll)="scrollHandler($event)">
                 <router-outlet></router-outlet>                           
             </nz-content>
-            <nz-footer class="footer" [style.color]="c">HF Design ©2018 Implement By Unissoft</nz-footer>
+            <nz-footer class="footer" [style.color]="c">HF Design ©2018 Implement By Albert</nz-footer>
         </nz-layout>
     </nz-layout>
     `,

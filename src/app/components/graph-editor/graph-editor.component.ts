@@ -28,7 +28,7 @@ import { NzNotificationService } from 'ng-zorro-antd';
     `]
 })
 
-export class GraphComponent implements AfterViewInit {
+export class GraphEditorComponent implements AfterViewInit {
     customNode1 = new G6.registerNode('customNode1', {
         draw(cfg, group) {
             const shape = group.addShape('rect', {
@@ -62,7 +62,7 @@ export class GraphComponent implements AfterViewInit {
     }, 'rect');
     customNode2 = new G6.registerNode('customNode2', {
         draw(cfg, group) {
-           
+
             const shape = group.addShape('rect', {
                 attrs: {
                     x: cfg.x - 40,
@@ -73,7 +73,8 @@ export class GraphComponent implements AfterViewInit {
                     shadowBlur: 20,
                     shadowColor: '#00000094',
                     fill: 'white',
-                    stroke: 'white'
+                    stroke: 'white',
+                    opacity: 0
                 }
             });
 
@@ -85,20 +86,20 @@ export class GraphComponent implements AfterViewInit {
                     height: 80,
                     radius: 5,
                     fill: 'white',
-                    stroke: 'white'
+                    stroke: 'white',
+                    opacity: 0.3
                 }
             });
             shape2.animate(
                 {
-                    fill: '#78adf7',
-                    stroke: '#78adf7'
+                    opacity: 1
                 },
-                500,
+                200,
                 'ease-in'
             );
             shape.animate(
                 {
-                    shadowBlur: 30,
+                    opacity: 1
                 },
                 500,
                 'ease-in'
@@ -142,8 +143,11 @@ export class GraphComponent implements AfterViewInit {
         ]
     };
 
+    constructor(private _notification: NzNotificationService) { }
+
     // net: any;
     NgOnInit() {
+
     }
     // width: number = this.nzContent.offsetWidth;
     // height: number = this.nzContent.offsetHeight;
@@ -281,9 +285,12 @@ export class GraphComponent implements AfterViewInit {
             const saveData = net.save();
             const json = JSON.stringify(saveData, null, 2);
             console.log(saveData, json); // eslint-disable-line no-console
+            this.createBasicNotification(json);
         };
     }
-
+    createBasicNotification(str) {
+        this._notification.blank('保存成功', str);
+    }
 
 }
 

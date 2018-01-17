@@ -21,6 +21,7 @@
     "@antv/g6": "^1.2.3",
     "angular-in-memory-web-api": "^0.5.2",
     "core-js": "^2.4.1",
+    "echarts": "^4.0.0",
     "mockjs": "^1.0.1-beta3",
     "ng-zorro-antd": "^0.6.9",
     "ng.tree": "^3.2.1",
