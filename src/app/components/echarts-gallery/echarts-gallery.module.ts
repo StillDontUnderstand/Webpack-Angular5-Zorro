@@ -9,6 +9,7 @@ import { PieComponent } from './echarts-pie.component';
 import { BarComponent } from './echarts-bar.component';
 import { ScatterComponent } from './echarts-scatter.component';
 import { MapComponent } from './echarts-map.component';
+import { MapPMComponent } from './echarts-map-pm.component';
 
 @NgModule({
     imports: [
@@ -22,7 +23,8 @@ import { MapComponent } from './echarts-map.component';
         PieComponent,
         BarComponent,
         ScatterComponent,
-        MapComponent
+        MapComponent,
+        MapPMComponent
     ],
     exports: [
         EChartsGalleryComponent

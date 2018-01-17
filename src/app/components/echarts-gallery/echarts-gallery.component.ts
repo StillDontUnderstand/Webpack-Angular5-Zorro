@@ -2,17 +2,23 @@ import { Component, AfterViewInit } from '@angular/core'
 @Component({
     template: `
         <div class="gallery" nz-row >
-            <div nz-col [nzSpan]="6">
+            <div nz-col [nzSpan]="4">
                 <a routerLink="pie" routerLinkActive="active">Pie-Chart</a>
             </div>
-            <div nz-col [nzSpan]="6">
+            <div nz-col [nzSpan]="4">
                 <a routerLink="bar" routerLinkActive="active">Bar</a>
             </div>
-            <div nz-col [nzSpan]="6">
+            <div nz-col [nzSpan]="4">
                 <a routerLink="scatter" routerLinkActive="active">Scatter</a>
             </div>
-            <div nz-col [nzSpan]="6">
+            <div nz-col [nzSpan]="4">
                 <a routerLink="map" routerLinkActive="active">Map</a>
+            </div>
+            <div nz-col [nzSpan]="4">
+                <a routerLink="map-pm" routerLinkActive="active">PM2.5</a>
+            </div>
+            <div nz-col [nzSpan]="4">
+
             </div>
         </div>
         <div nz-row>
@@ -34,7 +40,7 @@ import { Component, AfterViewInit } from '@angular/core'
         }
         .gallery>div>a{
             display:block;
-            height: 150px;
+            height: 100px;
             margin: 25px;
             box-shadow: 0px 0px 6px 0px #000000b8;
             background-color: white;

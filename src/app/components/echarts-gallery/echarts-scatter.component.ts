@@ -10,7 +10,7 @@ import * as ECharts from 'echarts';
         #main {
             postion:absolute;
             width: 1200px;
-            height: 500px;
+            height: 550px;
         }
     `]
 })

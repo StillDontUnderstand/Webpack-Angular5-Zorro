@@ -8,15 +8,14 @@ import * as ECharts from 'echarts';
     styles: [`
         #main {
             width: 1200px;
-            height: 500px;
+            height: 550px;
         }
     `]
 })
 export class MapComponent implements AfterViewInit {
+    chinaJson = require('./china.json');
     ngAfterViewInit() {
-        const chinaJson = require('./china.json');
-        console.info("loaded")
-        ECharts.registerMap('china', chinaJson);        
+        ECharts.registerMap('china', this.chinaJson);        
         var myChart = ECharts.init(document.getElementById('main'));
         const option = {
             backgroundColor: '#fff',

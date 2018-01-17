@@ -8,7 +8,7 @@ import * as ECharts from 'echarts';
     styles: [`
         #main {
             width: 1200px;
-            height: 500px;
+            height: 550px;
         }
     `]
 })
