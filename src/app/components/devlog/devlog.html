@@ -16,11 +16,11 @@
             <p>1/17 添加Echarts支持</p>
             <p>1/17 添加Gallery路由</p>
             <p>1/17 加载geojson文件，制作地图</p>
+            <p>1/18 ECharts路由退出/切换事件，离开路由后资源是否被释放？ 离开路由需要用dispose销毁</p>
             
             
             <h1>TODO</h1>
             <br>
-            <p>路由退出/切换事件，离开路由后资源是否被释放？</p>
             <p>添加子路由过渡</p>
             <p>编写开发文档</p>
             <p>封装数据异步加载模块</p>
@@ -42,6 +42,8 @@
             <p>5.路由入口在 <code>layout.routing.ts</code>菜单配置在 <code>contnet.compent.ts</code></p>
             <p>6.注意 <code>G6</code> 和 <code>ECharts</code> 的锚点使用方法稍有不同，参考 <code>Tree</code>, <code>echarts-tree</code></p>
             <p>注册读取本地json服务可以使用 <code>require()</code>参考 <code>echarts-map</code></p>
+            <p>1/18 <code>ECharts</code> 路由退出/切换事件，离开路由后资源是用 <code>dispose</code>销毁，参考 <code>content.component</code></p>
+            
             
         </div>
         <div nz-col [nzSpan]="12">

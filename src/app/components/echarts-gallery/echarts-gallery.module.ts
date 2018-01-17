@@ -10,6 +10,7 @@ import { BarComponent } from './echarts-bar.component';
 import { ScatterComponent } from './echarts-scatter.component';
 import { MapComponent } from './echarts-map.component';
 import { MapPMComponent } from './echarts-map-pm.component';
+import { LayerComponent } from './echarts-layer.component';
 
 @NgModule({
     imports: [
@@ -24,7 +25,8 @@ import { MapPMComponent } from './echarts-map-pm.component';
         BarComponent,
         ScatterComponent,
         MapComponent,
-        MapPMComponent
+        MapPMComponent,
+        LayerComponent
     ],
     exports: [
         EChartsGalleryComponent

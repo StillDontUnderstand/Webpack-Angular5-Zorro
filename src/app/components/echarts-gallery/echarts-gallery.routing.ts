@@ -7,6 +7,7 @@ import { BarComponent } from './echarts-bar.component';
 import { ScatterComponent } from './echarts-scatter.component';
 import { MapComponent } from './echarts-map.component';
 import { MapPMComponent } from './echarts-map-pm.component';
+import { LayerComponent } from './echarts-layer.component';
 
 const EchartsGalleryRoutes: Routes = [
     {
@@ -18,6 +19,7 @@ const EchartsGalleryRoutes: Routes = [
             { path: 'map', component: MapComponent },
             { path: 'scatter', component: ScatterComponent },
             { path: 'map-pm', component: MapPMComponent },
+            { path: 'layer', component: LayerComponent },
         ]
     }
 ]

@@ -21,7 +21,7 @@ import * as ECharts from 'echarts';
                 <a routerLink="map-pm" routerLinkActive="active">PM2.5</a>
             </div>
             <div nz-col [nzSpan]="4">
-
+                <a routerLink="layer" routerLinkActive="active">Layer</a>            
             </div>
         </div>
         <div nz-row>

@@ -103,16 +103,16 @@ export class ContentComponent implements OnInit {
             //路由开始触发事件
             if (event instanceof NavigationStart) {
                 console.info('路由开始')
-                let t = setTimeout(function() {
+                let t = setTimeout(function () {
                     nzContent.scrollTo(0, 0);
                 }, 500);
                 // console.info("dispose");
                 //销毁ECharts监听事件
                 router.events.subscribe(event => {
-                    if (event instanceof NavigationStart && ECharts.getInstanceByDom(document.getElementById('main'))) {
-                        console.info('beforeDispose:',ECharts.getInstanceByDom(document.getElementById('main')));
+                    if (event instanceof NavigationStart && document.getElementById('main') && ECharts.getInstanceByDom(document.getElementById('main'))) {
+                        console.info('beforeDispose:', ECharts.getInstanceByDom(document.getElementById('main')));
                         ECharts.getInstanceByDom(document.getElementById('main')).dispose();
-                        console.info('afterDispose:',ECharts.getInstanceByDom(document.getElementById('main')));
+                        console.info('afterDispose:', ECharts.getInstanceByDom(document.getElementById('main')));
                     }
                 })
                 // console.info(nzContent.scrollTop);
@@ -131,11 +131,11 @@ export class ContentComponent implements OnInit {
         // console.info("offsetHeight",target.scrollHeight-target.offsetHeight)
         let diff = target.scrollHeight - target.offsetHeight
         if (target.scrollTop == diff) {
-            console.log("footer");   
+            console.log("footer");
             this.c = "#6926a057";
         }
-        if (target.scrollTop == diff - 20||target.scrollTop == 0){
-            this.c = "#66339912";            
+        if (target.scrollTop == diff - 20 || target.scrollTop == 0) {
+            this.c = "#66339912";
         }
     }
 }
