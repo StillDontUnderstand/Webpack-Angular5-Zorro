@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { Routes, RouterModule, PreloadAllModules } from '@angular/router';
+import { NgEventOptionsModule }  from 'ng-event-options'
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -33,7 +34,8 @@ import { InMemoryDataService } from './in-memory-data.service';
       InMemoryDataService, 
       { delay: 2000 }
     ),
-    AppRoutingModule
+    AppRoutingModule,
+    NgEventOptionsModule
   ],
   bootstrap: [AppComponent]
 })

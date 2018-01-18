@@ -2,19 +2,11 @@ import { Component, AfterViewInit, OnDestroy } from '@angular/core';
 import * as ECharts from 'echarts';
 
 @Component({
-    template: `
-       <div id="main"></div>
-    `,
-    styles: [`
-        #main {
-            width: 1200px;
-            height: 550px;
-        }
-    `]
+    template: ``
 })
 
 export class MapPMComponent implements AfterViewInit{
-    chinaJson = require('./china.json');
+    private chinaJson = require('./china.json');
     
     ngAfterViewInit() {
         ECharts.registerMap('china', this.chinaJson);                

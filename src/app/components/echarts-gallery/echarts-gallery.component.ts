@@ -26,7 +26,9 @@ import * as ECharts from 'echarts';
         </div>
         <div nz-row>
             <div nz-col [nzSpan] = "24">
-                <router-outlet></router-outlet>                           
+                <div id="main">
+                    <router-outlet></router-outlet>                            
+                </div>           
             </div>
         </div>
     `,
@@ -52,6 +54,10 @@ import * as ECharts from 'echarts';
         }
         .gallery>div>div:hover{
             box-shadow: 0px 0px 12px 0px #000000b8;
+        }
+        #main {
+            width: 1200px;
+            height: 550px;
         }
     `]
 })

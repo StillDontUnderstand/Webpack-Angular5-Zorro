@@ -46,7 +46,7 @@ import { DataService } from '../../service/data.service'
             </ul>
         </nz-sider>
         <nz-layout>
-            <nz-content [@fadeAnimation]="routerStateCode"  (scroll)="scrollHandler($event)">
+            <nz-content [@fadeAnimation]="routerStateCode"  (scroll.p)="scrollHandler($event)">
                 <router-outlet></router-outlet>                           
             </nz-content>
             <nz-footer class="footer" [style.color]="c">HF Design ©2018 Implement By Albert</nz-footer>
@@ -140,9 +140,6 @@ export class ContentComponent implements OnInit {
     // 通过(scroll)指令监听
     scrollHandler($event) {
         let target = $event.target;
-        // console.info("scrollTop",target.scrollTop)
-        // console.info("offsetHeight",target.offsetHeight)
-        // console.info("offsetHeight",target.scrollHeight-target.offsetHeight)
         let diff = target.scrollHeight - target.offsetHeight
         if (target.scrollTop == diff) {
             console.log("footer");

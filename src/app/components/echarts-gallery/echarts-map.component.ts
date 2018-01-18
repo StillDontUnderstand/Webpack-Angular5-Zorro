@@ -3,15 +3,7 @@ import { Router,NavigationStart } from '@angular/router';
 import * as ECharts from 'echarts';
 
 @Component({
-    template: `
-       <div id="main"></div>
-    `,
-    styles: [`
-        #main {
-            width: 1200px;
-            height: 550px;
-        }
-    `]
+    template: ``    
 })
 export class MapComponent implements AfterViewInit {
     router: Router;

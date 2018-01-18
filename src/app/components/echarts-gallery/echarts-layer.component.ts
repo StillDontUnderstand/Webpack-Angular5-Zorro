@@ -2,24 +2,16 @@ import { Component, AfterViewInit } from '@angular/core';
 import * as ECharts from 'echarts';
 
 @Component({
-    template: `
-       <div id="main"></div>
-    `,
-    styles: [`
-        #main {
-            width: 1200px;
-            height: 550px;
-        }
-    `]
+    template: ``    
 })
 
 export class LayerComponent implements AfterViewInit {
-    ngAfterViewInit(){
+    ngAfterViewInit() {
         const myChart = ECharts.init(document.getElementById('main'));
         myChart.setOption(option);
     }
 }
-    
+
 var value = [5, 8, 12, 14, 16, 18, 20, 22, 24, 26, 30];
 
 const option = {

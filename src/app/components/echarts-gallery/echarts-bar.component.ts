@@ -1,16 +1,8 @@
 import { Component, AfterViewInit, OnDestroy, OnInit } from '@angular/core';
 import * as ECharts from 'echarts';
 import { DataService } from '../../service/data.service'
-@Component({
-    template: `
-       <div id="main"></div>
-    `,
-    styles: [`
-        #main {
-            width: 1200px;
-            height: 550px;
-        }
-    `]
+@Component({ 
+    template: ``    
 })
 
 export class BarComponent implements AfterViewInit {
