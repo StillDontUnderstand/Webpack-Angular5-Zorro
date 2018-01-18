@@ -2,11 +2,13 @@ import { Component, ViewEncapsulation, HostListener, OnInit } from '@angular/cor
 import { Router, NavigationEnd, NavigationStart } from '@angular/router';
 import { fadeAnimation } from './fade.animation';
 import * as ECharts from 'echarts';
+import { DataService } from '../../service/data.service'
 
 @Component({
     selector: 'root-content',
     encapsulation: ViewEncapsulation.None,
     animations: [fadeAnimation],
+    providers: [DataService],
     template: `
       <nz-layout style="height:100%" >
         <nz-sider nzCollapsible [(nzCollapsed)]="isCollapsed" sider>
@@ -86,41 +88,53 @@ import * as ECharts from 'echarts';
 })
 
 export class ContentComponent implements OnInit {
-    routerState: boolean = true;
-    routerStateCode: string = 'active';
-    constructor(router: Router) {
+    private routerState: boolean = true;
+    private routerStateCode: string = 'active';
+    private timer:any;
+    constructor(router: Router, private dataService: DataService) {
+        this.dataService.getData().subscribe(
+            data => {
+                // window.clearInterval(data);
+                this.timer = data;
+            }
+        );
         router.events.subscribe(event => {
             let layout = document.querySelectorAll('nz-layout')[2];
             let nzContent = document.querySelectorAll('nz-content')[0];
             //路由结束触发事件
             if (event instanceof NavigationEnd) {
                 console.info('路由结束');
+                //触发路由切换动画
                 if (event instanceof NavigationEnd) {
                     this.routerState = !this.routerState;
                     this.routerStateCode = this.routerState ? 'active' : 'inactive';
                 }
+
             }
             //路由开始触发事件
             if (event instanceof NavigationStart) {
                 console.info('路由开始')
-                let t = setTimeout(function () {
+                this.timer && window.clearInterval(this.timer);
+                //设置滚动条回到0点
+                this.timer = setTimeout(function () {
                     nzContent.scrollTo(0, 0);
-                }, 500);
-                // console.info("dispose");
+                    //使用完毕立即销毁
+                    window.clearTimeout(this.timer);
+                }, 650);
+                // console.info("setTimeout", this.timer)
+
                 //销毁ECharts监听事件
-                router.events.subscribe(event => {
-                    if (event instanceof NavigationStart && document.getElementById('main') && ECharts.getInstanceByDom(document.getElementById('main'))) {
-                        console.info('beforeDispose:', ECharts.getInstanceByDom(document.getElementById('main')));
-                        ECharts.getInstanceByDom(document.getElementById('main')).dispose();
-                        console.info('afterDispose:', ECharts.getInstanceByDom(document.getElementById('main')));
-                    }
-                })
+                if (document.getElementById('main') && ECharts.getInstanceByDom(document.getElementById('main'))) {
+                    console.info('beforeDispose:', ECharts.getInstanceByDom(document.getElementById('main')));
+                    ECharts.getInstanceByDom(document.getElementById('main')).dispose();
+                    console.info('afterDispose:', ECharts.getInstanceByDom(document.getElementById('main')));
+                }
+
                 // console.info(nzContent.scrollTop);
             }
         })
     }
     ngOnInit(): void {
-
     }
     c: string = "#66339912";
     // 通过(scroll)指令监听

@@ -1,5 +1,6 @@
 import { Component, AfterViewInit } from '@angular/core'
 import * as ECharts from 'echarts';
+import { DataService } from '../../service/data.service'
 
 @Component({
     template: `
@@ -15,10 +16,11 @@ import * as ECharts from 'echarts';
 })
 
 export class PieComponent implements AfterViewInit{
+    constructor(private dataService:DataService){}    
     ngAfterViewInit(){
         var myChart = ECharts.init(document.getElementById('main'));
         myChart.setOption(option)
-            
+        // this.dataService.setData("pie");  
     }
 }
 

@@ -4,8 +4,6 @@ import * as ECharts from 'echarts';
 @Component({
     template: `
        <div id="main"></div>
-       <button (click)="test()">test</button>
-       <button (click)="dispose()">dispose</button>
     `,
     styles: [`
         #main {

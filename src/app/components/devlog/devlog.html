@@ -16,39 +16,49 @@
             <p>1/17 添加Echarts支持</p>
             <p>1/17 添加Gallery路由</p>
             <p>1/17 加载geojson文件，制作地图</p>
-            <p>1/18 ECharts路由退出/切换事件，离开路由后资源是否被释放？ 离开路由需要用dispose销毁</p>
-            
+            <p>1/18 ECharts路由退出/切换事件，离开路由后dispose</p>
             
             <h1>TODO</h1>
             <br>
+
+            <p>写一个组件通信服务</p>
+            <p>画布<code>#main</code>上移到子路由层</p>
             <p>添加子路由过渡</p>
             <p>编写开发文档</p>
             <p>封装数据异步加载模块</p>
+            <p>路径问题 <code>import</code> 由相对路径改为绝对路径</p>
             <p>可视化插件</p>
             <p>工程化打包测试</p>
+            <p>呼吸灯</p>
             <br>
             <h1>Question</h1>
             <p>反向注入（子模块组件注入父级模块组件的情况）:不要用</p>
             <p>exports的作用</p>
-            <p>组件的生命周期</p>
-            <p>组件的销毁规程，切换多次后页面会变卡？</p>
+            <p>组件的生命周期:<code>component</code>,<code>router</code> </p>
+            <p>组件的销毁规程，切换多次后页面会变卡？已解决</p>
+            <p>组件间的通信方法,多种见云笔记</p>
+            <p></p>
         </div>
         <div nz-col [nzSpan]="12">
             <h1>Document</h1>
-            <p>1.根据情况确定是否使用懒加载，不使用懒加载参考 <code>devlog</code> 使用懒加载参考<code>user</code></p>
+            <p>1.根据情况确定是否使用懒加载，参考<code>user</code>，不使用懒加载参考 <code>devlog</code> </p>
             <p>2.内容区的样式要在相应的<code>component</code>中定义，可参考 <code>devlog.componment.ts</code> </p>
             <p>3.在模块样式中请与 <code>:host</code> 保持一致</p>
             <p>4.添加外部AMD模块参考 <code>graph.component.ts</code></p>
             <p>5.路由入口在 <code>layout.routing.ts</code>菜单配置在 <code>contnet.compent.ts</code></p>
             <p>6.注意 <code>G6</code> 和 <code>ECharts</code> 的锚点使用方法稍有不同，参考 <code>Tree</code>, <code>echarts-tree</code></p>
-            <p>注册读取本地json服务可以使用 <code>require()</code>参考 <code>echarts-map</code></p>
-            <p>1/18 <code>ECharts</code> 路由退出/切换事件，离开路由后资源是用 <code>dispose</code>销毁，参考 <code>content.component</code></p>
-            
-            
+            <p>7.注册读取本地json服务可以使用 <code>require()</code>参考 <code>echarts-map</code></p>
+            <p>8.<code>ECharts</code> 路由退出/切换事件，离开路由后资源是用 <code>dispose</code>销毁，参考 <code>content.component</code></p>
+            <p>9.组件通信</p>
+            <p>10. <code>subscribe</code>定义在 <code>AfterViewInit</code>中会订阅多次，正确的方法是定义在 <code>OnInit</code>中</p>
+            <p>11. <code>setTimeout</code>在调用完毕后要立即销毁，参考 <code>content.component</code></p>
+            <p>12.服务注册的问题：service在主模块注册后又在模块注册会发生错误，原因及机制</p>
         </div>
         <div nz-col [nzSpan]="12">
             <h1>Need to Fix</h1>
             <p> <code>Graph</code> 编辑器点击鼠标画布发生位移:API中某些Handler存在问题，屏蔽掉</p>
+            <p>G6,ECharts绝对高度在使用console的情况下有bug</p>
+            
         </div>
     </div>
 
