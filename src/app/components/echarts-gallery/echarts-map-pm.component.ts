@@ -1,6 +1,6 @@
 import { Component, AfterViewInit, OnDestroy } from '@angular/core';
 import * as ECharts from 'echarts';
-import { mapboxgl } from 'mapbox-gl'
+
 @Component({
     template: ``
 })

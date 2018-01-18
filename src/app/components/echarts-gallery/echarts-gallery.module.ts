@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core'
 import { CommonModule } from '@angular/common'
 import { NgZorroAntdModule } from 'ng-zorro-antd'
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { EChartsGalleryRoutingModule } from './echarts-gallery.routing';
 import { EChartsGalleryComponent } from './echarts-gallery.component';
@@ -18,6 +18,7 @@ import { NzDemoCardFlexComponent } from './echarts-gallery-card.component'
         CommonModule,
         NgZorroAntdModule,
         FormsModule,
+        ReactiveFormsModule,
         EChartsGalleryRoutingModule
     ],
     declarations: [

@@ -5,26 +5,8 @@ import { DataService } from '../../service/data.service'
 @Component({
     template: `
         <div class="gallery" nz-row >
-            <div nz-col [nzSpan]="4">
-                <nz-demo-card-flex [src]="{title:'lalala'}"></nz-demo-card-flex>
-            </div>
-            <div nz-col [nzSpan]="4">
-                <a routerLink="pie" routerLinkActive="active">Pie-Chart</a>
-            </div>
-            <div nz-col [nzSpan]="4">
-                <a routerLink="bar" routerLinkActive="active">Bar</a>
-            </div>
-            <div nz-col [nzSpan]="4">
-                <a routerLink="scatter" routerLinkActive="active">Scatter</a>
-            </div>
-            <div nz-col [nzSpan]="4">
-                <a routerLink="map" routerLinkActive="active">Map</a>
-            </div>
-            <div nz-col [nzSpan]="4">
-                <a routerLink="map-pm" routerLinkActive="active">PM2.5</a>
-            </div>
-            <div nz-col [nzSpan]="4">
-                <a routerLink="layer" routerLinkActive="active">Layer</a>            
+            <div nz-col [nzSpan]="4" *ngFor="let s of src">
+                <nz-demo-card-flex [src]="s"></nz-demo-card-flex>
             </div>
         </div>
         <div nz-row>
@@ -46,21 +28,12 @@ import { DataService } from '../../service/data.service'
             z-index: 50;
             border-radius: 5px;
         }
-        .gallery>div>a{
-            display:block;
-            height: 100px;
-            margin: 25px;
-            box-shadow: 0px 0px 6px 0px #000000b8;
-            background-color: white;
-            border-radius: 5px;
-            transition:all 0.7s;
-        }
-        .gallery>div>div:hover{
-            box-shadow: 0px 0px 12px 0px #000000b8;
-        }
         #main {
             width: 1200px;
             height: 550px;
+        }
+        .gallery{
+            margin:20px;
         }
     `]
 })
@@ -72,7 +45,7 @@ export class EChartsGalleryComponent implements AfterViewInit, OnInit {
         this.dataService.getData().subscribe(data => this.timer = data);
 
         this.router.events.subscribe(event => {
-            if (event instanceof NavigationStart){
+            if (event instanceof NavigationStart) {
                 console.info('子路由开始');
                 this.timer && window.clearInterval(this.timer);
                 //销毁ECharts监听事件
@@ -90,5 +63,12 @@ export class EChartsGalleryComponent implements AfterViewInit, OnInit {
         })
     }
     ngAfterViewInit() { }
-
+    private src = [
+        { link: 'pie', title: 'Pie', url: require('./pie.png') },
+        { link: 'bar', title: 'Bar', url: require('./pie.png') },
+        { link: 'scatter', title: 'Scatter', url: require('./pie.png') },
+        { link: 'map', title: 'Map', url: require('./pie.png') },
+        { link: 'map-pm', title: 'PM2.5', url: require('./pie.png') },
+        { link: 'layer', title: 'layer', url: require('./pie.png') },
+    ]
 }
