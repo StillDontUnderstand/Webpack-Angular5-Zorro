@@ -7,7 +7,7 @@ import { Router, ActivatedRoute, ParamMap } from '@angular/router';
   selector: 'commonTable',
   // template:`{{data}}`,
   template: `
-    <nz-table #nzTable [nzDataSource]="data" [nzPageSize]="10" [nzLoading]="_loading" [nzSize]="'defalut'" >
+    <nz-table #nzTable [nzAjaxData]="data" [nzBordered]="true" [nzPageSize]="10" [nzLoading]="_loading" [nzSize]="'defalut'" [nzCustomNoResult]="true" >
       <thead nz-thead>
         <tr>
           <th nz-th>
@@ -47,7 +47,42 @@ import { Router, ActivatedRoute, ParamMap } from '@angular/router';
            </th>
         </tr>
       </thead>
+
       <tbody nz-tbody>
+        <ng-container noResult > 
+          <tr nz-tbody-tr *ngFor="let data of noData">
+            <td nz-td>
+              <a>{{data.name}}</a>
+            </td>
+            <td nz-td>{{data.age}}</td>
+            <td nz-td>{{data.address}}</td>
+            <td nz-td>
+              <span>
+                <span varibleModal [obj] = "{bn:'查看',code:'READ',data:data}"></span>
+                <span nz-table-divider></span>
+                <span varibleModal [obj] = "{bn:'编辑',code:'UPDATE',data:data}"></span>
+                <span nz-table-divider></span>
+                
+                <nz-dropdown>
+                  <a class="ant-dropdown-link" nz-dropdown>
+                    More actions <i class="anticon anticon-down"></i>
+                  </a>
+                  <ul nz-menu>
+                    <li nz-menu-item>
+                      <a target="_blank" rel="noopener noreferrer" >1st menu item</a>
+                    </li>
+                    <li nz-menu-item>
+                      <a target="_blank" rel="noopener noreferrer" >2nd menu item</a>
+                    </li>
+                    <li nz-menu-item>
+                      <a target="_blank" rel="noopener noreferrer" >3rd menu item</a>
+                    </li>
+                  </ul>
+                </nz-dropdown>
+              </span>
+            </td>
+          </tr>
+        </ng-container>
         <tr nz-tbody-tr *ngFor="let data of nzTable.data">
           <td nz-td>
             <a>{{data.name}}</a>
@@ -81,7 +116,8 @@ import { Router, ActivatedRoute, ParamMap } from '@angular/router';
           </td>
         </tr>
       </tbody>
-    </nz-table>`,
+    </nz-table>
+    `,
   styles: [
     `
       .custom-filter-dropdown {
@@ -103,6 +139,7 @@ import { Router, ActivatedRoute, ParamMap } from '@angular/router';
   ]
 })
 export class CommonTableComponent {
+  noData = noData;
   constructor(
     private route: ActivatedRoute,
     private router: Router,
@@ -163,18 +200,19 @@ export class CommonTableComponent {
 
   ngOnInit() {
     // 从mock服务获取数据
-    this.route.paramMap
-      .switchMap((params: ParamMap) => {
+    this.route.paramMap.switchMap((params: ParamMap) => {
         console.info("切换路由事件");
-        this.data = []
+        //清空数据会导致画面跳帧
+        // this.data = []
         //数据加载完毕前load动画
-        // this._loading = true;
+        this._loading = true;
         //切换路由触发数据请求
         return this.http.get('api/data' + params.get('id'))
         // 
       }).subscribe((data) => {
         console.info('!!!!!!');
         this.data = data.json();
+        this.noData =[];
         //数据接受完毕取消加载动画
         this._loading = false;
         console.info(data);
@@ -182,3 +220,20 @@ export class CommonTableComponent {
   }
 
 }
+
+
+const noData =[
+  { name: '*****', age:'**', address: '*********'},
+  { name: '*****', age:'**', address: '*********'},
+  { name: '*****', age:'**', address: '*********'},
+  { name: '*****', age:'**', address: '*********'},
+  { name: '*****', age:'**', address: '*********'},
+  { name: '*****', age:'**', address: '*********'},
+  { name: '*****', age:'**', address: '*********'},
+  { name: '*****', age:'**', address: '*********'},
+  { name: '*****', age:'**', address: '*********'},
+  { name: '*****', age:'**', address: '*********'},
+
+  
+  
+];

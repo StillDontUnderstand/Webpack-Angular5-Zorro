@@ -1,20 +1,20 @@
 import { InMemoryDbService } from 'angular-in-memory-web-api';
 
 export class InMemoryDataService implements InMemoryDbService {
-    data:any =[]
+  data: any = []
   createDb() {
     const data2 = [
-      { id: 0,  name: 'Zero' },
-      { id: 11, name: 'Mr. Nice' },
-      { id: 12, name: 'Narco' },
-      { id: 13, name: 'Bombasto' },
-      { id: 14, name: 'Celeritas' },
-      { id: 15, name: 'Magneta' },
-      { id: 16, name: 'RubberMan' },
-      { id: 17, name: 'Dynama' },
-      { id: 18, name: 'Dr IQ' },
-      { id: 19, name: 'Magma' },
-      { id: 20, name: 'Tornado' }
+      { name: 'Zero', age: '1', address: '*******' },
+      { name: 'Mr. Nice', age: '2', address: '*******' },
+      { name: 'Narco', age: '3', address: '*******' },
+      { name: 'Bombasto', age: '14', address: '*******' },
+      { name: 'Celeritas', age: '15', address: '*******' },
+      { name: 'Magneta', age: '16', address: '*******' },
+      { name: 'RubberMan', age: '11', address: '*******' },
+      { name: 'Dynama', age: '12', address: '*******' },
+      { name: 'Dr IQ', age: '13', address: '*******' },
+      { name: 'Magma', age: '11', address: '*******' },
+      { name: 'Tornado', age: '10', address: '*******' }
     ];
     const data1 = [
       {
@@ -35,6 +35,6 @@ export class InMemoryDataService implements InMemoryDbService {
         address: 'Jim Red',
       }
     ];
-    return {data1,data2};
+    return { data1, data2 };
   }
 }

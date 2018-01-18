@@ -10,7 +10,7 @@ import { Http } from '@angular/http';
 @Component({
     // selector: 'varible',
     template:`
-    <div style="padding:0px">
+    <div style="padding:20px">
             <commonTable></commonTable>
     </div>
     `,
