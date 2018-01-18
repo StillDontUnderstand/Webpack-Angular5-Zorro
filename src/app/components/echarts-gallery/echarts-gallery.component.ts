@@ -1,7 +1,7 @@
-import { Component, AfterViewInit } from '@angular/core';
-import { Router, NavigationStart } from '@angular/router';
+import { Component, AfterViewInit, OnInit } from '@angular/core';
+import { Router, NavigationStart, NavigationEnd } from '@angular/router';
 import * as ECharts from 'echarts';
-
+import { DataService } from '../../service/data.service'
 @Component({
     template: `
         <div class="gallery" nz-row >
@@ -62,10 +62,29 @@ import * as ECharts from 'echarts';
     `]
 })
 
-export class EChartsGalleryComponent implements AfterViewInit {
-    router: Router
-    constructor(router: Router) {
-        this.router = router;
+export class EChartsGalleryComponent implements AfterViewInit, OnInit {
+    private timer
+    constructor(private router: Router, private dataService: DataService) { }
+    ngOnInit() {
+        this.dataService.getData().subscribe(data => this.timer = data);
+
+        this.router.events.subscribe(event => {
+            if (event instanceof NavigationStart){
+                console.info('子路由开始');
+                this.timer && window.clearInterval(this.timer);
+                //销毁ECharts监听事件
+                if (document.getElementById('main') && ECharts.getInstanceByDom(document.getElementById('main'))) {
+                    console.info('beforeDispose:', ECharts.getInstanceByDom(document.getElementById('main')));
+                    ECharts.getInstanceByDom(document.getElementById('main')).dispose();
+                    console.info('afterDispose:', ECharts.getInstanceByDom(document.getElementById('main')));
+                }
+            }
+            if (event instanceof NavigationEnd) {
+                console.info('子路由结束');
+                //触发路由切换动画
+
+            }
+        })
     }
     ngAfterViewInit() { }
 

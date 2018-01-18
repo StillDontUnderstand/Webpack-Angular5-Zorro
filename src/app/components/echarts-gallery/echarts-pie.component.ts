@@ -3,7 +3,7 @@ import * as ECharts from 'echarts';
 import { DataService } from '../../service/data.service'
 
 @Component({
-    template: ``
+    template: ``,
 })
 
 export class PieComponent implements AfterViewInit{
