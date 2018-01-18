@@ -11,6 +11,7 @@ import { ScatterComponent } from './echarts-scatter.component';
 import { MapComponent } from './echarts-map.component';
 import { MapPMComponent } from './echarts-map-pm.component';
 import { LayerComponent } from './echarts-layer.component';
+import { NzDemoCardFlexComponent } from './echarts-gallery-card.component'
 
 @NgModule({
     imports: [
@@ -26,7 +27,8 @@ import { LayerComponent } from './echarts-layer.component';
         ScatterComponent,
         MapComponent,
         MapPMComponent,
-        LayerComponent
+        LayerComponent,
+        NzDemoCardFlexComponent
     ],
     exports: [
         EChartsGalleryComponent

@@ -6,6 +6,9 @@ import { DataService } from '../../service/data.service'
     template: `
         <div class="gallery" nz-row >
             <div nz-col [nzSpan]="4">
+                <nz-demo-card-flex [src]="{title:'lalala'}"></nz-demo-card-flex>
+            </div>
+            <div nz-col [nzSpan]="4">
                 <a routerLink="pie" routerLinkActive="active">Pie-Chart</a>
             </div>
             <div nz-col [nzSpan]="4">
