@@ -3,13 +3,13 @@ import { Component, Input } from '@angular/core';
     selector: 'nz-demo-card-flex',
     template: `
     <a routerLink={{src.link}} routerLinkActive="active">
-        <nz-card>
+        <nz-card >
         <ng-template #body>
             <div class="custom-image">
                 <img  [src]="pie"/>
             </div>
             <div class="custom-card">
-            <h3>{{src.title}}</h3>
+              <h3>{{src.title}}</h3>
             </div>
         </ng-template>
         </nz-card>

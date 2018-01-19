@@ -19,7 +19,7 @@ import { NzNotificationService } from 'ng-zorro-antd';
             position: absolute;
             width: calc(100% - 32px);
             min-height: calc(100% - 48px);          
-            box-shadow:0px 1px 11px 2px #00000059;
+            box-shadow:0px 0px 6px 1px #00000042;
             background: #fff;
             margin: 16px 16px 30px 16px;
             z-index: 50;
@@ -74,7 +74,7 @@ export class GraphEditorComponent implements AfterViewInit {
                     shadowColor: '#00000094',
                     fill: 'white',
                     stroke: 'white',
-                    opacity: 0
+                    opacity: 1
                 }
             });
 
@@ -87,23 +87,23 @@ export class GraphEditorComponent implements AfterViewInit {
                     radius: 5,
                     fill: 'white',
                     stroke: 'white',
-                    opacity: 0.3
+                    opacity: 1
                 }
             });
-            shape2.animate(
-                {
-                    opacity: 1
-                },
-                200,
-                'ease-in'
-            );
-            shape.animate(
-                {
-                    opacity: 1
-                },
-                500,
-                'ease-in'
-            );
+            // shape2.animate(
+            //     {
+            //         opacity: 1
+            //     },
+            //     200,
+            //     'ease-in'
+            // );
+            // shape.animate(
+            //     {
+            //         opacity: 1
+            //     },
+            //     500,
+            //     'ease-in'
+            // );
             group.addShape('text', {
                 attrs: {
                     x: cfg.x - 40,
@@ -113,39 +113,12 @@ export class GraphEditorComponent implements AfterViewInit {
                 }
             });
             return shape
-
-
-
-
         }
     }, 'customNode1');
 
-
-    data = {
-        "nodes": [
-            {
-                "x": 140,
-                "y": 210,
-                "id": "node1"
-            },
-            {
-                "x": 270,
-                "y": 210,
-                "id": "node2"
-            }
-        ],
-        "edges": [
-            {
-                "source": "node1",
-                "id": "edge1",
-                "target": "node2"
-            }
-        ]
-    };
-
     constructor(private _notification: NzNotificationService) { }
 
-    // net: any;
+    net: any
     NgOnInit() {
 
     }
@@ -185,7 +158,7 @@ export class GraphEditorComponent implements AfterViewInit {
         //   height: window.innerHeight    // 画布高
         // });
         //配置G6画布 事件监听 动态改变
-        const net = new G6.Net({
+        this.net = new G6.Net({
             id: 'graph',      // 容器ID
             // fitView: 'autoZoom', // 自适应
             modes: {
@@ -206,7 +179,7 @@ export class GraphEditorComponent implements AfterViewInit {
         // 载入数据
         // net.source(this.data.nodes, this.data.edges);
         // 渲染关系图
-        net.render();
+        this.net.render();
         //铺满content 不能通过id获取，id是动态生成的
         const canvas = document.querySelectorAll('canvas');
         // console.info(canvas);
@@ -216,14 +189,14 @@ export class GraphEditorComponent implements AfterViewInit {
 
         addCustom1.onclick = () => {
             console.info("添加自定义图形1")
-            net.beginAdd('node', {
+            this.net.beginAdd('node', {
                 shape: 'customNode1'
             });
         };
 
         addCustom2.onclick = () => {
             console.info("添加自定义图形2")
-            net.beginAdd('node', {
+            this.net.beginAdd('node', {
                 shape: 'customNode2'
             });
         };
@@ -231,7 +204,7 @@ export class GraphEditorComponent implements AfterViewInit {
         addLine.onclick = () => {
             console.info("添加直线")
             canvas[1].onclick = () => {
-                net.beginAdd('edge', {
+                this.net.beginAdd('edge', {
                     shape: 'arrow'
                 });
             }
@@ -240,7 +213,7 @@ export class GraphEditorComponent implements AfterViewInit {
         addSmooth.onclick = () => {
             console.info("添加曲线")
             canvas[1].onclick = () => {
-                net.beginAdd('edge', {
+                this.net.beginAdd('edge', {
                     shape: 'smoothArrow'
                 });
             }
@@ -251,7 +224,7 @@ export class GraphEditorComponent implements AfterViewInit {
             canvas[1].onclick = () => {
                 return
             }
-            net.changeMode('drag');
+            this.net.changeMode('drag');
         };
 
         edit.onclick = () => {
@@ -259,7 +232,7 @@ export class GraphEditorComponent implements AfterViewInit {
             canvas[1].onclick = () => {
                 return
             }
-            net.changeMode('edit');
+            this.net.changeMode('edit');
         };
 
         default_.onclick = () => {
@@ -267,31 +240,45 @@ export class GraphEditorComponent implements AfterViewInit {
             canvas[1].onclick = () => {
                 return
             }
-            net.changeMode('default');
+            this.net.changeMode('default');
         }
         test.onclick = () => {
-            console.info(net.invertPoint(net.converPoint(canvas[1])))
-            console.info(net.invertPoint(canvas[1]))
+            console.info(this.net.invertPoint(this.net.converPoint(canvas[1])))
+            console.info(this.net.invertPoint(canvas[1]))
 
-            var ctx = net.getContext("2d");
+            var ctx = this.net.getContext("2d");
             ctx.shadowBlur = 20;
             ctx.shadowColor = "black";
             ctx.fillStyle = "blue";
             ctx.fillRect(20, 20, 100, 80);
-            net.refresh
+            this.net.refresh
         }
         save.onclick = () => {
             console.info("保存")
-            const saveData = net.save();
+            const saveData = this.net.save();
             const json = JSON.stringify(saveData, null, 2);
             console.log(saveData, json); // eslint-disable-line no-console
             this.createBasicNotification(json);
         };
+        this.net.on('itemmouseenter', ev => {
+            console.info("trigger")
+            const item = ev.item;
+            this.net.update(item, {
+                shadowBlur: 200,
+                shadowColor: '#00000094',
+                fill:'#000000',
+
+            });
+            this.net.refresh();
+        });
+
     }
+
     createBasicNotification(str) {
         this._notification.blank('保存成功', str);
     }
 
 }
+
 
 

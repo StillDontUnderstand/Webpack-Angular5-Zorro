@@ -11,7 +11,7 @@ import { DataService } from '../../service/data.service'
     providers: [DataService],
     template: `
       <nz-layout style="height:100%" >
-        <nz-sider nzCollapsible [(nzCollapsed)]="isCollapsed" sider>
+        <nz-sider nzCollapsible [(nzCollapsed)]="isCollapsed" sider style="box-shadow: rgba(0, 0, 0, 0.45) 0px 0px 4px 0px;">
             <div class="logo">
             </div>
             <ul nz-menu [nzTheme]="'dark'" [nzMode]="isCollapsed?'vertical':'inline'">
