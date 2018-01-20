@@ -16,8 +16,8 @@ export const EditorInit = function (container) {
         },
         animate: true,
         mode: 'edit',  // 编辑模式
-        width: 1200,    // 画布宽
-        height: 710,    // 画布高
+        width: window.innerWidth - 200,    // 画布宽
+        height: window.innerHeight - 112,    // 画布高
         grid: {
             forceAlign: true, // 是否支持网格对齐
             cell: 15,         // 网格大小
@@ -30,10 +30,6 @@ export const EditorInit = function (container) {
 
 
 export const ToolInit = function (net) {
-    // const addCustom1: any = document.querySelector('#addCustom1');
-    // const addCustom2: any = document.querySelector('#addCustom2');
-    // const addCustom3: any = document.querySelector('#addCustom3');
-    // const addCustom4: any = document.querySelector('#addCustom4');
     const drag: any = document.querySelector('#drag');
     const edit: any = document.querySelector('#edit');
     const default_: any = document.querySelector('#default');
@@ -41,42 +37,40 @@ export const ToolInit = function (net) {
     const save: any = document.querySelector('#save');
     const canvas = document.querySelectorAll('canvas');
     // console.info(canvas);
-
+    //动态控制canvas尺寸
     canvas[0].style.width = '100%';
+    // canvas[0].style.height = '100%';
     canvas[1].style.width = '100%';
+    // canvas[1].style.height = '100%';
 
-    // addCustom1.onclick = () => {
-    //     console.info("添加自定义图形1")
-    //     net.beginAdd('node', {
-    //         shape: 'customNode1'
-    //     });
-    // };
-
-
-    // addCustom2.onclick = () => {
-    //     console.info("添加自定义图形2")
-    //     net.beginAdd('node', {
-    //         shape: 'customNode2'
-    //     });
-    // };
-    // addCustom3.onclick = () => {
-    //     console.info("添加自定义图形3")
-    //     net.beginAdd('node', {
-    //         shape: 'customNode3'
-    //     });
-    // };
-    // addCustom4.onclick = () => {
-    //     console.info("添加自定义图形4")
-    //     net.beginAdd('node', {
-    //         shape: 'customNode4'
-    //     });
-    // };
     document.querySelector('#toolBar').addEventListener('click',
         (ev) => {
-            const target:any = ev.target
-            net.beginAdd('node', {
-                shape: ""+target.id
-            });
+            const target: any = ev.target
+            console.info(ev)
+            console.info(target)
+            console.info(target.classList.contains('after'))
+            //过滤非图形添加类按钮
+            if (target.classList.contains("after")) {
+                var toolBar = document.getElementById('toolBar')
+                var classList = toolBar.classList
+                if (!classList.contains('isShow')) {
+                    classList.add('isShow');
+                    classList.remove('notShow');
+
+                } else {
+                    classList.remove('isShow');
+                    classList.add('notShow');
+
+                }
+            } else {
+                if (target.id != "save") {
+                    net.beginAdd('node', {
+                        shape: "" + target.id
+                    });
+                }
+            }
+
+
         }
     )
 
@@ -102,17 +96,6 @@ export const ToolInit = function (net) {
             return
         }
         net.changeMode('default');
-    }
-    test.onclick = () => {
-        console.info(net.invertPoint(net.converPoint(canvas[1])))
-        console.info(net.invertPoint(canvas[1]))
-
-        var ctx = net.getContext("2d");
-        ctx.shadowBlur = 20;
-        ctx.shadowColor = "black";
-        ctx.fillStyle = "blue";
-        ctx.fillRect(20, 20, 100, 80);
-        net.refresh
     }
     save.onclick = () => {
         console.info("保存")
