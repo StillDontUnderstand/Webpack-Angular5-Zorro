@@ -2,11 +2,25 @@ import { Component, AfterViewInit, OnInit } from '@angular/core';
 import * as G6 from '@antv/g6';
 
 import { NzNotificationService } from 'ng-zorro-antd';
+import { Registed } from './graph-editor-shape';
+import { EditorInit, ToolInit } from './graph-editor-core';
 
 @Component({
     template: `
     <div id="graph"></div>
-    <div id = "anchor"></div>
+    <div id = "anchor">
+         <div id="toolBar" style="position: fixed;z-index: 10;top:80px;">
+            <button id="addCustom1" >自定义形1</button>
+            <button id="addCustom2">自定义形2</button>
+            <button id="addCustom3">自定义形3</button>
+            <button id="addHTML1">DOM图形</button>
+            <button id="drag">拖拽模式</button>
+            <button id="edit">编辑模式</button>
+            <button id="default">默认模式</button>
+            <button id="test">测试</button>
+            <button id="save">保存</button>
+        </div>
+    </div>
     `,
     styles: [`
         #graph {
@@ -25,260 +39,56 @@ import { NzNotificationService } from 'ng-zorro-antd';
             z-index: 50;
             border-radius: 5px;
         }
+        .shape3{
+            background:red ! important;
+            border: green 2px solid;
+        }
     `]
 })
 
 export class GraphEditorComponent implements AfterViewInit {
-    customNode1 = new G6.registerNode('customNode1', {
-        draw(cfg, group) {
-            const shape = group.addShape('rect', {
-                attrs: {
-                    x: cfg.x - 40,
-                    y: cfg.y - 40,
-                    width: 80,
-                    height: 80,
-                    fill: '#fff',
-                    stroke: 'green'
-                }
-            });
-            return shape;
-        },
-        getAnchorPoints() {
-            return [
-                [0, 0.25],
-                [0, 0.5],
-                [0, 0.75],
-                [1, 0.25],
-                [1, 0.5],
-                [1, 0.75],
-                [0.25, 0],
-                [0.5, 0],
-                [0.75, 0],
-                [0.25, 1],
-                [0.5, 1],
-                [0.75, 1]
-            ];
-        }
-    }, 'rect');
-    customNode2 = new G6.registerNode('customNode2', {
-        draw(cfg, group) {
-
-            const shape = group.addShape('rect', {
-                attrs: {
-                    x: cfg.x - 40,
-                    y: cfg.y - 40,
-                    width: 80,
-                    height: 80,
-                    radius: 5,
-                    shadowBlur: 20,
-                    shadowColor: '#00000094',
-                    fill: 'white',
-                    stroke: 'white',
-                    opacity: 1
-                }
-            });
-
-            const shape2 = group.addShape('rect', {
-                attrs: {
-                    x: cfg.x - 40,
-                    y: cfg.y - 40,
-                    width: 80,
-                    height: 80,
-                    radius: 5,
-                    fill: 'white',
-                    stroke: 'white',
-                    opacity: 1
-                }
-            });
-            // shape2.animate(
-            //     {
-            //         opacity: 1
-            //     },
-            //     200,
-            //     'ease-in'
-            // );
-            // shape.animate(
-            //     {
-            //         opacity: 1
-            //     },
-            //     500,
-            //     'ease-in'
-            // );
-            group.addShape('text', {
-                attrs: {
-                    x: cfg.x - 40,
-                    y: cfg.y - 25,
-                    fill: '#333',
-                    text: '自定义节点'
-                }
-            });
-            return shape
-        }
-    }, 'customNode1');
-
-    constructor(private _notification: NzNotificationService) { }
-
-    net: any
+    // private a = Registed.Shape1;
+    // private b = Registed.Shape2;
+    // private v = Registed.Shape3;
+    private c = Registed;
     NgOnInit() {
 
     }
-    // width: number = this.nzContent.offsetWidth;
-    // height: number = this.nzContent.offsetHeight;
     ngAfterViewInit() {
-
-        // console.info(document.querySelector('#graph'));
-        const anchor: any = document.querySelector('#anchor')
-        anchor.innerHTML = '<div id="toolBar" style="position: fixed;z-index: 10;top:80px;"></div>';
-        const toolBar: any = document.querySelector('#toolBar');
-        toolBar.innerHTML += '<button id="addCustom1">自定义形1</button>';
-        toolBar.innerHTML += '<button id="addCustom2">自定义形2</button>';
-        toolBar.innerHTML += '<button id="addSmooth">添加曲线</button>';
-        toolBar.innerHTML += '<button id="addLine">添加直线</button>';
-        toolBar.innerHTML += '<button id="drag">拖拽模式</button>';
-        toolBar.innerHTML += '<button id="edit">编辑模式</button>';
-        toolBar.innerHTML += '<button id="default">默认模式</button>';
-        toolBar.innerHTML += '<button id="test">测试</button>';
-        toolBar.innerHTML += '<button id="save">保存</button>';
-
-
-
-        const addCustom1: any = document.querySelector('#addCustom1');
-        const addCustom2: any = document.querySelector('#addCustom2');
-        const drag: any = document.querySelector('#drag');
-        const edit: any = document.querySelector('#edit');
-        const addLine: any = document.querySelector('#addLine');
-        const addSmooth: any = document.querySelector('#addSmooth');
-        const default_: any = document.querySelector('#default');
-        const test: any = document.querySelector('#test');
-        const save: any = document.querySelector('#save');
-        // const net = new G6.Net({
-        //   id: 'mountNode',      // 容器ID
-        //   mode: 'edit',  // 编辑模式
-        //   fitView: 'cc', // 自适应视口为左上
-        //   height: window.innerHeight    // 画布高
-        // });
-        //配置G6画布 事件监听 动态改变
-        this.net = new G6.Net({
-            id: 'graph',      // 容器ID
-            // fitView: 'autoZoom', // 自适应
-            modes: {
-                default: ['dragNode', 'clickActive', 'dragEdge', 'dragBlank', 'clickBlankClearActive'],
-                drag: ['shortcut', 'dragCanvas', 'wheelZoom'],
-                add: ['clickAddNode', 'dragAddEdge', 'hoverAnchorSetActived', 'hoverNodeShowAnchor'],
-                edit: [
-                    'dragNode', 'dragEdge', 'clickBlankClearActive', 'resizeEdge', 'clickActive', 'dragNodeEndSetActive',
-                    'multiSelect', 'resizeNode', 'shortcut', 'wheelZoom', 'hoverNodeShowAnchor', 'hoverAnchorSetActived', 'dragEdgeEndHideAnchor', 'dragNodeEndHideAnchor'
-                ]
-            },
-            animate: true,
-            mode: 'edit',  // 编辑模式
-            width: 1200,    // 画布宽
-            height: 710    // 画布高
-        });
-
-        // 载入数据
-        // net.source(this.data.nodes, this.data.edges);
-        // 渲染关系图
-        this.net.render();
-        //铺满content 不能通过id获取，id是动态生成的
-        const canvas = document.querySelectorAll('canvas');
-        // console.info(canvas);
-
-        canvas[0].style.width = '100%';
-        canvas[1].style.width = '100%';
-
-        addCustom1.onclick = () => {
-            console.info("添加自定义图形1")
-            this.net.beginAdd('node', {
-                shape: 'customNode1'
-            });
+        //屏蔽默认右键事件
+        document.oncontextmenu = function(e){
+            e.preventDefault();
         };
+        const net = EditorInit("graph");
+        console.info("主视图渲染完毕", net);
 
-        addCustom2.onclick = () => {
-            console.info("添加自定义图形2")
-            this.net.beginAdd('node', {
-                shape: 'customNode2'
-            });
-        };
-
-        addLine.onclick = () => {
-            console.info("添加直线")
-            canvas[1].onclick = () => {
-                this.net.beginAdd('edge', {
-                    shape: 'arrow'
+        net.tooltip(true);     
+        net.node().tooltip('id');
+        
+        net.render();
+        ToolInit(net);
+        // 鼠标左键按下事件
+        net.on('mousedown', function (ev) {
+            console.info(ev)
+            const shape = ev.shape;
+            //点击触点触发连接操作    
+            if (shape && shape.hasClass('anchor-point')) {
+                console.log(shape.get('index'));
+                net.beginAdd('edge', {
+                    shape:'smoothArrow'
                 });
             }
-        };
-
-        addSmooth.onclick = () => {
-            console.info("添加曲线")
-            canvas[1].onclick = () => {
-                this.net.beginAdd('edge', {
-                    shape: 'smoothArrow'
-                });
-            }
-        };
-
-        drag.onclick = () => {
-            console.info("切换到拖拽模式")
-            canvas[1].onclick = () => {
-                return
-            }
-            this.net.changeMode('drag');
-        };
-
-        edit.onclick = () => {
-            console.info("切换到编辑模式")
-            canvas[1].onclick = () => {
-                return
-            }
-            this.net.changeMode('edit');
-        };
-
-        default_.onclick = () => {
-            console.info("切换到默认模式")
-            canvas[1].onclick = () => {
-                return
-            }
-            this.net.changeMode('default');
-        }
-        test.onclick = () => {
-            console.info(this.net.invertPoint(this.net.converPoint(canvas[1])))
-            console.info(this.net.invertPoint(canvas[1]))
-
-            var ctx = this.net.getContext("2d");
-            ctx.shadowBlur = 20;
-            ctx.shadowColor = "black";
-            ctx.fillStyle = "blue";
-            ctx.fillRect(20, 20, 100, 80);
-            this.net.refresh
-        }
-        save.onclick = () => {
-            console.info("保存")
-            const saveData = this.net.save();
-            const json = JSON.stringify(saveData, null, 2);
-            console.log(saveData, json); // eslint-disable-line no-console
-            this.createBasicNotification(json);
-        };
-        this.net.on('itemmouseenter', ev => {
-            console.info("trigger")
-            const item = ev.item;
-            this.net.update(item, {
-                shadowBlur: 200,
-                shadowColor: '#00000094',
-                fill:'#000000',
-
-            });
-            this.net.refresh();
         });
-
+        net.on('dblclick', function(ev){
+            console.info("鼠标双击");
+        });
+        net.on('contextmenu', function(ev){
+            console.info("鼠标右键");            
+            
+        });
     }
-
-    createBasicNotification(str) {
-        this._notification.blank('保存成功', str);
-    }
-
 }
+
 
 
 

@@ -10,7 +10,7 @@ import { GraphEditorComponent } from './graph-editor.component';
 @NgModule({
     imports: [
         CommonModule,
-        GraphEditorRoutingModule,        
+        GraphEditorRoutingModule,
         NgZorroAntdModule,
         FormsModule,
     ],

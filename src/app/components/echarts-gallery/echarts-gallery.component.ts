@@ -33,7 +33,7 @@ import { DataService } from '../../service/data.service'
             height: 550px;
         }
         .gallery{
-            margin:20px 20px 0px 20px;
+            margin:2 0px 20px 0px 20px;
         }
     `]
 })
@@ -47,6 +47,7 @@ export class EChartsGalleryComponent implements AfterViewInit, OnInit {
         this.router.events.subscribe(event => {
             if (event instanceof NavigationStart) {
                 console.info('子路由开始');
+                //销毁TimeInterval
                 this.timer && window.clearInterval(this.timer);
                 //销毁ECharts监听事件
                 if (document.getElementById('main') && ECharts.getInstanceByDom(document.getElementById('main'))) {

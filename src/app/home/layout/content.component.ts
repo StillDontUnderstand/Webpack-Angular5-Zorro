@@ -46,7 +46,7 @@ import { DataService } from '../../service/data.service'
             </ul>
         </nz-sider>
         <nz-layout>
-            <nz-content [@fadeAnimation]="routerStateCode"  (scroll.p)="scrollHandler($event)">
+            <nz-content [@fadeAnimation]="routerStateCode"  (scroll)="scrollHandler($event)">
                 <router-outlet></router-outlet>                           
             </nz-content>
             <nz-footer class="footer" [style.color]="c">HF Design ©2018 Implement By Albert</nz-footer>
