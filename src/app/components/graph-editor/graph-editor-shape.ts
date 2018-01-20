@@ -174,12 +174,8 @@ export const Registed = {
         }
     }, 'rect'),
 
-    Shape4: new G6.registerNode('customHtml1', {
-        getHtml(cfg) {
-            const model = cfg.model;
-            const dom = Util.createDOM('<ul class="customNode1"><li>html节点</li><li>' + model.id + '</li><li>x:' + model.x + '</li><li>y:' + model.y + '</li></ul>');
-            return dom;
-        }
-    }, 'html'),
+    Shape4: new G6.registerNode('customNode4', {
+        
+    }, 'rect'),
 }
 

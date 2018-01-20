@@ -10,10 +10,10 @@ import { EditorInit, ToolInit } from './graph-editor-core';
     <div id="graph"></div>
     <div id = "anchor">
          <div id="toolBar" style="position: fixed;z-index: 10;top:80px;">
-            <button id="addCustom1" >自定义形1</button>
-            <button id="addCustom2">自定义形2</button>
-            <button id="addCustom3">自定义形3</button>
-            <button id="addHTML1">DOM图形</button>
+            <button id="customNode1">自定义形1</button>
+            <button id="customNode2">自定义形2</button>
+            <button id="customNode3">自定义形3</button>
+            <button id="customNode4">自定义形4</button>
             <button id="drag">拖拽模式</button>
             <button id="edit">编辑模式</button>
             <button id="default">默认模式</button>

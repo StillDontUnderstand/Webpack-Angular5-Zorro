@@ -1,7 +1,7 @@
 import { NzNotificationService } from 'ng-zorro-antd';
 import * as G6 from '@antv/g6';
 
-export const EditorInit = function (container){
+export const EditorInit = function (container) {
     return new G6.Net({
         id: container,      // 容器ID
         // fitView: 'autoZoom', // 自适应
@@ -22,18 +22,18 @@ export const EditorInit = function (container){
             forceAlign: true, // 是否支持网格对齐
             cell: 15,         // 网格大小
             line: {           // 网格线样式
-              stroke: '#ececec'
+                stroke: '#ececec'
             }
-          }
+        }
     });
 }
 
 
 export const ToolInit = function (net) {
-    const addCustom1: any = document.querySelector('#addCustom1');
-    const addCustom2: any = document.querySelector('#addCustom2');
-    const addCustom3: any = document.querySelector('#addCustom3');
-    const addCustom4: any = document.querySelector('#addHTML1');
+    // const addCustom1: any = document.querySelector('#addCustom1');
+    // const addCustom2: any = document.querySelector('#addCustom2');
+    // const addCustom3: any = document.querySelector('#addCustom3');
+    // const addCustom4: any = document.querySelector('#addCustom4');
     const drag: any = document.querySelector('#drag');
     const edit: any = document.querySelector('#edit');
     const default_: any = document.querySelector('#default');
@@ -45,33 +45,41 @@ export const ToolInit = function (net) {
     canvas[0].style.width = '100%';
     canvas[1].style.width = '100%';
 
-    addCustom1.onclick = () => {
-        console.info("添加自定义图形1")
-        net.beginAdd('node', {
-            shape: 'customNode1'
-        });
-    };
-         
-    
-    addCustom2.onclick = () => {
-        console.info("添加自定义图形2")
-        net.beginAdd('node', {
-            shape: 'customNode2'
-        });
-    };
-    addCustom3.onclick = () => {
-        console.info("添加自定义图形2")
-        net.beginAdd('node', {
-            shape: 'customNode3'
-        });
-    };
-    addCustom4.onclick = () => {
-        console.info("添加自定义图形2")
-        net.beginAdd('node', {
-            shape: 'customHtml1'
-        });
-    };
-    
+    // addCustom1.onclick = () => {
+    //     console.info("添加自定义图形1")
+    //     net.beginAdd('node', {
+    //         shape: 'customNode1'
+    //     });
+    // };
+
+
+    // addCustom2.onclick = () => {
+    //     console.info("添加自定义图形2")
+    //     net.beginAdd('node', {
+    //         shape: 'customNode2'
+    //     });
+    // };
+    // addCustom3.onclick = () => {
+    //     console.info("添加自定义图形3")
+    //     net.beginAdd('node', {
+    //         shape: 'customNode3'
+    //     });
+    // };
+    // addCustom4.onclick = () => {
+    //     console.info("添加自定义图形4")
+    //     net.beginAdd('node', {
+    //         shape: 'customNode4'
+    //     });
+    // };
+    document.querySelector('#toolBar').addEventListener('click',
+        (ev) => {
+            const target:any = ev.target
+            net.beginAdd('node', {
+                shape: ""+target.id
+            });
+        }
+    )
+
     drag.onclick = () => {
         console.info("切换到拖拽模式")
         canvas[1].onclick = () => {
@@ -113,14 +121,14 @@ export const ToolInit = function (net) {
         console.log(saveData, json); // eslint-disable-line no-console
         // createBasicNotification(json);
     };
-    
-          
-    
-    net.on('dragmove', function(ev){
-        console.info("拖拽",ev)        
+
+
+
+    net.on('dragmove', function (ev) {
+        console.info("拖拽", ev)
     });        // 拖拽中事件
-    
-    
+
+
 
 
 
