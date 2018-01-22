@@ -85,28 +85,31 @@ import { EditorInit, ToolInit } from './graph-editor-core';
         }
         #toolBar{
             position: absolute;
-            height: 100%;
+            height: 50%;
             width:240px;
-            top: 0px;
+            top: 25%;
+            box-shadow: 0px 0px 3px 1px #00000052;
+            border-radius: 5px;            
             transition: all 1s ease-in-out;
         }
         #toolBar .after{
             position: absolute;
             border-top-right-radius: 5px;
             border-bottom-right-radius: 5px;
-            right: -7px;
+            right: 0px;
             height: 100%;
             top: 0px;
             width: 7px;
             background: #ffffff00;
-            box-shadow: 2px 0px 5px -1px #0000008c;
         }
         .toolShow{
+            opciaty:1;
             left:0px;
             z-index:40;
         }
         .toolHide{
-            left:-240px;         
+            opacity:0;
+            left:-233px;         
         }
         #customNode3,#customNode2,#customNode1,#customNode4{
             position:absolute;
@@ -123,15 +126,25 @@ import { EditorInit, ToolInit } from './graph-editor-core';
             border-top-left-radius: 5px;
             border-top-right-radius: 5px;
         }
+        #settingPanel::before{
+            position: absolute;
+            content: '';
+            border-radius: 5px;
+            backdrop-filter: blur(1px);
+            width: 100%;
+            height: 100%;
+            background-color: #dadada38;
+            top: 0px;
+            overflow: hidden;
+        }
         #settingPanel{
             position: absolute;
             border-radius: 5px;
             box-shadow: 0px 0px 4px 0px #00000052;
-            backdrop-filter: blur(1px);
             width: 350px;
             height: 100%;
-            background-color: #b5b5b52b;
             transition: all 0.5s ease-in-out;
+            padding: 30px 0px 0px 0px;
         }
         .panelShow{
             right: 0px;            

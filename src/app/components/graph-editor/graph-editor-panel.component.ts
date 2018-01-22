@@ -11,10 +11,7 @@ import {
   template: `
   <form nz-form [formGroup]="validateForm" (ngSubmit)="_submitForm()">
     <div nz-form-item nz-row *ngFor="let control of controlArray;let i = index">
-      <div nz-form-label nz-col [nzSpan]="4" *ngIf="i==0">
-        <label [attr.for]="control.controlInstance">Passengers</label>
-      </div>
-      <div nz-form-control nz-col [nzSpan]="20" [nzOffset]="i==0?0:4">
+      <div nz-form-control nz-col [nzSpan]="20" [nzOffset]="4">
         <nz-input
           style="width: 60%; margin-right:8px;"
           [nzSize]="'large'"
@@ -25,13 +22,13 @@ import {
         <i class="anticon anticon-minus-circle-o dynamic-delete-button" (click)="removeField(control,$event)"></i>
         <div nz-form-explain
           *ngIf="getFormControl(control.controlInstance)?.dirty&&getFormControl(control.controlInstance)?.hasError('required')">
-          Please input passenger's name or delete this field.
+          Please input passenger's name.
         </div>
       </div>
     </div>
     <div nz-form-item nz-row>
       <div nz-form-control nz-col [nzSpan]="20" [nzOffset]="4">
-        <button nz-button [nzType]="'dashed'" [nzSize]="'large'" style="width:60%" (click)="addField($event)">
+        <button nz-button [nzType]="'dashed'" [nzSize]="'large'" style="width:60%" (click)="addField($event)" nzGhost>
           <i class="anticon anticon-plus"></i>
           <span> Add field</span>
         </button>
@@ -39,7 +36,7 @@ import {
     </div>
     <div nz-form-item nz-row>
       <div nz-form-control nz-col [nzSpan]="20" [nzOffset]="4">
-        <button nz-button [nzType]="'primary'" [nzSize]="'large'">Submit</button>
+        <button nz-button [nzType]="'primary'" [nzSize]="'large'" nzGhost>Submit</button>
       </div>
     </div>
   </form>
@@ -54,6 +51,10 @@ import {
         font-size: 24px;
         color: #999;
         transition: all .3s;
+      }
+      .ant-input {
+        background-color:transparent ! important;
+        border:1px solid black ! important;
       }
     `
   ]
