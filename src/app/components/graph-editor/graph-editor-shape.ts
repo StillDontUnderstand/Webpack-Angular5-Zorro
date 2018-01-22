@@ -1,6 +1,5 @@
 import * as G6 from '@antv/g6';
 
-const Util = G6.Util;
 export const Registed = {
 
     Shape1: new G6.registerNode('customNode1', {
