@@ -11,8 +11,8 @@ import { EditorInit, ToolInit } from './graph-editor-core';
     <div id = "anchor" >
         <div class="toolHide" id="toolBar" >
             <div style="margin:5px 5px 5px 20px;">
-                <button id="edit" [nzSize]="'small'" nz-button [nzType]="'primary'" nzGhost>编辑模式</button>
-                <button id="drag" [nzSize]="'small'" nz-button [nzType]="'primary'" nzGhost>拖拽模式</button>
+                <!--<button id="edit" [nzSize]="'small'" nz-button [nzType]="'primary'" nzGhost>编辑模式</button>
+                <button id="drag" [nzSize]="'small'" nz-button [nzType]="'primary'" nzGhost>拖拽模式</button> -->
                 <button id="save" [nzSize]="'small'" nz-button [nzType]="'primary'" nzGhost>保存图形</button>
             </div>
             <div class="node" id="customNode3" draggable="true" style="top:150px;left:20px;">
@@ -50,7 +50,7 @@ import { EditorInit, ToolInit } from './graph-editor-core';
             width: calc(100% - 32px);
             min-height: calc(100% - 48px);          
             box-shadow:0px 0px 6px 1px #00000042;
-            background: #fff;
+            background-color: #fff;
             margin: 16px 16px 30px 16px;
             z-index: 50;
             border-radius: 5px;
@@ -80,7 +80,6 @@ import { EditorInit, ToolInit } from './graph-editor-core';
             width: 100%;
             height: 100%;
             overflow: hidden;
-            background: #b5b5b52b;
             z-index: -1;
         }
         #toolBar{
@@ -96,11 +95,11 @@ import { EditorInit, ToolInit } from './graph-editor-core';
             position: absolute;
             border-top-right-radius: 5px;
             border-bottom-right-radius: 5px;
-            right: 0px;
+            right: -1px;
             height: 100%;
             top: 0px;
-            width: 7px;
-            background: #ffffff00;
+            width: 8px;
+            background-color: #88c0c545;
         }
         .toolShow{
             opciaty:1;

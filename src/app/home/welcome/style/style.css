@@ -1,29 +1,113 @@
-    .p-nav {
-      position:fixed;
-      top:0;
-      left:0;
-      width:100%;
-      z-index:100;
-    }
-    .p-container {
+    #Main{
       width:100%;
       min-height:100%;
       position:relative;
-      padding-bottom:80px;
-      
+      background-image:linear-gradient(135deg,#190e1b,#7437ab,#aabff7);
     }
-    .im-decribe {
-      width:480px;
-      margin-top:200px;
-      margin-left:30px;
+    #Main .im-decribe {
+      position: absolute;
+      top: calc(40% - 33px);
+      left: calc(50% - 198px);
+
+    }
+    #Webpack {
+      width:100%;
+      min-height:100%;
+      position:relative;
+      background-image:linear-gradient(135deg,#0C2733,#1E68AD,#bee7ff);
+    }
+    #Webpack .im-decribe {
+      position: absolute;
+      top: calc(40% - 33px);
+      left: calc(50% - 91px);
+
+    }
+    #Angular{
+      width:100%;
+      min-height:100%;
+      position:relative;
+      background-image:linear-gradient(135deg,#210101,#ad1b1b,#ffeaa1)
+    }
+    #Angular .im-decribe {
+      position: absolute;
+      top: calc(40% - 33px);
+      left: calc(50% - 74px);
+
+    }
+    #Ng-Ant-Design{
+      width:100%;
+      min-height:100%;
+      position:relative;
+      background-image:linear-gradient(135deg,#0b1531,#1f82c7,#6effd5);
+    }
+    #Ng-Ant-Design .im-decribe {
+      position: absolute;
+      top: calc(40% - 33px);
+      left: calc(50% - 147px);
+
+    }
+    #Electron{
+      width:100%;
+      min-height:100%;
+      position:relative;
+      background-image:linear-gradient(135deg,#0a1f27,#107a98,#89ff9c);
+    }
+    #Electron .im-decribe {
+      position: absolute;
+      top: calc(40% - 33px);
+      left: calc(50% - 78px);
       color:#fff;
     }
+    #Ionic{
+      width:100%;
+      min-height:100%;
+      position:relative;
+      background-image:linear-gradient(135deg,#0a0f27,#1855b1,#3dfffd);
+    }
+    #Ionic .im-decribe {
+      position: absolute;
+      top: calc(40% - 33px);
+      left: calc(50% - 45px);
+    }
+    #main-container ul{
+      position: fixed;
+      width: 100%;   
+      background-color: #9e99a221;
+      z-index: 100;
+    }
+    #main-container ul>li{
+      display: inline-block;
+      font-size: 16px;  
+      padding: 10px    
+    }
+    #main-container ul>li>a{
+      color: #fff;
+    }
+
+    .nav{
+      color:#fff;
+    }
+    .im-decribe {
+      position: absolute;
+      top: calc(40% - 33px);
+      left: calc(50% - 198px);
+      color:#fff;
+    }
+    .im-decribe button{
+      left: calc(50% - 35.5px);
+      top: 50px;
+    }
     .im-data {
-      float:right;
+      position: relative;
+      display: inline-block;
+      top: 6px;
+      left: 550px;
     }
     .im-data img {
-      margin-top:120px;
+      display: inline-block;
+      margin: 0px 20px;
     }
+
     .login-form {
       max-width: 300px;
     }

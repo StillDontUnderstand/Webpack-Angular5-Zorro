@@ -1,13 +1,50 @@
-<div class="p-container" style="background-image: url('../../../../src/assets/images/banner-bg.png');">
-    <!--  -->
-    <div class="im-decribe" style="float:left">
-        <h1 style="font-size:44px;color:#fff;padding-bottom:40px;">前端开发框架演示</h1>
-        <p style="font-size:20px;">Webpack + Angular4 + NgZorro </p>
-        <nzModalAsync></nzModalAsync>
-        
+<div id="main-container" style="width: 100%;height: 100%;">
+    <ul>
+        <li><a [scrollTo]="'Main'"  [duration]="1000">Home</a></li>
+        <li><a [scrollTo]="'Webpack'"  [duration]="1000">Webpack</a></li>
+        <li><a [scrollTo]="'Angular'" [duration]="1000">Angular 5</a></li>
+        <li><a [scrollTo]="'Ng-Ant-Design'"  [duration]="1000">Ng-Ant-Design</a></li>
+        <li><a [scrollTo]="'Electron'"  [duration]="1000">Electron</a></li>
+        <li><a [scrollTo]="'Ionic'"  [duration]="1000">Ionic</a></li>
+        <div class="im-data">
+            <img style="width:25px" src="../../../assets/images/webpack.svg">
+            <img style="width:27px;position:relative;top:2px;" src="../../../assets/images/angular.svg">
+            <img style="width:25px;" src="../../../assets/images/ant-design.svg">
+            <img style="width: 25px;" src="../../../assets/images/electron.png">
+            <img style="width: 25px;" src="../../../assets/images/ionic-logo.png">
+        </div>
+    </ul>
+    <div id="Main">
+        <div class="im-decribe">
+            <h1 style="font-size:44px;color:#fff;">大数据前端开发框架</h1>
+            <button nz-button [nzType]="'default'" [nzSize]="'large'" nzGhost (click)="login();">
+                <span>Demo</span>
+            </button>
+        </div>
     </div>
-    <div class="im-data">
-        <img src="../../../assets/images/Group66@2x.png">
+    <div id="Webpack">
+        <div class="im-decribe">
+            <h1 style="font-size:44px;color:#fff;">Webpack</h1>
+        </div>
     </div>
-
+    <div id="Angular">
+        <div class="im-decribe">
+            <h1 style="font-size:44px;color:#fff;">Angular 5</h1>
+        </div>
+    </div>
+    <div id="Ng-Ant-Design">
+        <div class="im-decribe">
+            <h1 style="font-size:44px;color:#fff;">Ng-Ant-Design</h1>
+        </div>
+    </div>
+    <div id="Electron">
+        <div class="im-decribe">
+            <h1 style="font-size:44px;color:#fff;">Electron</h1>
+        </div>
+    </div>
+    <div id="Ionic">
+        <div class="im-decribe">
+            <h1 style="font-size:44px;color:#fff;">Ionic</h1>
+        </div>
+    </div>
 </div>

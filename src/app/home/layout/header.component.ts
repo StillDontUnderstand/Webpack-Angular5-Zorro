@@ -1,9 +1,9 @@
 import { Component, OnInit, AfterViewInit } from '@angular/core';
-
+import { Router,ActivatedRoute } from '@angular/router'
 @Component({
-    selector:'root-header',
-    templateUrl:'header.html',
-    styles:[`
+    selector: 'root-header',
+    templateUrl: 'header.html',
+    styles: [`
         :host{
             z-index:100;
         }
@@ -19,15 +19,17 @@ import { Component, OnInit, AfterViewInit } from '@angular/core';
     `]
 })
 
-export class HeaderComponent implements AfterViewInit{
+export class HeaderComponent implements AfterViewInit {
     public avatarStyle = {
-         "background-color": "rgb(64, 64, 64)",
+        "background-color": "rgb(64, 64, 64)",
         //  "box-shadow": "0px 0px 10px 1px #ffffff"
     }
-    ngAfterViewInit(){
+    constructor(private router: Router,private route: ActivatedRoute) {}
+    
+    ngAfterViewInit() {
 
     }
-    private UserOperate = function(){
+    private UserOperate = function () {
         console.info("userOpserate")
     }
 }

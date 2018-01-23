@@ -22,16 +22,17 @@ import { DataService } from '../../service/data.service'
                 </ul>
             </li>
             <li nz-submenu>
-                <span title><i class="anticon anticon-api"></i><span class="nav-text" >配置管理</span></span>
+                <span title><i class="anticon anticon-api"></i><span class="nav-text" >异步加载</span></span>
                 <ul>
                 <li nz-menu-item><a routerLink="varible/1" routerLinkActive="active">常量</a></li>
                 <li nz-menu-item><a routerLink="varible/2" routerLinkActive="active">计算变量</a></li>
                 </ul>
             </li>
             <li nz-submenu>
-                <span title><i class="anticon anticon-team"></i><span class="nav-text" >用户管理</span></span>
+                <span title><i class="anticon anticon-team"></i><span class="nav-text" >一些功能</span></span>
                 <ul>
-                    <li nz-menu-item><a routerLink="user" routerLinkActive="active">用户</a></li>
+                    <li nz-menu-item><a routerLink="user" routerLinkActive="active">表单筛选</a></li>
+                    <li nz-menu-item><a routerLink="drag" routerLinkActive="active">拖拽功能</a></li>
                 </ul>
             </li>
             <li nz-submenu>
@@ -46,14 +47,35 @@ import { DataService } from '../../service/data.service'
             </ul>
         </nz-sider>
         <nz-layout>
-            <nz-content [@fadeAnimation]="routerStateCode"  (scroll)="scrollHandler($event)">
+            <nz-content [@fadeAnimation]="routerStateCode"  > <!--(scroll)="scrollHandler($event)"-->
                 <router-outlet></router-outlet>                           
             </nz-content>
-            <nz-footer class="footer" [style.color]="c">HF Design ©2018 Implement By Albert</nz-footer>
+            <nz-footer class="footer" [style.color]="'#5d5db100'">HF Design ©2018 Implement By Albert</nz-footer>
         </nz-layout>
     </nz-layout>
     `,
     styles: [`
+        @keyframes breath{
+             0% {
+                 opacity: 1;
+                 color :#5d5db100;
+                }
+                20%{
+                 color :#5d5db114;  
+                }
+            50%{ 
+                opacity:1;
+                color:#5d5db154;
+            }
+            60%{ 
+                opacity:1;
+                color:#5d5db194;
+            }
+            100% { 
+                    opacity: 1; 
+                    color:#5d5db100;
+                }
+        }
         .footer{
             position: fixed;
             padding: 0px;
@@ -61,7 +83,7 @@ import { DataService } from '../../service/data.service'
             left: calc(50% - 34px);
             transition:color 1.2s;
             font-size: 12px;
-            
+            animation:breath 7.5s infinite cubic-bezier(0.18, 0.4, 0.86, 0.63);;
         }
         nz-content{
             position:relative;
@@ -105,7 +127,7 @@ export class ContentComponent implements OnInit {
 
             }
             //路由开始触发事件
-            if (event instanceof NavigationStart) {
+            if (event instanceof NavigationStart && nzContent) {
                 console.info('路由开始')
                 //设置滚动条回到0点
                 this.timer = setTimeout(function () {
@@ -119,17 +141,17 @@ export class ContentComponent implements OnInit {
     }
     ngOnInit(): void {
     }
-    c: string = "#66339912";
-    // 通过(scroll)指令监听
-    scrollHandler($event) {
-        let target = $event.target;
-        let diff = target.scrollHeight - target.offsetHeight
-        if (target.scrollTop == diff) {
-            console.log("footer");
-            this.c = "#6926a057";
-        }
-        if (target.scrollTop == diff - 20 || target.scrollTop == 0) {
-            this.c = "#66339912";
-        }
-    }
+    // c: string = "#66339912";
+    // 通过(scroll)指令监听 设置footer颜色改变
+    // scrollHandler($event) {
+    //     let target = $event.target;
+    //     let diff = target.scrollHeight - target.offsetHeight
+    //     if (target.scrollTop == diff) {
+    //         console.log("footer");
+    //         this.c = "#6926a057";
+    //     }
+    //     if (target.scrollTop == diff - 20 || target.scrollTop == 0) {
+    //         this.c = "#66339912";
+    //     }
+    // }
 }
