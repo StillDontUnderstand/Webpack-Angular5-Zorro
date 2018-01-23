@@ -16,7 +16,20 @@ export class WelcomeComponent implements OnInit {
     }
     constructor(private router:Router){}
     login = () => {
-        console.info("demo")
         this.router.navigateByUrl("app");
+    }
+    goTo = (target) =>{
+        switch(target){
+            case 'Webpack' :'https://webpack.js.org/'
+            return ;
+            case 'Angular' :
+            return ; 
+            case 'Ng-Ant-Design':
+            return ;
+            case 'Electron':
+            return ;
+            case 'Ionic':
+            return;
+        }
     }
 }

@@ -1,11 +1,12 @@
 <div id="main-container" style="width: 100%;height: 100%;">
     <ul>
-        <li><a [scrollTo]="'Main'"  [duration]="1000">Home</a></li>
-        <li><a [scrollTo]="'Webpack'"  [duration]="1000">Webpack</a></li>
+        <li><a [scrollTo]="'Main'" [duration]="1000">Home</a></li>
+        <li><a [scrollTo]="'Webpack'" [duration]="1000">Webpack</a></li>
         <li><a [scrollTo]="'Angular'" [duration]="1000">Angular 5</a></li>
-        <li><a [scrollTo]="'Ng-Ant-Design'"  [duration]="1000">Ng-Ant-Design</a></li>
-        <li><a [scrollTo]="'Electron'"  [duration]="1000">Electron</a></li>
-        <li><a [scrollTo]="'Ionic'"  [duration]="1000">Ionic</a></li>
+        <li><a [scrollTo]="'Ng-Ant-Design'" [duration]="1000">Ng-Ant-Design</a></li>
+        <li><a [scrollTo]="'Electron'" [duration]="1000">Electron</a></li>
+        <li><a [scrollTo]="'Ionic'" [duration]="1000">Ionic</a></li>
+        <li><a [scrollTo]="'Demo'" [duration]="1000">Demo</a></li>
         <div class="im-data">
             <img style="width:25px" src="../../../assets/images/webpack.svg">
             <img style="width:27px;position:relative;top:2px;" src="../../../assets/images/angular.svg">
@@ -16,35 +17,93 @@
     </ul>
     <div id="Main">
         <div class="im-decribe">
-            <h1 style="font-size:44px;color:#fff;">大数据前端开发框架</h1>
-            <button nz-button [nzType]="'default'" [nzSize]="'large'" nzGhost (click)="login();">
-                <span>Demo</span>
-            </button>
+            <h1 style="font-size:44px;color:#fff;">Framewrok</h1>
         </div>
+        <div class="workspace">
+            <div class="framework1">
+                <div class="backend">backend</div>
+            </div>
+            <span style="position: relative;left: 50%;color:#fff">API</span>    
+            <div class="framework2">
+                <div class="axure">Axure</div>
+                <div class="ant-design">Angular</div>
+                <div class="echarts">Ant-Design</div>
+                <div class="others">Echarts</div>
+                <div class="angular">其他组件</div>
+                <div class="webpack">Webpack</div>
+                <div class="browser">Browser</div>
+                <div class="electron">Electron</div>
+                <div class="ionic">Ionic</div>
+                <div class="web">网页端</div>
+                <div class="app">移动端</div>
+                <div class="client">客户端</div>
+            </div>
+        </div>
+        <!-- <img src="../../../assets/images/framework.png" alt=""> -->
     </div>
     <div id="Webpack">
         <div class="im-decribe">
             <h1 style="font-size:44px;color:#fff;">Webpack</h1>
+            <p>webpack 可以看做是模块打包机：它做的事情是，分析你的项目结构，找到 JavaScript 模块以及其它的一些浏览器不能直接运行的拓展语言（Scss，TypeScript 等），并将其转换和打包为合适的格式供浏览器使用。</p>
+            <a href="https://webpack.js.org">
+                <button nz-button [nzType]="'default'" [nzSize]="'large'" nzGhost (click)="goTo('Webpack');">
+                    Document
+                </button>
+            </a>
         </div>
     </div>
     <div id="Angular">
         <div class="im-decribe">
             <h1 style="font-size:44px;color:#fff;">Angular 5</h1>
+            <p>一套框架，多种平台移动端 & 桌面端</p>
+            <a href="https://www.angular.cn/">
+                <button nz-button [nzType]="'default'" [nzSize]="'large'" nzGhost>
+                Document
+            </button>
+            </a>
         </div>
     </div>
     <div id="Ng-Ant-Design">
         <div class="im-decribe">
             <h1 style="font-size:44px;color:#fff;">Ng-Ant-Design</h1>
+            <p>一个服务于企业级产品的设计体系。基于『确定』和『自然』的设计价值观，通过模块化的解决方案，让设计者专注于更好的用户体验。</p>
+            <a href="https://ant.design/index-cn">
+                <button nz-button [nzType]="'default'" [nzSize]="'large'" nzGhost>
+                    Document
+                </button>
+            </a>
         </div>
     </div>
     <div id="Electron">
         <div class="im-decribe">
             <h1 style="font-size:44px;color:#fff;">Electron</h1>
+            <p>如果你可以建一个网站，你就可以建一个桌面应用程序。 Electron 是一个使用 JavaScript, HTML 和 CSS 等 Web 技术创建原生程序的框架，它负责比较难搞的部分，你只需把精力放在你的应用的核心上即可。
+            </p>
+            <a href="https://electronjs.org/">
+                <button nz-button [nzType]="'default'" [nzSize]="'large'" nzGhost>
+                    Document
+                </button>
+            </a>
         </div>
     </div>
     <div id="Ionic">
         <div class="im-decribe">
             <h1 style="font-size:44px;color:#fff;">Ionic</h1>
+            <p>Build amazing apps in one codebase, for any platform, with the web.</p>
+            <a href="https://ionicframework.com/">                    
+                <button nz-button [nzType]="'default'" [nzSize]="'large'" nzGhost>
+                    Document
+                </button>
+            </a>
+        </div>
+    </div>
+    <div id="Demo">
+        <div class="im-decribe">
+            <h1 style="font-size:44px;color:#fff;">Demo</h1>
+            <p>A demo constructed by using Angular5,Ant-Design,Webpack</p>
+                <button nz-button [nzType]="'default'" [nzSize]="'large'" nzGhost (click)="login();">
+                    Demo
+                </button>
         </div>
     </div>
 </div>

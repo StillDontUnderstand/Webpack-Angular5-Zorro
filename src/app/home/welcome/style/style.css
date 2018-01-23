@@ -7,9 +7,166 @@
     #Main .im-decribe {
       position: absolute;
       top: calc(40% - 33px);
-      left: calc(50% - 198px);
-
+      left: calc(50% - 107px);
     }
+    #Main .im-decribe button{
+      left: calc(50% - 35px);    
+    }
+
+    .workspace{
+      position: absolute;
+      width: 500px;
+      background-color:#ffffff47;
+      height: 360px;
+      bottom: 50px;
+      right: calc(50% - 250px);
+      padding: 10px;
+      border-radius: 5px;
+    }
+    .workspace *{
+      border-radius: 5px;
+    }
+
+    .framework1{
+      position: relative;
+      width: 480px;
+      border: 1px  solid #ccc;
+      height: 40px;
+    }
+    .framework2{
+      position: relative;
+      bottom: 0px;      
+      width: 480px;
+      border: 1px  solid #ccc;
+      height: 280px;
+    }
+    .framework2 div{
+      position: absolute;
+      display: inline-block;
+      box-shadow:0px 0px 3px 0px #3c303094;
+      text-align: center;
+      transition: all 0.5s;
+    }
+    .framework2 div:hover{
+      box-shadow:0px 0px 7px 3px #3c303064;      
+    }
+    .axure{
+      height: 96%;
+      width: 10%;
+      left: 2%;
+      top: 2%;
+      line-height: 20;
+      background-color: #ff8e00;
+    }
+    .ant-design{
+      width: 20%;
+      height: 20%;
+      left: 18%;
+      top: 2%;
+      line-height: 4.5;
+      background-color: yellow;
+    }
+    .echarts{
+      width: 20%;
+      height: 20%;
+      left: 18%;
+      top: 27.33%;
+      line-height: 4.5;      
+      background-color: yellow;   
+    }
+    .others{
+      width: 20%;
+      height: 20%;
+      left: 18%;
+      top: 52.66%;
+      line-height: 4.5;      
+      background-color: yellow;    
+    }
+    .angular{
+      width: 20%;
+      height: 20%;
+      left: 18%;
+      top: 78%;
+      line-height: 4.5;      
+      background-color: yellow;     
+    }
+    .webpack{
+      width: 14%;
+      height: 96%;
+      left: 45%;
+      top: 2%;
+      line-height: 20;            
+      background-color: #85ff00; 
+    }
+    .browser{
+      width: 10%;
+      height: 30%;
+      left: 67%;
+      top: 2%;
+      line-height: 6.5;      
+      background-color: #38f5db;  
+    }
+    .electron{
+      width: 10%;
+      height: 30%;
+      left: 67%;
+      top: 35%;
+      line-height: 6.5;      
+      background-color: #38f5db;    
+    }
+    .ionic{
+      width: 10%;
+      height: 30%;
+      left: 67%;
+      top: 68%;
+      line-height: 6.5;      
+      background-color: #38f5db;     
+    }
+    .web{
+      width: 13%;
+      height: 30%;
+      left: 85%;
+      top: 2%;
+      line-height: 6.5;      
+      background-color: #38d2f5;   
+    }
+    .app{
+      width: 13%;
+      height: 30%;
+      left: 85%;
+      top: 35%;
+      line-height: 6.5;      
+      background-color: #38d2f5;
+    }
+    .client{
+      width: 13%;
+      height: 30%;
+      left: 85%;
+      top: 68%;
+      line-height: 6.5;      
+      background-color: #38d2f5;
+    }
+    .api{
+      position: absolute;
+     
+      background-color: #ccc;  
+      box-shadow:0px 0px 5px 2px #00000057;      
+    }
+    .backend{
+      position: absolute;
+      top: 15%;
+      left: 1.5%;
+      width: 97%;
+      height: 70%;
+      background-color: #283171;
+      box-shadow:0px 0px 7px 3px #3c303094;
+      color:#fff;
+      text-align: center;
+      line-height: 2;
+    }
+
+
+
     #Webpack {
       width:100%;
       min-height:100%;
@@ -20,8 +177,18 @@
       position: absolute;
       top: calc(40% - 33px);
       left: calc(50% - 91px);
-
     }
+    #Webpack .im-decribe p{
+      position: relative;      
+      text-align: center;
+      right: 202px;
+      width: 600px;
+      top: 20px;      
+    }
+    #Webpack .im-decribe button{
+      left: calc(50% - 250px);
+    }
+
     #Angular{
       width:100%;
       min-height:100%;
@@ -32,7 +199,19 @@
       position: absolute;
       top: calc(40% - 33px);
       left: calc(50% - 74px);
-
+    }
+    #Angular .im-decribe h1{
+      display: inline;
+    }
+    #Angular .im-decribe p{
+      position: relative;      
+      text-align: center;
+      right: 210px;
+      width: 600px;
+      top: 20px;           
+    }
+    #Angular .im-decribe button{
+      left: calc(50% - 260px);
     }
     #Ng-Ant-Design{
       width:100%;
@@ -44,7 +223,19 @@
       position: absolute;
       top: calc(40% - 33px);
       left: calc(50% - 147px);
-
+    }
+    #Ng-Ant-Design .im-decribe h1{
+      display: inline;
+    }
+    #Ng-Ant-Design .im-decribe p{
+      position: relative;      
+      text-align: center;
+      right: 155px;
+      width: 600px;
+      top: 20px;           
+    }
+    #Ng-Ant-Design .im-decribe button{
+      left: calc(50% - 210px);
     }
     #Electron{
       width:100%;
@@ -52,12 +243,26 @@
       position:relative;
       background-image:linear-gradient(135deg,#0a1f27,#107a98,#89ff9c);
     }
-    #Electron .im-decribe {
+    #Electron .im-decribe  {
       position: absolute;
       top: calc(40% - 33px);
       left: calc(50% - 78px);
       color:#fff;
     }
+    #Electron .im-decribe  h1{
+      display: inline;
+    }
+    #Electron .im-decribe p{
+      position: relative;      
+      text-align: center;
+      right: 225px;
+      width: 600px;
+      top: 20px;      
+    }
+    #Electron .im-decribe button{
+      left:calc(50% - 275px);
+    }
+
     #Ionic{
       width:100%;
       min-height:100%;
@@ -68,7 +273,51 @@
       position: absolute;
       top: calc(40% - 33px);
       left: calc(50% - 45px);
+      color: #fff;            
     }
+    #Ionic .im-decribe h1{
+      display: inline;
+    }
+    #Ionic .im-decribe p{
+      position: relative;      
+      text-align: center;
+      right: 245px;
+      width: 600px;
+      top: 20px;        
+      font-size: 14px;   
+    }
+    #Ionic .im-decribe button{
+      left: calc(50% - 305px);
+    }
+    #Demo{
+      width:100%;
+      min-height:100%;
+      position:relative;
+      background: linear-gradient(135deg,#000000,#666773,#fff);
+    }
+    #Demo .im-decribe {
+      position: absolute;
+      top: calc(40% - 33px);
+      left: calc(50% - 55px);
+      color: #fff;            
+    }
+
+    #Demo .im-decribe h1{
+      display: inline;
+    }
+    #Demo .im-decribe p{
+      position: relative;      
+      text-align: center;
+      right: 245px;
+      width: 600px;
+      top: 20px;        
+      font-size: 14px;   
+    }
+    #Demo .im-decribe button{
+      left: calc(50% - 280px);
+    }
+
+
     #main-container ul{
       position: fixed;
       width: 100%;   
@@ -83,6 +332,11 @@
     #main-container ul>li>a{
       color: #fff;
     }
+
+
+
+
+
 
     .nav{
       color:#fff;
@@ -101,7 +355,7 @@
       position: relative;
       display: inline-block;
       top: 6px;
-      left: 550px;
+      left: 475px;
     }
     .im-data img {
       display: inline-block;
