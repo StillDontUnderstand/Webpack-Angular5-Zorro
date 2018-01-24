@@ -16,27 +16,27 @@ import { DataService } from '../../service/data.service'
             </div>
             <ul nz-menu [nzTheme]="'dark'" [nzMode]="isCollapsed?'vertical':'inline'">
             <li nz-submenu>
-                <span title><i class="anticon anticon-user"></i><span class="nav-text">系统</span></span>
+                <span title><i class="anticon anticon-desktop"></i><span class="nav-text">系统</span></span>
                 <ul>
                 <li nz-menu-item><a routerLink="devlog" routerLinkActive="active">更新日志</a></li>
                 </ul>
             </li>
             <li nz-submenu>
-                <span title><i class="anticon anticon-api"></i><span class="nav-text" >异步加载</span></span>
+                <span title><i class="anticon anticon-api"></i><span class="nav-text" >动态路由</span></span>
                 <ul>
-                <li nz-menu-item><a routerLink="varible/1" routerLinkActive="active">常量</a></li>
-                <li nz-menu-item><a routerLink="varible/2" routerLinkActive="active">计算变量</a></li>
+                <li nz-menu-item><a routerLink="varible/1" routerLinkActive="active">异步加载1</a></li>
+                <li nz-menu-item><a routerLink="varible/2" routerLinkActive="active">异步加载2</a></li>
                 </ul>
             </li>
             <li nz-submenu>
-                <span title><i class="anticon anticon-team"></i><span class="nav-text" >一些功能</span></span>
+                <span title><i class="anticon anticon-tool"></i><span class="nav-text" >一些功能</span></span>
                 <ul>
                     <li nz-menu-item><a routerLink="user" routerLinkActive="active">表单筛选</a></li>
                     <li nz-menu-item><a routerLink="drag" routerLinkActive="active">拖拽功能</a></li>
                 </ul>
             </li>
             <li nz-submenu>
-                <span title><i class="anticon anticon-team"></i><span class="nav-text" >Graph</span></span>
+                <span title><i class="anticon anticon-dot-chart"></i><span class="nav-text" >Graph</span></span>
                 <ul>
                     <li nz-menu-item><a routerLink="editor" routerLinkActive="active">Editor</a></li>
                     <li nz-menu-item><a routerLink="tree" routerLinkActive="active">Tree</a></li>

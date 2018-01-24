@@ -34,7 +34,7 @@ import { InMemoryDataService } from './in-memory-data.service';
     //mock
     InMemoryWebApiModule.forRoot(
       InMemoryDataService,
-      { delay: 2000 }
+      { delay: 200 }
     ),
     AppRoutingModule
   ],

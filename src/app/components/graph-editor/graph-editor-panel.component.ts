@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,Output,EventEmitter } from '@angular/core';
 import {
   FormBuilder,
   FormGroup,
@@ -40,6 +40,8 @@ import {
       </div>
     </div>
   </form>
+  <button nz-button [nzType]="'primary'" [nzSize]="'large'" nzGhost (click)="cancel();">Cancel</button>
+  
   `,
 
   styles: [
@@ -60,9 +62,14 @@ import {
   ]
 })
 export class NzDemoFormDynamicComponent implements OnInit {
+  @Output() cancelEvent= new EventEmitter();
   validateForm: FormGroup;
   controlArray = [];
 
+  cancel = ()=>{
+    console.info("cancel")
+    this.cancelEvent.emit('eventDesc');
+  }
   addField(e?: MouseEvent) {
     if (e) {
       e.preventDefault();

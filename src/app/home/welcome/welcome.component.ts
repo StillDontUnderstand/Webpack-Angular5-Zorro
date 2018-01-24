@@ -18,18 +18,4 @@ export class WelcomeComponent implements OnInit {
     login = () => {
         this.router.navigateByUrl("app");
     }
-    goTo = (target) =>{
-        switch(target){
-            case 'Webpack' :'https://webpack.js.org/'
-            return ;
-            case 'Angular' :
-            return ; 
-            case 'Ng-Ant-Design':
-            return ;
-            case 'Electron':
-            return ;
-            case 'Ionic':
-            return;
-        }
-    }
 }

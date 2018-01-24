@@ -21,30 +21,20 @@
             <p>1/18 画布<code>#main</code>上移到子路由层</p>
             <p>1/18 可视化插件部分开发完成</p>
             <p>1/19 整体UI</p>
-            <p>1/20 流程图编辑器交互:点击触点触发连线</p>            
-            <p>1/21 ～ 1/23引导页设计</p>
-
-
+            <p>1/20 流程图编辑器交互:点击触点触发连线</p>
+            <p>1/21 添加拖拽放置模块 <code>ng2-dnd</code>,<code>ng2-dragula</code></p>
+            <p>1/22 ～ 1/23 引导页设计</p>
+            <p>1/24 模块化，工程化，组件化，Electron 打包</p>
+        </div>
+        <div nz-col [nzSpan]="12">
             <h1>TODO</h1>
             <br>
-            <p>添加拖拽放置模块 <code>ng2-dnd</code>,<code>ng2-dragula</code></p>
             <p></p>
             <p>编写开发文档</p>
             <p>封装数据异步加载模块及过渡动画</p>
             <p>路径问题 <code>import</code> 由相对路径改为绝对路径</p>
-            <p>工程化打包测试</p>
-            <p>呼吸灯</p>
+            <p>工程化打包生产测试</p>
             <br>
-            <h1>Question</h1>
-            <p>反向注入（子模块组件注入父级模块组件的情况）:不要用</p>
-            <p>exports的作用</p>
-            <p>组件的生命周期:<code>component</code>,<code>router</code> </p>
-            <p>组件的销毁规程，切换多次后页面会变卡？已解决:销毁实例</p>
-            <p>组件间的通信方法,多种见云笔记</p>
-            <p>Added non-passive event listener to a scroll-blocking 'mousewheel' event.</p>
-            <p>this.route.paramMap.switchMap 和 router.event 对路由的监听有什么区别</p>
-            <p> <code>route-outlet</code> 与 <code>ng-compoent</code>的区别与联系</p>
-            <p> 公共样式定义在 <code>drag.compoent</code> 中不生效 而定义在 <code>layout.compent</code>  中生效</p>
         </div>
         <div nz-col [nzSpan]="12">
             <h1>Document</h1>
@@ -56,18 +46,33 @@
             <p>6.注意 <code>G6</code> 和 <code>ECharts</code> 的锚点使用方法稍有不同，参考 <code>Tree</code>,<code>echarts-tree</code></p>
             <p>7.注册读取本地json服务可以使用 <code>require()</code>参考 <code>echarts-map</code></p>
             <p>8.<code>ECharts</code> 路由退出/切换事件，离开路由后资源是用 <code>dispose</code>销毁，参考<code>content.component</code></p>
-            <p>9.组件通信,参考 <code>content.component</code>,<code>data.service</code> 注意服务的作用域</p>
+            <p>9.跨域组件通信,参考 <code>content.component</code>,<code>data.service</code> 注意服务的作用域</p>
             <p>10. 在<code>AfterViewInit</code>中订阅会触发多次，正确的方法是定义在 <code>OnInit</code>或<code>constructor</code> 中</p>
             <p>11. <code>setTimeout</code>在调用完毕后要立即销毁，参考 <code>content.component</code></p>
             <p>12.服务注册的问题：service在主模块注册后又在模块注册会发生错误，原因及机制</p>
             <p>13.路由过渡效果参考<code>fade.component</code>和 <code>content.component</code></p>
             <p>14.加载本地图片参考 <code>gallery.componet</code></p>
+            <p>15.滚动监听使用 <code>derective</code> 实现</p>
+            <p>16.父组件与子组件间通信 参考 <code>graph-editor-panel.component</code>，<code>varible.component</code></p>
+            <p>17. <code>G6</code> 的监听方法会改变<code>this</code>的作用域 使用 <code>bind(this)</code>还原作用域 </p>
         </div>
         <div nz-col [nzSpan]="12">
             <h1>Need to Fix</h1>
             <p> <code>Graph</code> 编辑器点击鼠标画布发生位移:API中某些Handler存在问题，屏蔽掉</p>
             <p>G6,ECharts绝对高度在使用console的情况下有bug</p>
-            
+
+        </div>
+        <div nz-col [nzSpan]="12" >
+            <h1>Question</h1>
+            <p>反向注入（子模块组件注入父级模块组件的情况）:不要用</p>
+            <p>exports的作用</p>
+            <p>组件的生命周期:<code>component</code>,<code>router</code> </p>
+            <p>组件的销毁规程，切换多次后页面会变卡？已解决:销毁实例</p>
+            <p>组件间的通信方法,多种见云笔记</p>
+            <p>Added non-passive event listener to a scroll-blocking 'mousewheel' event.</p>
+            <p>this.route.paramMap.switchMap 和 router.event 对路由的监听有什么区别</p>
+            <p> <code>route-outlet</code> 与 <code>ng-compoent</code>的区别与联系</p>
+            <p> 公共样式定义在 <code>drag.compoent</code> 中不生效 而定义在 <code>layout.compent</code> 中生效</p>
         </div>
     </div>
 

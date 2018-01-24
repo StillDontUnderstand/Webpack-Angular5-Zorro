@@ -21,10 +21,9 @@ import { EditorInit, ToolInit } from './graph-editor-core';
             <div class="node" id="customNode2" draggable="true" style="top:50px;right:20px;">自定义形2</div>            
             <div class="node" id="customNode1" draggable="true" style="top:50px;left:20px;">自定义形1</div>
             <div class="node" id="customNode4" draggable="true" style="top:150px;right:20px;">自定义形4</div>
-            <div class="after"></div>
         </div>
         <div id="settingPanel" class="panelHide">
-            <nz-demo-form-dynamic></nz-demo-form-dynamic>
+            <nz-demo-form-dynamic (cancelEvent)="panelToggle()"></nz-demo-form-dynamic>
         </div>
     </div>  
     `,
@@ -73,7 +72,6 @@ import { EditorInit, ToolInit } from './graph-editor-core';
         #toolBar::before{
             position: absolute;
             content: "";
-            transition: all 0.5s ease-in-out;
             background-color: #b5b5b52b;
             backdrop-filter: blur(1px);
             top: 0px;
@@ -84,12 +82,13 @@ import { EditorInit, ToolInit } from './graph-editor-core';
         }
         #toolBar{
             position: absolute;
+            min-height: 280px;
             height: 50%;
             width:240px;
             top: 25%;
             box-shadow: 0px 0px 3px 1px #00000052;
             border-radius: 5px;            
-            transition: all 1s ease-in-out;
+            transition: all 0.5s ease-in-out;
         }
         #toolBar .after{
             position: absolute;
@@ -158,7 +157,18 @@ import { EditorInit, ToolInit } from './graph-editor-core';
 
 export class GraphEditorComponent implements AfterViewInit {
     // private a = Registed.Shape1;
-    showToolBar = () => {
+    private panelToggle = function () {
+        console.info(this);
+        const classList = document.getElementById('settingPanel').classList;
+        if (classList.contains('panelHide')) {
+            classList.remove('panelHide');
+            classList.add('panelShow');
+        } else {
+            classList.remove('panelShow');
+            classList.add('panelHide');
+        }
+    }
+    private toolToggle = () => {
         var toolBar = document.getElementById('toolBar')
         var classList = toolBar.classList
         if (!classList.contains('toolShow')) {
@@ -172,7 +182,6 @@ export class GraphEditorComponent implements AfterViewInit {
     }
     private c = Registed;
     NgOnInit() {
-
     }
     ngAfterViewInit() {
         //屏蔽默认右键事件
@@ -205,28 +214,31 @@ export class GraphEditorComponent implements AfterViewInit {
         // });         
 
         net.on('dblclick', function (ev) {
-            console.info("鼠标双击", ev);
-            console.info(ev.itemType);
+            // console.info("鼠标双击", ev);
+            // console.info(ev.itemType);
             if (ev.itemType == 'node') {
-                panelToggle();
+                this.panelToggle();
+                // console.info(this);
+            } else {
+                this.toolToggle();
             }
-        });
+        }.bind(this));
         net.on('contextmenu', function (ev) {
             console.info("鼠标右键");
         });
+        // var panelToggle=()=> {
+        //     const classList = document.getElementById('settingPanel').classList;
+        //     console.info('panelToggle')
+        //     if (classList.contains('panelHide')) {
+        //         classList.remove('panelHide');
+        //         classList.add('panelShow');
+        //     } else {
+        //         classList.remove('panelShow');
+        //         classList.add('panelHide');
+        //     }
+        // }
 
 
-        function panelToggle() {
-            const classList = document.getElementById('settingPanel').classList;
-            console.info('panelToggle')
-            if (classList.contains('panelHide')) {
-                classList.remove('panelHide');
-                classList.add('panelShow');
-            } else {
-                classList.remove('panelShow');
-                classList.add('panelHide');
-            }
-        }
     }
 }
 

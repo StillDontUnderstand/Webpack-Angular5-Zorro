@@ -7,7 +7,7 @@ import { Router, ActivatedRoute, ParamMap } from '@angular/router';
   selector: 'commonTable',
   // template:`{{data}}`,
   template: `
-    <nz-table #nzTable [nzAjaxData]="data" [nzBordered]="true" [nzPageSize]="10" [nzLoading]="_loading" [nzSize]="'defalut'" [nzCustomNoResult]="true" >
+    <nz-table #nzTable [nzDataSource]="data" [nzBordered]="true" [nzPageSize]="10" [nzLoading]="_loading" [nzSize]="'defalut'" [nzCustomNoResult]="false" >
       <thead nz-thead>
         <tr>
           <th nz-th>
@@ -48,8 +48,8 @@ import { Router, ActivatedRoute, ParamMap } from '@angular/router';
         </tr>
       </thead>
 
-      <tbody nz-tbody>
-        <ng-container noResult > 
+      <tbody nz-tbody >
+       <!-- <ng-container noResult > 
           <tr nz-tbody-tr *ngFor="let data of noData">
             <td nz-td>
               <a>{{data.name}}</a>
@@ -82,7 +82,7 @@ import { Router, ActivatedRoute, ParamMap } from '@angular/router';
               </span>
             </td>
           </tr>
-        </ng-container>
+        </ng-container>-->
         <tr nz-tbody-tr *ngFor="let data of nzTable.data">
           <td nz-td>
             <a>{{data.name}}</a>
@@ -139,6 +139,9 @@ import { Router, ActivatedRoute, ParamMap } from '@angular/router';
   ]
 })
 export class CommonTableComponent {
+  // @Input() InputData;
+  data=[];
+  _loading
   noData = noData;
   constructor(
     private route: ActivatedRoute,
@@ -157,10 +160,10 @@ export class CommonTableComponent {
   };
   sortName: any = null;
   sortValue: any = null;
-  data: any = [];
+  
 
   copyData: any;
-  _loading = false;
+
   sort(sortName: any, value: any) {
     this.sortName = sortName;
     this.sortValue = value;
@@ -202,21 +205,24 @@ export class CommonTableComponent {
     // 从mock服务获取数据
     this.route.paramMap.switchMap((params: ParamMap) => {
         console.info("切换路由事件");
+            this._loading = true;      
+
         //清空数据会导致画面跳帧
         // this.data = []
         //数据加载完毕前load动画
-        this._loading = true;
         //切换路由触发数据请求
         return this.http.get('api/data' + params.get('id'))
         // 
       }).subscribe((data) => {
         console.info('!!!!!!');
+        this.noData = [];        
         this.data = data.json();
-        this.noData =[];
         //数据接受完毕取消加载动画
         this._loading = false;
         console.info(data);
       })
+  // this.data = this.InputData;
+  console.info(this.data);
   }
 
 }
@@ -234,6 +240,4 @@ const noData =[
   { name: '*****', age:'**', address: '*********'},
   { name: '*****', age:'**', address: '*********'},
 
-  
-  
 ];
