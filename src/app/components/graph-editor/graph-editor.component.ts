@@ -44,16 +44,6 @@ import { EditorInit, ToolInit } from './graph-editor-core';
             z-index: 49;
             box-shadow: -6px 0px 6px -5px #00000042 inset,6px 0px 4px -6px rgba(0, 0, 0, 0.45) inset;
         }
-        :host {
-            position: absolute;
-            width: calc(100% - 32px);
-            min-height: calc(100% - 48px);          
-            box-shadow:0px 0px 6px 1px #00000042;
-            background-color: #fff;
-            margin: 16px 16px 30px 16px;
-            z-index: 50;
-            border-radius: 5px;
-        }
         :host::after {
             position: absolute;
             content: '';

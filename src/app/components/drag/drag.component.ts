@@ -3,16 +3,6 @@ import { Component } from '@angular/core'
 @Component({
     templateUrl:'./drag.html',
     styles:[`
-    :host {
-        position: absolute;
-        width: calc(100% - 32px);
-        box-shadow:0px 0px 6px 1px #00000042;
-        background: #fff;
-        margin: 16px 16px 30px 16px;
-        z-index: 50;
-        border-radius: 5px;
-        min-height: calc(100% - 48px);          
-      }
       .drag-container>div{
         margin:30px 240px;
         padding:20px;

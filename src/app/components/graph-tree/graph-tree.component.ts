@@ -15,16 +15,6 @@ import * as ECharts from 'echarts';
             width: 100%;
             height: 100%;
         }
-        :host {
-            position: absolute;
-            width: calc(100% - 32px);
-            min-height: calc(100% - 48px);          
-            box-shadow:0px 0px 6px 1px #00000042;
-            background: #fff;
-            margin: 16px 16px 30px 16px;
-            z-index: 50;
-            border-radius: 5px;
-        }
     `]
 })
 

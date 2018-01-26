@@ -1,8 +1,7 @@
-<div style="padding:30px">
+<div style="padding:10px">
     <div nz-row>
-        <div nz-col [nzSpan]="12">
+        <div nz-col [nzLg] = "12" [nzMd]="12" [nzSm]="24">
             <h1>DevLog</h1>
-            <br>
             <p>12/13 搭建左侧菜单路由</p>
             <p>12/14 构建基本列表-模态页面</p>
             <p>12/15 添加mock API、</p>
@@ -25,55 +24,72 @@
             <p>1/21 添加拖拽放置模块 <code>ng2-dnd</code>,<code>ng2-dragula</code></p>
             <p>1/22 ～ 1/23 引导页设计</p>
             <p>1/24 模块化，工程化，组件化，Electron 打包</p>
-        </div>
-        <div nz-col [nzSpan]="12">
-            <h1>TODO</h1>
-            <br>
-            <p></p>
-            <p>编写开发文档</p>
-            <p>封装数据异步加载模块及过渡动画</p>
-            <p>路径问题 <code>import</code> 由相对路径改为绝对路径</p>
-            <p>工程化打包生产测试</p>
-            <br>
-        </div>
-        <div nz-col [nzSpan]="12">
-            <h1>Document</h1>
-            <p>1.根据情况确定是否使用懒加载，参考<code>user</code>，不使用懒加载参考 <code>devlog</code> </p>
-            <p>2.内容区的样式要在相应的<code>component</code>中定义，可参考 <code>devlog.componment.ts</code> </p>
-            <p>3.在模块样式中请与 <code>:host</code> 保持一致</p>
-            <p>4.添加外部AMD模块参考 <code>graph.component.ts</code></p>
-            <p>5.路由入口在 <code>layout.routing.ts</code>菜单配置在 <code>contnet.compent.ts</code></p>
-            <p>6.注意 <code>G6</code> 和 <code>ECharts</code> 的锚点使用方法稍有不同，参考 <code>Tree</code>,<code>echarts-tree</code></p>
-            <p>7.注册读取本地json服务可以使用 <code>require()</code>参考 <code>echarts-map</code></p>
-            <p>8.<code>ECharts</code> 路由退出/切换事件，离开路由后资源是用 <code>dispose</code>销毁，参考<code>content.component</code></p>
-            <p>9.跨域组件通信,参考 <code>content.component</code>,<code>data.service</code> 注意服务的作用域</p>
-            <p>10. 在<code>AfterViewInit</code>中订阅会触发多次，正确的方法是定义在 <code>OnInit</code>或<code>constructor</code> 中</p>
-            <p>11. <code>setTimeout</code>在调用完毕后要立即销毁，参考 <code>content.component</code></p>
-            <p>12.服务注册的问题：service在主模块注册后又在模块注册会发生错误，原因及机制</p>
-            <p>13.路由过渡效果参考<code>fade.component</code>和 <code>content.component</code></p>
-            <p>14.加载本地图片参考 <code>gallery.componet</code></p>
-            <p>15.滚动监听使用 <code>derective</code> 实现</p>
-            <p>16.父组件与子组件间通信 参考 <code>graph-editor-panel.component</code>，<code>varible.component</code></p>
-            <p>17. <code>G6</code> 的监听方法会改变<code>this</code>的作用域 使用 <code>bind(this)</code>还原作用域 </p>
-        </div>
-        <div nz-col [nzSpan]="12">
-            <h1>Need to Fix</h1>
-            <p> <code>Graph</code> 编辑器点击鼠标画布发生位移:API中某些Handler存在问题，屏蔽掉</p>
-            <p>G6,ECharts绝对高度在使用console的情况下有bug</p>
+          </div>
+          <div nz-col [nzLg] = "12" [nzMd]="12" [nzSm]="24">
+              <h1>TODO</h1>
+              <p>Cordova</p>
+              <p>样式适配</p>
+              <p>编写基本开发文档</p>
+              <p>封装数据异步加载模块及过渡动画</p>
+              <p>路径问题 <code>import</code> 由相对路径改为绝对路径</p>
+              <p>工程化打包生产测试</p>
+          </div>
+          <div nz-col [nzLg] = "12" [nzMd]="12" [nzSm]="24">
+              <h1>Document</h1>
+              <p>1.根据情况确定是否使用懒加载，参考<code>user</code>，不使用懒加载参考 <code>devlog</code> </p>
+              <p>2.内容区的样式要在相应的<code>component</code>中定义，可参考 <code>devlog.componment.ts</code> </p>
+              <p>3.在模块样式中请与 <code>:host</code> 保持一致,已修改:公共样式在父组件定义</p>
+              <p>4.添加外部AMD模块参考 <code>graph.component.ts</code></p>
+              <p>5.路由入口在 <code>layout.routing.ts</code>菜单配置在 <code>contnet.compent.ts</code></p>
+              <p>6.注意 <code>G6</code> 和 <code>ECharts</code> 的锚点使用方法稍有不同，参考 <code>Tree</code>,<code>echarts-tree</code></p>
+              <p>7.注册读取本地json服务可以使用 <code>require()</code>参考 <code>echarts-map</code></p>
+              <p>8.<code>ECharts</code> 路由退出/切换事件，离开路由后资源是用 <code>dispose</code>销毁，参考<code>content.component</code></p>
+              <p>9.跨域组件通信,参考 <code>content.component</code>,<code>data.service</code> 注意服务的作用域</p>
+              <p>10. 在<code>AfterViewInit</code>中订阅会触发多次，正确的方法是定义在 <code>OnInit</code>或<code>constructor</code> 中</p>
+              <p>11. <code>setTimeout</code>在调用完毕后要立即销毁，参考 <code>content.component</code></p>
+              <p>12.服务注册的问题：service在主模块注册后又在模块注册会发生错误，原因及机制</p>
+              <p>13.路由过渡效果参考<code>fade.component</code>和 <code>content.component</code></p>
+              <p>14.加载本地图片参考 <code>gallery.componet</code></p>
+              <p>15.滚动监听使用 <code>derective</code> 实现</p>
+              <p>16.父组件与子组件间通信 参考 <code>graph-editor-panel.component</code>，<code>varible.component</code></p>
+              <p>17. <code>G6</code> 的监听方法会改变<code>this</code>的作用域 使用 <code>bind(this)</code>还原作用域 </p>
+          </div>
+          <div nz-col [nzLg] = "12" [nzMd]="12" [nzSm]="24">
+              <h1>Need to Fix</h1>
+              <p> <code>Graph</code> 编辑器点击鼠标画布发生位移:API中某些Handler存在问题，屏蔽掉</p>
+              <p>G6,ECharts绝对高度在使用console的情况下有bug</p>
+              
+          </div>
+          <div nz-col [nzLg] = "12" [nzMd]="12" [nzSm]="24">
+              <h1>Question</h1>
+              <p>反向注入（子模块组件注入父级模块组件的情况）:不要用</p>
+              <p>exports的作用</p>
+              <p>组件的生命周期:<code>component</code>,<code>router</code> </p>
+              <p>组件的销毁规程，切换多次后页面会变卡？已解决:销毁实例</p>
+              <p>组件间的通信方法,多种见云笔记</p>
+              <p>Added non-passive event listener to a scroll-blocking 'mousewheel' event.</p>
+              <p>this.route.paramMap.switchMap 和 router.event 对路由的监听有什么区别</p>
+              <p> <code>route-outlet</code> 与 <code>ng-compoent</code>的区别与联系</p>
+              <p> 公共样式定义在 <code>drag.compoent</code> 中不生效 而定义在 <code>layout.compent</code> 中生效</p>
+          </div>
+          <div nz-col [nzLg] = "12" [nzMd]="12" [nzSm]="24" >
+              <h1>Electron</h1>
+              <p>启动 npm start</p>
+              <p>打包 npm packageDarwin</p>
+              <p>Mac 环境下无法打包win平台</p>
+              <p><code>box-shadow</code>只支持<code>rgba</code>和<code>hsla</code>两种颜色形式</p>
+          </div>
+          <div nz-col [nzLg] = "12" [nzMd]="12" [nzSm]="24" >
+              <h1>Ionic</h1>
+              <p><code>$ ionic start</code>新建项目</p>
+              <p><code>$ ionic serve</code>浏览器调试</p>
+              <p><code>$ npm install -g ionic cordova</code>安装cordova</p>
+              <p><code>ionic cordova platform add</code>构建平台</p>
+              <p><code>$ ionic cordova build</code>打包</p>
+              <p><code>$ ionic cordova emlit</code>打包</p>
+              <p><code>android</code>调试使用 <code>andriod studio</code> 导入 <code>platform/android</code></p>
+              <p>切换页面销毁echarts，增加监听服务</p>
+          </div>
 
-        </div>
-        <div nz-col [nzSpan]="12" >
-            <h1>Question</h1>
-            <p>反向注入（子模块组件注入父级模块组件的情况）:不要用</p>
-            <p>exports的作用</p>
-            <p>组件的生命周期:<code>component</code>,<code>router</code> </p>
-            <p>组件的销毁规程，切换多次后页面会变卡？已解决:销毁实例</p>
-            <p>组件间的通信方法,多种见云笔记</p>
-            <p>Added non-passive event listener to a scroll-blocking 'mousewheel' event.</p>
-            <p>this.route.paramMap.switchMap 和 router.event 对路由的监听有什么区别</p>
-            <p> <code>route-outlet</code> 与 <code>ng-compoent</code>的区别与联系</p>
-            <p> 公共样式定义在 <code>drag.compoent</code> 中不生效 而定义在 <code>layout.compent</code> 中生效</p>
-        </div>
-    </div>
-
-</div>
+      </div>
+  </div>

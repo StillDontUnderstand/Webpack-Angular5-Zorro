@@ -105,6 +105,16 @@ import { DataService } from '../../service/data.service'
         nz-content::-webkit-scrollbar-thumb:hover{
             visibility: visible;            
         }   
+        nz-content ng-component{
+            position: absolute;
+            width: calc(100% - 32px);
+            min-height: calc(100% - 48px);          
+            box-shadow: 0px 0px 6px 1px rgba(0,0,0,.26);
+            background: #fff;
+            margin: 16px 16px 30px 16px;
+            z-index: 50;
+            border-radius: 5px;
+        }
         
     `]
 })
