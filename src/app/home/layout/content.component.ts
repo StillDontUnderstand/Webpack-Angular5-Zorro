@@ -18,7 +18,8 @@ import { DataService } from '../../service/data.service'
             <li nz-submenu>
                 <span title><i class="anticon anticon-desktop"></i><span class="nav-text">系统</span></span>
                 <ul>
-                <li nz-menu-item><a routerLink="devlog" routerLinkActive="active">更新日志</a></li>
+                    <li nz-menu-item><a routerLink="devlog" routerLinkActive="active">更新日志</a></li>
+                    <li nz-menu-item><a routerLink="dashboard" routerLinkActive="active">Dashboard</a></li>
                 </ul>
             </li>
             <li nz-submenu>

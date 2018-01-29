@@ -24,6 +24,7 @@
             <p>1/21 添加拖拽放置模块 <code>ng2-dnd</code>,<code>ng2-dragula</code></p>
             <p>1/22 ～ 1/23 引导页设计</p>
             <p>1/24 模块化，工程化，组件化，Electron 打包</p>
+            <p>1/26 解决Ionic懒加载问题</p>
           </div>
           <div nz-col [nzLg] = "12" [nzMd]="12" [nzSm]="24">
               <h1>TODO</h1>
@@ -84,11 +85,14 @@
               <p><code>$ ionic start</code>新建项目</p>
               <p><code>$ ionic serve</code>浏览器调试</p>
               <p><code>$ npm install -g ionic cordova</code>安装cordova</p>
-              <p><code>ionic cordova platform add</code>构建平台</p>
-              <p><code>$ ionic cordova build</code>打包</p>
-              <p><code>$ ionic cordova emlit</code>打包</p>
+              <p><code>ionic cordova platform add android/ios</code>构建平台</p>
+              <p><code>$ ionic cordova build android/ios</code>打包</p>
+              <p><code>$ ionic cordova emulate</code>调试</p>
               <p><code>android</code>调试使用 <code>andriod studio</code> 导入 <code>platform/android</code></p>
               <p>切换页面销毁echarts，增加监听服务</p>
+              <p>Echarts 移动端要用svg渲染模式</p>
+              <p>移动端懒加载使用 <code>IonicPage</code></p>
+              <p>启动过程加速ionic cordova build ios --prod</p>
           </div>
 
       </div>

@@ -1,0 +1,123 @@
+<div nz-row [nzGutter]='16'>
+    <div nz-col [nzSpan]='6'>
+        <nz-card style="width:auto;" [nzBordered]="false">
+            <ng-template #title>
+                总销售额   ¥ 126,560 
+            </ng-template>
+            <ng-template #extra>
+                <i class="anticon anticon-info-circle-o"></i>
+            </ng-template>
+            <ng-template #body>
+                <div id='graph5' style="width:85%;height:60px;"></div>
+            </ng-template>
+        </nz-card>
+    </div>
+    <div nz-col [nzSpan]='6'>
+        <nz-card style="width:auto;" [nzBordered]="false">
+            <ng-template #title>
+                访问量 8,846
+            </ng-template>
+            <ng-template #extra>
+                <i class="anticon anticon-info-circle-o"></i>
+            </ng-template>
+            <ng-template #body>
+                <div id='graph3' style="width:85%;height:60px;"></div>
+            </ng-template>
+        </nz-card>
+    </div>
+    <div nz-col [nzSpan]='6'>
+        <nz-card style="width:auto;" [nzBordered]="false">
+            <ng-template #title>
+                支付笔数 6,560
+            </ng-template>
+            <ng-template #extra>
+                <i class="anticon anticon-info-circle-o"></i>
+            </ng-template>
+            <ng-template #body>
+                <div id='graph4' style="width:85%;height:60px;"></div>
+            </ng-template>
+        </nz-card>
+    </div>
+    <div nz-col [nzSpan]='6'>
+        <nz-card style="width:auto;" [nzBordered]="false">
+            <ng-template #title>
+                运营活动效果   78% 
+            </ng-template>
+            <ng-template #extra>
+                <i class="anticon anticon-info-circle-o"></i>
+            </ng-template>
+            <ng-template #body>
+                <div id='graph6' style="width:85%;height:60px;"></div>
+            </ng-template>
+        </nz-card>
+    </div>
+</div>
+
+<div nz-row style='margin:16px 0px;background-color:#fff;padding:0px 24px;'>
+    <div nz-col [nzSpan]='24'>
+        <nz-tabset [nzTabBarExtraTemplate]="tabBarExtraContent">
+            <nz-tab>
+                <ng-template #nzTabHeading>
+                    销售额
+                </ng-template>
+                <div nz-row>
+                    <div nz-col [nzSpan]='18'>
+                        <div id='graph' style='display:inline-block;width:700px;height:254px;'></div>
+                    </div>
+                    <div nz-col [nzSpan]='6'>
+                        <h2>门店销售额排名</h2>
+                        <ul style="margin:10px;">
+                            <li *ngFor='let i of [0,1,2,3,4,5,6,7]' style='padding:3px;'>
+                                <span>
+                                    <nz-badge [nzCount]="i+1" [nzStyle]="style1"></nz-badge>
+                                </span>
+                                <span style='padding: 0px 50px;'>工专路{{i}}号店</span>
+                                <span>323,234</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nz-tab>
+            <nz-tab>
+                <ng-template #nzTabHeading>
+                    访问量
+                </ng-template>
+                <div nz-row>
+                    <div nz-col [nzSpan]='18'>
+                        <div id='graph2' style='display:inline-block;width:700px;height:254px;'></div>
+                    </div>
+                    <div nz-col [nzSpan]='6'>
+                        <h2>门店销售额排名</h2>
+                        <ul style="margin:10px;">
+                            <li *ngFor='let i of [0,1,2,3,4,5,6,7]' style='padding:3px;'>
+                                <span>
+                                    <nz-badge [nzCount]="i+1" [nzStyle]="style1"></nz-badge>
+                                </span>
+                                <span style='padding: 0px 50px;'>工专路{{i}}号店</span>
+                                <span>323,234</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nz-tab>
+            <ng-template #tabBarExtraContent>
+                <nz-rangepicker style='width: 468px' [(ngModel)]="_dateRange" [nzPlaceholder]="['Select start date', 'Select end date']"></nz-rangepicker>
+            </ng-template>
+        </nz-tabset>
+    </div>
+</div>
+
+<div nz-row [nzGutter]='16' style='margin:16px 0px'>
+    <div nz-col [nzSpan]='12'>
+        <nz-demo-card-border></nz-demo-card-border>
+    </div>
+    <div nz-col [nzSpan]='12'>
+        <nz-demo-card-border></nz-demo-card-border>
+    </div>
+</div>
+
+<div nz-row style='margin:16px 0px'>
+    <div nz-col [nzSpan]='24'>
+        <nz-demo-card-border></nz-demo-card-border>
+    </div>
+</div>

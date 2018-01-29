@@ -9,7 +9,6 @@ export class PieComponent implements AfterViewInit{
     ngAfterViewInit(){
         var myChart = ECharts.init(document.getElementById('main'));
         myChart.setOption(option)
- 
     }
 }
 

@@ -15,8 +15,8 @@ import { Http } from '@angular/http';
            <!-- <commonTable [InputData] = 'AJAX'></commonTable> -->
     </div>
     `,
-    styles: [`
-   
+    styleUrls: [`
+
     `]
 })
 export class VaribleComponent implements OnInit {
