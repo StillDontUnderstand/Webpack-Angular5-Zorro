@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-
+import { flyInOut } from '../../animations/fly.animation';
+import { listAnimation } from '../../animations/list.animation';
 @Component({
-    // selector: 'nz-demo-table-custom-filter',
-    template: `
+  // selector: 'nz-demo-table-custom-filter',
+  template: `
       <div style="padding:20px;">
-        <nz-table #nzTable [nzDataSource]="data" [nzPageSize]="10" [nzBordered]="true">
+        <nz-table #nzTable [nzAjaxData]="data" [nzPageSize]="10" [nzBordered]="true">
           <thead nz-thead>
             <tr>
               <th nz-th>
@@ -37,22 +38,29 @@ import { Component, OnInit } from '@angular/core';
                   </div>
                 </nz-dropdown>
               </th>
+              <th>
+                <span>Operation</span>
+              </th>
             </tr>
           </thead>
-          <tbody nz-tbody>
-            <tr nz-tbody-tr *ngFor="let data of nzTable.data">
+          <tbody nz-tbody >
+            <tr nz-tbody-tr *ngFor="let data of nzTable.data" [@flyInOut]="nzTable.data.length">
               <td nz-td>
                 <a>{{data.name}}</a>
               </td>
               <td nz-td>{{data.age}}</td>
               <td nz-td>{{data.address}}</td>
+              <td nz-td>
+                <a (click)='add(data);'>add</a>
+                <a (click)='remove(data);'>remove</a>
+              </td>
             </tr>
           </tbody>
         </nz-table>
       </div>
       `,
-    styles  : [
-        `
+  styles: [
+    `
         .custom-filter-dropdown {
           padding: 8px;
           border-radius: 6px;
@@ -69,77 +77,93 @@ import { Component, OnInit } from '@angular/core';
           color: #f50;
         }
       `
-    ]
-  })
-  export class UserComponent {
-    searchValue = '';
-    filterAddressArray = [
-      { name: 'London', value: false },
-      { name: 'Sidney', value: false }
-    ];
-    sortMap = {
-      name   : null,
-      age    : null,
-      address: null
-    };
-    sortName = null;
-    sortValue = null;
-    data = [
-      {
-        name   : 'John Brown',
-        age    : 32,
-        address: 'New York No. 1 Lake Park',
-      }, {
-        name   : 'Jim Green',
-        age    : 42,
-        address: 'London No. 1 Lake Park',
-      }, {
-        name   : 'Joe Black',
-        age    : 32,
-        address: 'Sidney No. 1 Lake Park',
-      }, {
-        name   : 'Jim Red',
-        age    : 32,
-        address: 'London No. 2 Lake Park',
-      }
-    ];
-    copyData = [ ...this.data ];
-  
-    sort(sortName, value) {
-      this.sortName = sortName;
-      this.sortValue = value;
-      Object.keys(this.sortMap).forEach(key => {
-        if (key !== sortName) {
-          this.sortMap[ key ] = null;
-        } else {
-          this.sortMap[ key ] = value;
-        }
-      });
-      this.search();
+  ],
+  animations: [flyInOut,listAnimation],
+})
+
+export class UserComponent {
+  remove = (d) => {
+    console.info('remove->', d);
+    var index = this.data.indexOf(d);
+    if (index > -1) {
+      this.data.splice(index, 1);
     }
-  
-    search() {
-      const searchAddress = this.filterAddressArray.filter(address => address.value);
-      const filterFunc = (item) => {
-        return (searchAddress.length ? searchAddress.some(address => item.address.indexOf(address.name) !== -1) : true) &&
-          (item.name.indexOf(this.searchValue) !== -1)
-      };
-      this.data = [ ...this.copyData.filter(item => filterFunc(item)) ];
-      this.data = [ ...this.data.sort((a, b) => {
-        if (a[ this.sortName ] > b[ this.sortName ]) {
-          return (this.sortValue === 'ascend') ? 1 : -1;
-        } else if (a[ this.sortName ] < b[ this.sortName ]) {
-          return (this.sortValue === 'ascend') ? -1 : 1;
-        } else {
-          return 0;
-        }
-      }) ];
-    }
-  
-    reset(array) {
-      array.forEach(item => {
-        item.value = false;
-      });
-      this.search();
-    }
+    console.info(this.data);
   }
+  add = (d) => {
+    console.info('add->', d);
+    this.data.push(d.name + Math.random());
+    console.info(this.data);
+  }
+  searchValue = '';
+  filterAddressArray = [
+    { name: 'London', value: false },
+    { name: 'Sidney', value: false }
+  ];
+  sortMap = {
+    name: null,
+    age: null,
+    address: null
+  };
+  sortName = null;
+  sortValue = null;
+  data = [
+    {
+      name: 'John Brown',
+      age: 32,
+      address: 'New York No. 1 Lake Park',
+    }, {
+      name: 'Jim Green',
+      age: 42,
+      address: 'London No. 1 Lake Park',
+    }, {
+      name: 'Joe Black',
+      age: 32,
+      address: 'Sidney No. 1 Lake Park',
+    }, {
+      name: 'Jim Red',
+      age: 32,
+      address: 'London No. 2 Lake Park',
+    }
+  ];
+  copyData = [...this.data];
+
+  sort(sortName, value) {
+    this.sortName = sortName;
+    this.sortValue = value;
+    Object.keys(this.sortMap).forEach(key => {
+      if (key !== sortName) {
+        this.sortMap[key] = null;
+      } else {
+        this.sortMap[key] = value;
+      }
+    });
+    this.search();
+  }
+
+  search() {
+    const searchAddress = this.filterAddressArray.filter(address => address.value);
+    const filterFunc = (item) => {
+      return (searchAddress.length ? searchAddress.some(address => item.address.indexOf(address.name) !== -1) : true) &&
+        (item.name.indexOf(this.searchValue) !== -1)
+    };
+    this.data = [...this.copyData.filter(item => filterFunc(item))];
+    this.data = [...this.data.sort((a, b) => {
+      if (a[this.sortName] > b[this.sortName]) {
+        return (this.sortValue === 'ascend') ? 1 : -1;
+      } else if (a[this.sortName] < b[this.sortName]) {
+        return (this.sortValue === 'ascend') ? -1 : 1;
+      } else {
+        return 0;
+      }
+    })];
+  }
+
+  reset(array) {
+    array.forEach(item => {
+      item.value = false;
+    });
+    this.search();
+  }
+}
+

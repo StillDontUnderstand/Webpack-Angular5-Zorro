@@ -1,6 +1,6 @@
 import { Component, ViewEncapsulation,  OnInit } from '@angular/core';
 import { Router, NavigationEnd, NavigationStart } from '@angular/router';
-import { fadeAnimation } from './fade.animation';
+import { fadeAnimation } from '../../animations/fade.animation';
 import * as ECharts from 'echarts';
 import { DataService } from '../../service/data.service'
 
@@ -43,6 +43,12 @@ import { DataService } from '../../service/data.service'
                     <li nz-menu-item><a routerLink="tree" routerLinkActive="active">Tree</a></li>
                     <li nz-menu-item><a routerLink="echarts-tree" routerLinkActive="active">ECharts-Tree</a></li>
                     <li nz-menu-item><a routerLink="echarts-gallery" routerLinkActive="active">ECharts-Gallery</a></li>
+                </ul>
+            </li>
+            <li nz-submenu>
+                <span title><i class="anticon anticon-dot-chart"></i><span class="nav-text" >动效</span></span>
+                <ul>
+                    <li nz-menu-item><a routerLink="motion" routerLinkActive="active">Motion</a></li>
                 </ul>
             </li>
             </ul>

@@ -28,7 +28,7 @@ console.info("VaribleModule in running...")
     NgZorroAntdModule,    
     ReactiveFormsModule,
     CommonModule,
-    VaribleRoutingModule,    
+    VaribleRoutingModule, 
   ],
   //可以在根路由引入
   entryComponents: [

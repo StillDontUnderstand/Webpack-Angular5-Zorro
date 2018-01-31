@@ -48,6 +48,10 @@ const layoutRoute: Routes = [
         loadChildren: '../../pages/dashboard/dashboard.module#DashboardModule'
       },
       {
+        path: 'motion',
+        loadChildren: '../../pages/motion/motion.module#MotionModule'
+      },
+      {
         path: '**',
         component: DevlogComponent
       }

@@ -12,7 +12,8 @@ import { UserComponent } from './user.component'
         CommonModule,
         UserRoutingModule,
         NgZorroAntdModule,
-        FormsModule
+        FormsModule,
+
     ],
     declarations: [
         UserComponent

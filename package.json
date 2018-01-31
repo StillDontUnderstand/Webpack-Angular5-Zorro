@@ -22,6 +22,7 @@
     "angular-in-memory-web-api": "^0.5.2",
     "core-js": "^2.4.1",
     "echarts": "^4.0.1",
+    "ng-scrollreveal": "^2.2.0",
     "ng-zorro-antd": "^0.6.9",
     "ng.tree": "^3.2.1",
     "ng2-dnd": "^5.0.2",
@@ -32,6 +33,7 @@
   "devDependencies": {
     "@types/jasmine": "2.5.36",
     "@types/node": "^6.0.96",
+    "@types/scrollreveal": "^0.0.3",
     "angular-router-loader": "^0.6.0",
     "angular2-router-loader": "^0.3.5",
     "angular2-template-loader": "^0.6.0",

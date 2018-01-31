@@ -16,11 +16,14 @@ import { AppComponent } from './app.component';
 //mock-data
 import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { InMemoryDataService } from './in-memory-data.service';
-//smooth scroll
+//scroll animation
+import { NgsRevealModule } from 'ng-scrollreveal';
+
 
 @NgModule({
   declarations: [
     AppComponent,
+
     // SmoothScrollToDirective，
   ],
   imports: [
@@ -39,7 +42,7 @@ import { InMemoryDataService } from './in-memory-data.service';
     AppRoutingModule
   ],
   exports: [
-    DndModule
+    DndModule,
   ],
   bootstrap: [AppComponent]
 })
