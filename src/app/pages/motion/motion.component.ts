@@ -7,7 +7,8 @@ import { Component, style } from '@angular/core';
     <list-motion></list-motion>
     <fly-motion></fly-motion>
     <h1>页面滚动动画</h1>
-    
+    <scoller-motion></scoller-motion>
+
     `,
     styles: [`
     :host{

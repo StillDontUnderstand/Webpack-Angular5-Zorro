@@ -7,6 +7,7 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { FlyMotionComponent } from './fly-motion.component'
 import { ListMotionComponent } from './list-motion.component'
+// import { NgsRevealModule } from 'ng-scrollreveal';
 
 const route: Routes = [{ path: '', component: MotionComponent }]
 
@@ -19,7 +20,8 @@ const route: Routes = [{ path: '', component: MotionComponent }]
     declarations: [
         MotionComponent,
         FlyMotionComponent,
-        ListMotionComponent
+        ListMotionComponent,
+        // NgsRevealModule
     ],
     exports: [MotionComponent]
 })

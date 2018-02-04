@@ -17,13 +17,12 @@ import { AppComponent } from './app.component';
 import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { InMemoryDataService } from './in-memory-data.service';
 //scroll animation
-import { NgsRevealModule } from 'ng-scrollreveal';
+// import { NgsRevealModule } from 'ng-scrollreveal';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-
     // SmoothScrollToDirective，
   ],
   imports: [
@@ -32,13 +31,17 @@ import { NgsRevealModule } from 'ng-scrollreveal';
     ReactiveFormsModule,
     HttpModule,
     BrowserAnimationsModule,
+    //Ant-Design
     NgZorroAntdModule.forRoot(),
+    //DragDrop
     DndModule.forRoot(),
-    //mock
+    //Mock
     InMemoryWebApiModule.forRoot(
       InMemoryDataService,
       { delay: 200 }
     ),
+    //Scroller-Animation
+    // NgsRevealModule.forRoot(),
     AppRoutingModule
   ],
   exports: [
